@@ -1,0 +1,8 @@
+{
+    "include": ["**/*"],
+    "compilerOptions": {
+      "lib": ["es5", "es6", "dom"],
+      "jsx": "react",
+      "esModuleInterop": true
+    }
+  }
