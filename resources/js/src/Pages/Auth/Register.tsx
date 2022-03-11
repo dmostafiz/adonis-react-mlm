@@ -1,4 +1,4 @@
-import { Box, Container, GridItem, SimpleGrid, chakra, Text, Center, Flex, VisuallyHidden, Input, Button, Icon} from '@chakra-ui/react'
+import { Box, Container, GridItem, SimpleGrid, chakra, Text, Center, Flex, VisuallyHidden, Input, Button, Icon, HStack } from '@chakra-ui/react'
 import React from 'react'
 import GuestLayout from '../../Layouts/GuestLayout/GuestLayout'
 
@@ -6,8 +6,6 @@ export default function Register() {
   return (
     <GuestLayout>
       <Container maxW='container.xl'>
-
-
 
         <Box px={8} py={24} mx="auto">
           <SimpleGrid
@@ -18,8 +16,8 @@ export default function Register() {
             mx="auto"
           >
             <GridItem
-              colSpan={{ base: "auto", lg: 7 }}
-              textAlign={{ base: "center", lg: "left" }}
+              colSpan={{ base: "auto", lg: 6 }}
+              textAlign={{ base: "left", lg: "left" }}
             >
               <chakra.h1
                 mb={4}
@@ -44,28 +42,46 @@ export default function Register() {
                 have a drawing session with screen share.
               </chakra.p>
             </GridItem>
-            <GridItem colSpan={{ base: "auto", md: 4 }}>
-              <Box as="form" mb={6} rounded="lg" shadow="xl">
+
+
+
+            <GridItem colSpan={{ base: "auto", md: 5 }}>
+
+              <Box as="form" py={3} mb={6} rounded="lg" shadow="xl">
                 <Center pb={0} color='gray.700'>
-                  <Text pt={2}>Start talking now</Text>
+                  <Text pt={2} fontWeight='bold' fontSize='20px'>Create your account now</Text>
                 </Center>
                 <SimpleGrid
                   columns={1}
                   px={6}
                   py={4}
                   spacing={4}
-                  borderBottom="solid 1px"
                   borderColor='gray.200'
                 >
-                  <Flex>
-                    <VisuallyHidden>First Name</VisuallyHidden>
-                    <Input
-                      mt={0}
-                      type="text"
-                      placeholder="First Name"
-                      required={true}
-                    />
-                  </Flex>
+
+                  <HStack>
+                    <Flex>
+                      <VisuallyHidden>First Name</VisuallyHidden>
+                      <Input
+                        mt={0}
+                        type="text"
+                        placeholder="First Name"
+                        required={true}
+                      />
+                    </Flex>
+
+                    <Flex>
+                      <VisuallyHidden>Last Name</VisuallyHidden>
+                      <Input
+                        mt={0}
+                        type="text"
+                        placeholder="Last Name"
+                        required={true}
+                      />
+                    </Flex>
+                  </HStack>
+
+
                   <Flex>
                     <VisuallyHidden>Email Address</VisuallyHidden>
                     <Input
@@ -75,6 +91,18 @@ export default function Register() {
                       required={true}
                     />
                   </Flex>
+
+                  <Flex>
+                    <VisuallyHidden>Reference ID</VisuallyHidden>
+                    <Input
+                      mt={0}
+                      type="text"
+                      placeholder="Reference ID"
+                      required={true}
+                    />
+                  </Flex>
+
+                  {/* <HStack> */}
                   <Flex>
                     <VisuallyHidden>Password</VisuallyHidden>
                     <Input
@@ -84,11 +112,25 @@ export default function Register() {
                       required={true}
                     />
                   </Flex>
+
+                  <Flex>
+                    <VisuallyHidden>Confirm Password</VisuallyHidden>
+                    <Input
+                      mt={0}
+                      type="password"
+                      placeholder="Confirm Password"
+                      required={true}
+                    />
+                  </Flex>
+
+                  {/* </HStack> */}
+
                   <Button colorScheme="green" w="full" py={2} type="submit">
                     Sign up for free
                   </Button>
                 </SimpleGrid>
-                <Flex px={6} py={4}>
+
+                {/* <Flex px={6} py={4}>
                   <Button
                     py={2}
                     w="full"
@@ -111,13 +153,18 @@ export default function Register() {
                   >
                     Continue with Google
                   </Button>
-                </Flex>
+                </Flex> */}
               </Box>
               <chakra.p fontSize="xs" textAlign="center" color="gray.600">
                 By signing up you agree to our{" "}
                 <chakra.a color="brand.500">Terms of Service</chakra.a>
               </chakra.p>
+
+
             </GridItem>
+
+
+
           </SimpleGrid>
         </Box>
 
