@@ -1,4 +1,4 @@
-import { Box, Flex, VStack } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 import Footer from './inc/Footer'
 import TopNavigation from './inc/TopNavigation'
