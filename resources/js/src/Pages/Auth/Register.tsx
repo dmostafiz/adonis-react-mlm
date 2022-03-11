@@ -7,7 +7,7 @@ export default function Register() {
     <GuestLayout>
       <Container maxW='container.xl'>
 
-        <Box px={8} py={24} mx="auto">
+        <Box px={8} py={10} mx="auto">
           <SimpleGrid
             alignItems="center"
             w={{ base: "full", xl: 11 / 12 }}
