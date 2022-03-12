@@ -1,4 +1,4 @@
-import { Box, Container, Flex, HStack, Icon, List, ListIcon, ListItem, SimpleGrid, Text, VStack } from '@chakra-ui/react'
+import { Box, Container, Flex, Icon, SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from '@inertiajs/inertia-react'
 import React from 'react'
 import { ImTree } from 'react-icons/im'
