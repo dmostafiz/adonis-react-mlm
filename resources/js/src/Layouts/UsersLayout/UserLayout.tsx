@@ -51,7 +51,7 @@ export default function UserLayout({ children }) {
           </Box>
 
           <Box color='gray.800' flex='1' h='100vh' bg='purple.50' shadow='sm'>
-            <Box px={5} py={24}>
+            <Box px={5} py='90px'>
               {children}
             </Box>
           </Box>
