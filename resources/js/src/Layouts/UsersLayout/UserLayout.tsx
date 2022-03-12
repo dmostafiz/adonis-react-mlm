@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Icon, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Container, Flex, List, ListIcon, ListItem } from '@chakra-ui/react'
 import { Link } from '@inertiajs/inertia-react'
 import React from 'react'
 import { ImTree } from 'react-icons/im'
@@ -20,38 +20,40 @@ export default function UserLayout({ children }) {
 
         <Flex color='white'>
           <Box w='200px' position='relative'>
-            <Box w='250px' px={0} position='fixed' pt='90px' h='100vh' >
+            <Box px={0} position='fixed' pt='90px' h='100vh' >
 
-              <SimpleGrid spacing={3}>
+              <List >
 
                 <Link href='/user/dashboard'>
-                  <Flex align='center' gap='2' color='gray.700' fontWeight='semibold' rounded='md' >
-                    <Icon as={AiOutlineDashboard} color='purple.500' w={5} h={5} p={0} m={0} />
+                  <ListItem gap='2' py='5px' pr='20px' color='gray.700' _hover={{ color: 'purple.600' }} fontWeight='semibold'>
+                    <ListIcon as={AiOutlineDashboard} w={5} h={5} />
                     Dashboard
-                  </Flex>
+                  </ListItem>
                 </Link>
 
                 <Link href='/user/my_statistics'>
-                  <Flex align='center' gap='2' color='gray.700' fontWeight='semibold' rounded='md' >
-                    <Icon as={BiStats} color='purple.500' w={5} h={5} p={0} m={0} />
-                    <Text>My Statistics</Text>
-                  </Flex>
+                  <ListItem gap='2' py='5px' pr='20px' color='gray.700' _hover={{ color: 'purple.600' }} fontWeight='semibold'>
+                    <ListIcon as={BiStats} w={5} h={5} />
+                    My Statistics
+                  </ListItem>
                 </Link>
 
                 <Link href='/user/my_geneology'>
-                  <Flex align='center' gap='2' color='gray.700' fontWeight='semibold' rounded='md' >
-                    <Icon as={ImTree} color='purple.500' w={5} h={5} p={0} m={0} />
-                    <Text>My Geneology</Text>
-                  </Flex>
+                  <ListItem gap='2' py='5px' pr='20px' color='gray.700' _hover={{ color: 'purple.600' }} fontWeight='semibold'>
+                    <ListIcon as={ImTree} w={5} h={4} />
+                    My Geneology
+                  </ListItem>
                 </Link>
 
-              </SimpleGrid>
+              </List>
 
             </Box>
           </Box>
 
-          <Box flex='1' h='100vh' bg='purple.50' shadow='sm'>
-            {children}
+          <Box color='gray.800' flex='1' h='100vh' bg='purple.50' shadow='sm'>
+            <Box px={5} py={24}>
+              {children}
+            </Box>
           </Box>
         </Flex>
 

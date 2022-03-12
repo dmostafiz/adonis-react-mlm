@@ -15,6 +15,15 @@ Route.get('/user/dashboard', async ({ inertia }: HttpContextContract) => {
   return inertia.render('Users/Dashboard')
 })
 
+Route.get('/user/my_statistics', async ({ inertia }: HttpContextContract) => {
+  return inertia.render('Users/MyStatistics')
+})
+
+Route.get('/user/my_geneology', async ({ inertia }: HttpContextContract) => {
+  return inertia.render('Users/MyGeneology')
+})
+
+
 
 Route.get('/auth/login', async ({ inertia } : HttpContextContract) => {
    return inertia.render('Auth/Login')

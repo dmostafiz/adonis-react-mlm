@@ -1,4 +1,4 @@
-import { Box, Container, GridItem, SimpleGrid, chakra, Text, Center, Flex, VisuallyHidden, Input, Button, HStack } from '@chakra-ui/react'
+import { Box, Container, GridItem, SimpleGrid, chakra, Text, Center, Flex, VisuallyHidden, Input, Button } from '@chakra-ui/react'
 import React from 'react'
 import GuestLayout from '../../Layouts/GuestLayout/GuestLayout'
 
