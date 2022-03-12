@@ -7,7 +7,7 @@ export default function Register() {
     <GuestLayout>
       <Container maxW='container.xl'>
 
-        <Box px={8} py={10} mx="auto">
+        <Box py={10} mx="auto">
           <SimpleGrid
             alignItems="center"
             w={{ base: "full", xl: 11 / 12 }}
@@ -17,7 +17,7 @@ export default function Register() {
           >
             <GridItem
               colSpan={{ base: "auto", lg: 6 }}
-              textAlign={{ base: "left", lg: "left" }}
+              textAlign={{ base: "center", lg: "left" }}
             >
               <chakra.h1
                 mb={4}
@@ -59,7 +59,7 @@ export default function Register() {
                   borderColor='gray.200'
                 >
 
-                  <HStack>
+                  <Flex direction={{base: 'column', sm: 'column', md: 'row', lg: 'row'}} gap={3}>
                     <Flex>
                       <VisuallyHidden>First Name</VisuallyHidden>
                       <Input
@@ -79,7 +79,7 @@ export default function Register() {
                         required={true}
                       />
                     </Flex>
-                  </HStack>
+                  </Flex>
 
 
                   <Flex>
@@ -125,7 +125,7 @@ export default function Register() {
 
                   {/* </HStack> */}
 
-                  <Button colorScheme="green" w="full" py={2} type="submit">
+                  <Button colorScheme="purple" w="full" py={2} type="submit">
                     Sign up for free
                   </Button>
                 </SimpleGrid>

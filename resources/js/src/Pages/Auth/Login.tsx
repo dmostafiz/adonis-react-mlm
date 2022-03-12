@@ -7,7 +7,7 @@ export default function Login() {
     <GuestLayout>
       <Container maxW='container.xl'>
 
-        <Box px={8} py={24} mx="auto">
+        <Box py={10} mx="auto">
           <SimpleGrid
             alignItems="center"
             w={{ base: "full", xl: 11 / 12 }}
@@ -16,8 +16,8 @@ export default function Login() {
             mx="auto"
           >
             <GridItem
-              colSpan={{ base: "auto", lg: 7 }}
-              textAlign={{ base: "left", lg: "left" }}
+              colSpan={{ base: "auto", lg: 6 }}
+              textAlign={{ base: "center", lg: "left" }}
             >
               <chakra.h1
                 mb={4}
@@ -45,7 +45,7 @@ export default function Login() {
 
 
 
-            <GridItem colSpan={{ base: "auto", md: 4 }}>
+            <GridItem colSpan={{ base: "auto", md: 5 }}>
 
               <Box as="form" py={3} mb={6} rounded="lg" shadow="xl">
                 <Center pb={0} color='gray.700'>
@@ -86,7 +86,7 @@ export default function Login() {
 
                   {/* </HStack> */}
 
-                  <Button colorScheme="green" w="full" py={2} type="submit">
+                  <Button colorScheme="purple" w="full" py={2} type="submit">
                     Sign in
                   </Button>
                 </SimpleGrid>

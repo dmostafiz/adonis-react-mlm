@@ -10,13 +10,20 @@ export default function TopNavigation() {
 
           <HStack>
             <Link href='/'>
-               <Image width={150} height={50} src='/logo.png' alt='Brand Logo' />
+              <Image width={150} height={50} src='/logo.png' alt='Brand Logo' />
             </Link>
 
           </HStack>
 
 
           <HStack>
+
+            <Link href='/user/dashboard'>
+              <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
+                User Dashboard
+              </Box>
+            </Link>
+
             <Link href='/auth/login'>
               <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
                 Login
@@ -25,7 +32,7 @@ export default function TopNavigation() {
 
             <Link href='/auth/join_now'>
               <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
-                 Join Now
+                Join Now
               </Box>
             </Link>
           </HStack>
