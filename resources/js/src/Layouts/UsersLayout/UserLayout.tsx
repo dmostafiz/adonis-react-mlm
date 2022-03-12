@@ -23,7 +23,6 @@ export default function UserLayout({ children }) {
             <Box px={0} position='fixed' pt='90px' h='100vh' >
 
               <List >
-
                 <Link href='/user/dashboard'>
                   <ListItem gap='2' py='5px' pr='20px' color='gray.700' _hover={{ color: 'purple.600' }} fontWeight='semibold'>
                     <ListIcon as={AiOutlineDashboard} w={5} h={5} />

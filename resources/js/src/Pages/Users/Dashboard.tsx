@@ -1,12 +1,15 @@
+import { Box, Heading } from '@chakra-ui/react'
 import React from 'react'
 import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 
 export default function Dashboard() {
     return (
         <UserLayout>
-            
-                <div>Dashboard</div>
-           
+
+            <Box>
+                <Heading as='h4' fontSize='28px'>Dashboard</Heading>
+            </Box>
+
         </UserLayout>
     )
 }
