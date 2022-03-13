@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Button, Flex, Icon, Input, useClipboard } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { HiClipboardCheck, HiClipboardCopy } from 'react-icons/hi'
