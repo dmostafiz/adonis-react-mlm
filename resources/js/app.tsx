@@ -1,4 +1,3 @@
-// @ts-ignore
 import '../css/app.css'
 import { InertiaApp } from '@inertiajs/inertia-react'
 import React from 'react'

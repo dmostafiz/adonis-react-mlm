@@ -7,19 +7,19 @@ import TopNavigation from './inc/TopNavigation'
 
 export default function UserLayout({ children }) {
 
-  const [isMobile] = useMediaQuery('(max-width:900px)')
+  const [isMobile] = useMediaQuery('(max-width:1000px)')
 
   return (
     <Flex direction='column' justify='space-between'>
       <TopNavigation />
 
-      <Container maxW='container.xl' overflowX='hidden'>
+      <Container maxW='container.xl' style={{clear: 'both', overflowX:'hidden'}}>
 
 
 
         <Flex color='white'>
 
-          {!isMobile && <Box w='210px'  borderRight='2px solid #553c9a0a' position='relative'>
+          {!isMobile && <Box w='20%'  borderRight='2px solid #553c9a0a'>
             <Box px={0} position='fixed' pt='90px' h='100vh' >
 
               <SideMenu />
@@ -28,7 +28,7 @@ export default function UserLayout({ children }) {
           </Box>}
 
 
-          <Box color='gray.800' flex='1' minH='100vh' bg={isMobile ? 'white' : '#faf5ff85'} dropShadow='md'>
+          <Box color='gray.800' w={isMobile ? '100%' : '80%'}  minH='100vh' bg={isMobile ? 'white' : 'purple.50'} dropShadow='md'>
             <Box px={isMobile ? 0 : 14} py='90px' minH='100vh'>
               {children}
             </Box>
