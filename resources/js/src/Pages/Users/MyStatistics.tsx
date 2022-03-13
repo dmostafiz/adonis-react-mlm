@@ -6,7 +6,7 @@ export default function MyStatistics() {
     return (
         <UserLayout>
             <Box>
-                <Heading as='h4' fontSize='28px'>My Statistics</Heading>
+                <Heading as='h4' fontWeight='semibold' fontSize='28px'>My Statistics</Heading>
             </Box>
         </UserLayout>
     )

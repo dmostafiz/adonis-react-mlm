@@ -7,7 +7,7 @@ export default function Dashboard() {
         <UserLayout>
 
             <Box>
-                <Heading as='h4' fontSize='28px'>Dashboard</Heading>
+                <Heading as='h4' fontWeight='semibold' fontSize='28px'>Dashboard</Heading>
             </Box>
 
         </UserLayout>

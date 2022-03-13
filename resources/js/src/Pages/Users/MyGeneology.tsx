@@ -6,7 +6,7 @@ export default function MyGeneology() {
     return (
         <UserLayout>
             <Box>
-                <Heading as='h4' fontSize='28px'>My Geneology</Heading>
+                <Heading as='h4' fontWeight='semibold' fontSize='28px'>My Geneology</Heading>
             </Box>
 
         </UserLayout>

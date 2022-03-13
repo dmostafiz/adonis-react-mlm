@@ -1,17 +1,61 @@
-import { Avatar, Box, Container, Flex, HStack, Image, LinkBox, List, ListIcon, ListItem } from '@chakra-ui/react'
+import { Avatar, Box, Container, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Flex, HStack, Icon, Input, Menu, MenuButton, MenuItem, MenuList, Spacer, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react'
 import { Link } from '@inertiajs/inertia-react'
 import React from 'react'
 import { BiCog, BiLockOpen, BiPowerOff } from 'react-icons/bi'
+import MainLogo from '../../../Components/MainLogo'
+import SideMenu from './SideMenu'
+
+import {HiOutlineMenuAlt1} from 'react-icons/hi'
 
 export default function TopNavigation() {
+  const [isMobile] = useMediaQuery('(max-width:600px)')
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   return (
     <Box py={3} w='full' bg='purple.700' position='fixed' zIndex={999}>
       <Container maxW='container.xl'>
         <Flex justify='space-between'>
 
           <HStack>
+
+            {isMobile && <>
+              <Box as='span' cursor='pointer' color='white' onClick={onOpen}>
+                 <Icon as={HiOutlineMenuAlt1} w={8} h={8}/>
+              </Box>
+              <Drawer
+                size='xs'
+                isOpen={isOpen}
+                placement='left'
+                onClose={onClose}
+              >
+                <DrawerOverlay />
+                <DrawerContent>
+                  <DrawerCloseButton />
+                  <DrawerHeader>
+
+                    <MainLogo />
+
+                  </DrawerHeader>
+
+                  <DrawerBody>
+                    <Input mb='20px' placeholder='Type here...' />
+
+                    <SideMenu />
+
+                  </DrawerBody>
+                  ]
+                </DrawerContent>
+              </Drawer>
+              <Spacer />
+              <Spacer />
+              <Spacer />
+            </>}
+
+
+
+
             <Link href='/'>
-              <Image width={150} height={50} src='/logo.png' alt='Brand Logo' />
+              <MainLogo />
             </Link>
           </HStack>
 
@@ -20,34 +64,45 @@ export default function TopNavigation() {
 
             {/* <Link href=''> */}
             <Box py={2} px={3} color='whiteAlpha.800' rounded='5px' cursor='pointer'>
-              <div className="dropdown">
-                <Flex align='center' gap={2} tabIndex={0} className=" cursor-pointer">
-                  <Avatar size='xs' name='Test User' src='https://bit.ly/sage-adebayo' />
+
+              <Menu>
+                <MenuButton as='a' gap={2}>
+                  {/* Actions */}
+
+                  {/* <Flex align='center' gap={2}> */}
+                  <Avatar size='xs' mr={2} name='Test User' src='https://bit.ly/sage-adebayo' />
                   Test User
-                </Flex>
-                <List tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded w-52 -right-20 top-10 text-gray-500">
-                  <ListItem>
-                    <LinkBox px='8px' py='5px' _focus={{ bg: 'blackAlpha.500'}}>
-                      <ListIcon as={BiCog} color='green.500' p={0} m={0} />
-                      Profile settings
-                    </LinkBox>
-                  </ListItem>
+                  {/* </Flex> */}
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>
+                    <Link href='/'>
+                      <Flex align='center' gap={2}>
+                        <Icon as={BiCog} color='green.500' p={0} m={0} />
+                        <Text color='gray.500'>Profile settings</Text>
+                      </Flex>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link href='/'>
+                      <Flex align='center' gap={2}>
+                        <Icon as={BiLockOpen} color='green.500' p={0} m={0} />
+                        <Text color='gray.500'>Change Password</Text>
+                      </Flex>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link href='/'>
+                      <Flex align='center' gap={2}>
+                        <Icon as={BiPowerOff} color='green.500' p={0} m={0} />
+                        <Text color='gray.500'>Sign Out</Text>
+                      </Flex>
+                    </Link>
+                  </MenuItem>
 
-                  <ListItem>
-                    <LinkBox px='8px' py='5px'>
-                      <ListIcon as={BiLockOpen} color='green.500' p={0} m={0} />
-                      Change Password
-                    </LinkBox>
-                  </ListItem>
+                </MenuList>
 
-                  <ListItem>
-                    <LinkBox  px='8px' py='5px'>
-                      <ListIcon as={BiPowerOff} color='green.500' p={0} m={0} />
-                      Sign Out
-                    </LinkBox>
-                  </ListItem>
-                </List>
-              </div>
+              </Menu>
 
             </Box>
             {/* </Link> */}
