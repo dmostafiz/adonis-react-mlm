@@ -13,7 +13,7 @@ export default function AccountInfoCards() {
                 templateRows='repeat(1, 1fr)'
                 templateColumns={['repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
                 gap={4}
-                textAlign={["left", , "center"]}
+                textAlign={["left", "center"]}
             >
                 <GridItem
                     bg={useColorModeValue("white", "gray.800")}
@@ -58,14 +58,14 @@ export default function AccountInfoCards() {
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     </chakra.p>
                     <Stack
-                        display={["block", , "flex"]}
+                        display={["block", "flex"]}
                         spacing={2}
                         justifyContent="center"
-                        direction={["column", , "row"]}
+                        direction={["column", "row"]}
                     >
 
                         <Link
-                            w={["auto", , "auto"]}
+                            w={["auto", "auto"]}
                             display="inline-flex"
                             alignItems="center"
                             justifyContent="center"
@@ -129,14 +129,14 @@ export default function AccountInfoCards() {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </chakra.p>
                     <Stack
-                        display={["block", , "flex"]}
+                        display={["block", "flex"]}
                         spacing={2}
                         justifyContent="center"
-                        direction={["column", , "row"]}
+                        direction={["column", "row"]}
                     >
 
                         <Link
-                            w={["auto", , "auto"]}
+                            w={["auto", "auto"]}
                             display="inline-flex"
                             alignItems="center"
                             justifyContent="center"
@@ -203,14 +203,14 @@ export default function AccountInfoCards() {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </chakra.p>
                     <Stack
-                        display={["block", , "flex"]}
+                        display={["block", "flex"]}
                         spacing={2}
                         justifyContent="center"
-                        direction={["column", , "row"]}
+                        direction={["column", "row"]}
                     >
 
                         <Link
-                            w={["auto", , "auto"]}
+                            w={["auto", "auto"]}
                             display="inline-flex"
                             alignItems="center"
                             justifyContent="center"
