@@ -16,7 +16,7 @@
     ],
     "outDir": "build",
     "rootDir": "./",
-    "sourceMap": false,
+    "sourceMap": true,
     "paths": {
       "App/*": [
         "./app/*"
