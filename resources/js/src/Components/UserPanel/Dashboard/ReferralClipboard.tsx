@@ -5,7 +5,7 @@ import { HiClipboardCheck, HiClipboardCopy } from 'react-icons/hi'
 
 export default function ReferralClipboard() {
 
-    const [value, setValue] = useState('https://salient-demo.com/?ref_id=443535')
+    const [value] = useState('https://salient-demo.com/?ref_id=443535')
     const { hasCopied, onCopy } = useClipboard(value)
 
     return (
