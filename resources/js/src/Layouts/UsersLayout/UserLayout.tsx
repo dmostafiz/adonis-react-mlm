@@ -8,9 +8,7 @@ import TopNavigation from './inc/TopNavigation'
 export default function UserLayout({ children }) {
 
   const [isMobile] = useMediaQuery('(max-width:600px)')
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
-
+  
   return (
     <Flex direction='column' justify='space-between'>
       <TopNavigation />
