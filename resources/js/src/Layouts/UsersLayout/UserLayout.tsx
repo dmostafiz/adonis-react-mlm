@@ -1,4 +1,4 @@
-import { Box, Container, Flex, useDisclosure, useMediaQuery } from '@chakra-ui/react'
+import { Box, Container, Flex, useMediaQuery } from '@chakra-ui/react'
 import React from 'react'
 import Footer from './inc/Footer'
 import SideMenu from './inc/SideMenu'
@@ -8,7 +8,7 @@ import TopNavigation from './inc/TopNavigation'
 export default function UserLayout({ children }) {
 
   const [isMobile] = useMediaQuery('(max-width:600px)')
-  
+
   return (
     <Flex direction='column' justify='space-between'>
       <TopNavigation />
