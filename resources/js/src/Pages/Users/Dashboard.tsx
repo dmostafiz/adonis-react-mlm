@@ -15,7 +15,7 @@ export default function Dashboard() {
                 <Text>Hello Test User! welcome to your dashboard</Text>
             </Box>
 
-            <Box w='full' mt='20px'>
+            <Box w='full' mt='50px'>
                 <AccountInfoCards />
             </Box>
 
@@ -27,10 +27,8 @@ export default function Dashboard() {
 
             <Box w='full' mt='20px' bg='white' rounded='md' shadow='base' pt='25px' pb='20px' px='15px' >
                 <Heading mb={2} fontSize='2xl' fontWeight='semibold'>Recent registrations</Heading>
-                <Text mb={5} color='gray.500'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, suscipit nobis! Perferendis.</Text>
-
+                {/* <Text mb={5} color='gray.500'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, suscipit nobis! Perferendis.</Text> */}
                 <UsersList />
-
             </Box>
 
 
