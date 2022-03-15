@@ -10,15 +10,15 @@ export default function InvitationClicks() {
             width: '500px'
         },
         xaxis: {
-            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+            categories: ['18 Apr', '19 March', '20 March', '21 March', '22 March', '23 March', '24 March', '25 March']
         },
-        colors:['#553C9A']
+        colors: ['#553C9A']
     }
 
     const series = [
         {
-            name: "series-1",
-            data: [30, 40, 45, 50, 49, 60, 70, 91]
+            name: "Clicks",
+            data: [30, 40, 45, 50, 49, 60, 40, 30]
         }
     ]
 
@@ -33,7 +33,8 @@ export default function InvitationClicks() {
                 textTransform="uppercase"
                 color={useColorModeValue("gray.500", "gray.400")}
             >
-                Referral Clicks
+                Last 7 days statistics
+
             </chakra.p>
             <Text
                 mb={2}
@@ -55,7 +56,7 @@ export default function InvitationClicks() {
 
 
 
-            <Chart options={options} series={series} type="line" />
+            <Chart options={options} series={series} type="area" />
 
         </>
     )

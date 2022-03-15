@@ -9,15 +9,15 @@ export default function InvitationRegistrations() {
             id: "basic-bar"
         },
         xaxis: {
-            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+            categories: [ '19 March', '20 March', '21 March', '22 March', '23 March', '24 March', '25 March']
         },
         colors:['#F44336', '#E91E63', '#9C27B0']
     }
 
     const series = [
         {
-            name: "series-1",
-            data: [30, 40, 45, 50, 49, 60, 70, 91]
+            name: "Registrations",
+            data: [0, 3, 0, 1, 2, 1, 0]
         }
     ]
 
@@ -32,7 +32,7 @@ export default function InvitationRegistrations() {
                 textTransform="uppercase"
                 color={useColorModeValue("gray.500", "gray.400")}
             >
-                Registrations
+                Last 7 days statistics
             </chakra.p>
             <Text
                 mb={2}
@@ -41,20 +41,20 @@ export default function InvitationRegistrations() {
                 color={useColorModeValue("gray.900", "gray.50")}
                 lineHeight="tight"
             >
-                19
+                7
                 <chakra.span
                     fontSize="md"
                     fontWeight="medium"
                     color={useColorModeValue("gray.600", "gray.400")}
                 >
                     {" "}
-                    Clicks
+                    Registrations
                 </chakra.span>
             </Text>
 
 
 
-            <Chart options={options} series={series} type="bar" />
+            <Chart options={options} series={series} type="area" />
 
         </>
     )

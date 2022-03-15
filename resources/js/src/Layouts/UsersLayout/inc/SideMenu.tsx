@@ -5,6 +5,7 @@ import React from 'react'
 import { BiStats } from 'react-icons/bi'
 import { ImTree } from 'react-icons/im'
 import { AiOutlineDashboard } from 'react-icons/ai'
+import { BiNetworkChart } from 'react-icons/bi'
 
 
 export default function SideMenu() {
@@ -30,6 +31,14 @@ export default function SideMenu() {
                     Statistics Overview
                 </ListItem>
             </Link>
+
+            <Link href='/user/my_network'>
+                <ListItem gap='2' my='10px' py='5px' pr='20px' color='gray.700' _hover={{ color: 'purple.600' }} fontWeight='semibold'>
+                    <ListIcon as={BiNetworkChart} w={5} h={5} />
+                    My Network
+                </ListItem>
+            </Link>
+
 
         </List>
     )

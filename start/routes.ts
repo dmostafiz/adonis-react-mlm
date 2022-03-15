@@ -23,6 +23,9 @@ Route.get('/user/my_geneology', async ({ inertia }: HttpContextContract) => {
   return inertia.render('Users/MyGeneology')
 })
 
+Route.get('/user/my_network', async ({ inertia }: HttpContextContract) => {
+  return inertia.render('Users/MyNetwork')
+})
 
 
 Route.get('/auth/login', async ({ inertia } : HttpContextContract) => {
