@@ -18,9 +18,15 @@ export default function TopNavigation() {
 
           <HStack>
 
+            <Link href='/admin/dashboard'>
+              <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
+                Admin
+              </Box>
+            </Link>
+
             <Link href='/user/dashboard'>
               <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
-                User Dashboard
+                Users
               </Box>
             </Link>
 

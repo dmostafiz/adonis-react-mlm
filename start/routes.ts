@@ -11,6 +11,27 @@ Route.get('/about_us', async ({ inertia }: HttpContextContract) => {
   return inertia.render('AboutUs')
 })
 
+
+
+Route.get('/admin/dashboard', async ({ inertia }: HttpContextContract) => {
+  return inertia.render('Admin/Dashboard')
+})
+
+Route.get('/admin/my_statistics', async ({ inertia }: HttpContextContract) => {
+  return inertia.render('Admin/MyStatistics')
+})
+
+Route.get('/admin/my_geneology', async ({ inertia }: HttpContextContract) => {
+  return inertia.render('Admin/MyGeneology')
+})
+
+Route.get('/admin/my_network', async ({ inertia }: HttpContextContract) => {
+  return inertia.render('Admin/MyNetwork')
+})
+
+
+
+
 Route.get('/user/dashboard', async ({ inertia }: HttpContextContract) => {
   return inertia.render('Users/Dashboard')
 })
