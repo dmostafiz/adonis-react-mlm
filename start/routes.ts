@@ -29,6 +29,10 @@ Route.get('/admin/my_network', async ({ inertia }: HttpContextContract) => {
   return inertia.render('Admin/MyNetwork')
 })
 
+Route.get('/admin/users', async ({ inertia }: HttpContextContract) => {
+  return inertia.render('Admin/Users')
+})
+
 
 
 

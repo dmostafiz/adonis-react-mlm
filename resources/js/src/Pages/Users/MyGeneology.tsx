@@ -5,8 +5,8 @@ import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 // import FamilyNode from '../../Components/UserPanel/FamilyNode';
 
 export default function MyGeneology() {
-    const WIDTH = 70;
-    const HEIGHT = 80;
+    // const WIDTH = 70;
+    // const HEIGHT = 80;
     return (
         <UserLayout>
             <Box>

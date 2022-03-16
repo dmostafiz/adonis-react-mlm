@@ -3,9 +3,9 @@ import { Link } from '@inertiajs/inertia-react'
 import React from 'react'
 
 import { BiStats } from 'react-icons/bi'
-import { ImTree } from 'react-icons/im'
+// import { ImTree } from 'react-icons/im'
 import { AiOutlineDashboard } from 'react-icons/ai'
-import { BiNetworkChart } from 'react-icons/bi'
+import { FiUsers } from 'react-icons/fi'
 
 
 export default function SideMenu() {
@@ -32,10 +32,10 @@ export default function SideMenu() {
                 </ListItem>
             </Link>
 
-            <Link href='/admin/my_network'>
+            <Link href='/admin/users'>
                 <ListItem gap='2' my='10px' py='5px' pr='20px' color='gray.700' _hover={{ color: 'purple.600' }} fontWeight='semibold'>
-                    <ListIcon as={BiNetworkChart} w={5} h={5} />
-                    My Network
+                    <ListIcon as={FiUsers} w={5} h={5} />
+                    Users
                 </ListItem>
             </Link>
 

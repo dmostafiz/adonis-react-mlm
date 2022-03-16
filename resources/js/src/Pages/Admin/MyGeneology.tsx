@@ -6,8 +6,8 @@ import AdminLayout from '../../Layouts/AdminLayout/AdminLayout';
 // import FamilyNode from '../../Components/UserPanel/FamilyNode';
 
 export default function MyGeneology() {
-    const WIDTH = 70;
-    const HEIGHT = 80;
+    // const WIDTH = 70;
+    // const HEIGHT = 80;
     return (
         <AdminLayout>
             <Box>

@@ -10,7 +10,7 @@ export default function MyStatistics() {
         <AdminLayout>
 
             <Box w='full'>
-                <Heading as='h4' fontWeight='semibold' fontSize='28px'>My Statistics</Heading>
+                <Heading as='h4' fontWeight='semibold' fontSize='28px'>Statistics Overview</Heading>
                 {/* <Text>Hello Test User! w</Text> */}
             </Box>
 
