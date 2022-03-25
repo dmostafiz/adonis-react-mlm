@@ -41,6 +41,13 @@ export default function TopNavigation() {
                 Join Now
               </Box>
             </Link>
+
+            <Link href='/react-test'>
+              <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
+                 Test React
+              </Box>
+            </Link>
+
           </HStack>
         </Flex>
       </Container>

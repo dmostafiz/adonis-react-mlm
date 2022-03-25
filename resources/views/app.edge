@@ -4,14 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="/favicon.ico">
-  <script src="{{ asset('assets/app.js') }}" defer></script>
+  {{--  <script src="{{ asset('assets/app.js') }}" defer></script>  --}}
   <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.4/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <title>adonismlm</title>
+  <title>Salient Development LTD</title>
+
+  @entryPointStyles('app')
+  @entryPointScripts('app')
+
+  @inertiaHead()
 </head>
 <body>
-  
-  @inertia()
+
+    @inertia()
+ 
 </body>
 </html>

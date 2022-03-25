@@ -4,7 +4,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import {ChakraProvider} from '@chakra-ui/react'
 
-const el = document.getElementById('app')
+
 
 import { extendTheme } from "@chakra-ui/react";
 
@@ -85,7 +85,12 @@ export const theme = extendTheme({
 });
 
 
+// Just care about this
+
+const el = document.getElementById('app')
+
 render(
+
     <ChakraProvider theme={theme}>
         <InertiaApp
             // Pass props from the server down to the client app
@@ -98,4 +103,5 @@ render(
     </ChakraProvider>
     ,
     el
+    
 )
