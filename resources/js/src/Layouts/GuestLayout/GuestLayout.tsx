@@ -1,4 +1,4 @@
-import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, CloseButton, Container, Flex } from '@chakra-ui/react'
+import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, Container, Flex } from '@chakra-ui/react'
 import { usePage } from '@inertiajs/inertia-react'
 import React from 'react'
 import Footer from './inc/Footer'
