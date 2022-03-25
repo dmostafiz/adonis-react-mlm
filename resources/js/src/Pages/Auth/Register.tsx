@@ -9,12 +9,12 @@ export default function Register() {
   const { errors } = usePage().props
 
 
-  const [first_name, setFname] = useState(null)
-  const [last_name, setLname] = useState(null)
-  const [email, setEmail] = useState(null)
-  const [ref_id, setRefID] = useState(null)
-  const [password, setPassword] = useState(null)
-  const [confirmPassword, SetConfirmPassword] = useState(null)
+  const [first_name, setFname] = useState('')
+  const [last_name, setLname] = useState('')
+  const [email, setEmail] = useState('')
+  const [ref_id, setRefID] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, SetConfirmPassword] = useState('')
 
   console.log('usePage().props: ', usePage().props?.errors)
 
