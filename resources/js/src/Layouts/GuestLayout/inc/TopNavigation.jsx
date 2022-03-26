@@ -18,17 +18,17 @@ export default function TopNavigation() {
 
           <HStack>
 
-            <Link href='/admin/dashboard'>
+            {/* <Link href='/admin/dashboard'>
               <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
                 Admin
               </Box>
-            </Link>
+            </Link> */}
 
-            <Link href='/user/dashboard'>
+            {/* <Link href='/user/dashboard'>
               <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
                 Users
               </Box>
-            </Link>
+            </Link> */}
 
             <Link href='/auth/login'>
               <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
@@ -42,11 +42,11 @@ export default function TopNavigation() {
               </Box>
             </Link>
 
-            <Link href='/react-test'>
+            {/* <Link href='/react-test'>
               <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
                  Test React
               </Box>
-            </Link>
+            </Link> */}
 
           </HStack>
         </Flex>

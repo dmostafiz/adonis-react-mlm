@@ -1,4 +1,5 @@
 import { Box, Heading, Text } from '@chakra-ui/react'
+import { usePage } from '@inertiajs/inertia-react'
 import React from 'react'
 import AccountInfoCards from '../../Components/AdminPanel/Dashboard/AccountInfoCards'
 // import ReferralClipboard from '../../Components/AdminPanel/Dashboard/ReferralClipboard'
@@ -7,13 +8,15 @@ import AdminLayout from '../../Layouts/AdminLayout/AdminLayout'
 // import UserLayout from '../../Layouts/AdminLayout/AdminLayout'
 
 export default function Dashboard() {
+    const { authUser } = usePage().props
+
     return (
         <AdminLayout>
 
 
             <Box w='full'>
                 <Heading as='h4' fontWeight='semibold' fontSize='28px'>Dashboard</Heading>
-                <Text>Hello Test Admin! welcome to your dashboard</Text>
+                <Text>Hello {authUser?.first_name}! welcome to your dashboard</Text>
             </Box>
 
             <Box w='full' mt='50px'>

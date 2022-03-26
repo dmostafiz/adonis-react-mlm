@@ -2,23 +2,18 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Route from '@ioc:Adonis/Core/Route'
 // import Inertia from '@ioc:EidelLev/Inertia'
 
+
+
 Route.get('/', async ({ response }: HttpContextContract) => {
   // inertia.location('/auth/login')
   response.redirect().toPath('/auth/login')
 })
 
+
 Route.get('/about_us', async ({ inertia }: HttpContextContract) => {
   return inertia.render('AboutUs')
 })
 
-
-Route.get('/auth/login', async ({ inertia }: HttpContextContract) => {
-  return inertia.render('Auth/Login')
-})
-
-Route.get('/auth/join_now', async ({ inertia }: HttpContextContract) => {
-  return inertia.render('Auth/Register')
-})
 
 Route.get('/react-test', async ({ inertia }) => {
   return inertia.render('Test/TestReact')
@@ -26,16 +21,26 @@ Route.get('/react-test', async ({ inertia }) => {
 
 
 Route.group(() => {
+  Route.get('/auth/login', async ({ inertia }: HttpContextContract) => {
+    return inertia.render('Auth/Login')
+  })
+  
+  Route.get('/auth/join_now', async ({ inertia }: HttpContextContract) => {
+    return inertia.render('Auth/Register')
+  })
+  
   // registration logic
   Route.post('register', 'AuthController.register').as('register')
   Route.post('login', 'AuthController.login').as('login')
-  Route.post('logout', 'AuthController.logout').as('logout')
-}).middleware('isGuest')
+  
+}).middleware(['isGuest'])
 
+Route.post('logout', 'AuthController.logout').as('logout')
 
 
 Route.group(() => {
-  Route.get('/user/dashboard', async ({ inertia }: HttpContextContract) => {
+  Route.get('/user/dashboard', async ({ inertia, auth }: HttpContextContract) => {
+    console.log('Auth User: ', auth.user?.first_name)
     return inertia.render('Users/Dashboard')
   })
 
@@ -51,7 +56,7 @@ Route.group(() => {
     return inertia.render('Users/MyNetwork')
   })
 
-}).middleware('auth')
+}).middleware(['auth', 'isUser'])
 
 Route.group(() => {
   Route.get('/admin/dashboard', async ({ inertia }: HttpContextContract) => {
@@ -74,4 +79,4 @@ Route.group(() => {
     return inertia.render('Admin/Users')
   })
 
-}).middleware('auth')
+}).middleware(['auth', 'isAdmin'])

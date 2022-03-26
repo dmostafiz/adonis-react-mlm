@@ -1,4 +1,25 @@
 {
   "assets/app.css": "http://localhost:8080/assets/app.css",
-  "assets/app.js": "http://localhost:8080/assets/app.js"
+  "assets/app.js": "http://localhost:8080/assets/app.js",
+  "assets/resources_js_src_Pages_AboutUs_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_AboutUs_jsx.js",
+  "assets/resources_js_src_Pages_Admin_Dashboard_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_Admin_Dashboard_jsx.js",
+  "assets/resources_js_src_Pages_Admin_MyGeneology_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_Admin_MyGeneology_jsx.js",
+  "assets/resources_js_src_Pages_Admin_MyStatistics_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_Admin_MyStatistics_jsx.js",
+  "assets/resources_js_src_Pages_Admin_Users_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_Admin_Users_jsx.js",
+  "assets/resources_js_src_Pages_Auth_Login_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_Auth_Login_jsx.js",
+  "assets/resources_js_src_Pages_Auth_Register_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_Auth_Register_jsx.js",
+  "assets/resources_js_src_Pages_Home_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_Home_jsx.js",
+  "assets/resources_js_src_Pages_Test_TestReact_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_Test_TestReact_jsx.js",
+  "assets/resources_js_src_Pages_Users_Dashboard_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_Users_Dashboard_jsx.js",
+  "assets/resources_js_src_Pages_Users_MyGeneology_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_Users_MyGeneology_jsx.js",
+  "assets/resources_js_src_Pages_Users_MyNetwork_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_Users_MyNetwork_jsx.js",
+  "assets/resources_js_src_Pages_Users_MyStatistics_jsx.js": "http://localhost:8080/assets/resources_js_src_Pages_Users_MyStatistics_jsx.js",
+  "assets/vendors-node_modules_react-icons_ai_index_esm_js-node_modules_react-icons_bi_index_esm_js-nod-a27662.js": "http://localhost:8080/assets/vendors-node_modules_react-icons_ai_index_esm_js-node_modules_react-icons_bi_index_esm_js-nod-a27662.js",
+  "assets/vendors-node_modules_react-icons_cg_index_esm_js.js": "http://localhost:8080/assets/vendors-node_modules_react-icons_cg_index_esm_js.js",
+  "assets/vendors-node_modules_react-icons_im_index_esm_js.js": "http://localhost:8080/assets/vendors-node_modules_react-icons_im_index_esm_js.js",
+  "assets/vendors-node_modules_react-icons_fi_index_esm_js.js": "http://localhost:8080/assets/vendors-node_modules_react-icons_fi_index_esm_js.js",
+  "assets/vendors-node_modules_react-apexcharts_dist_react-apexcharts_min_js.js": "http://localhost:8080/assets/vendors-node_modules_react-apexcharts_dist_react-apexcharts_min_js.js",
+  "assets/vendors-node_modules_react-d3-tree_lib_index_js.js": "http://localhost:8080/assets/vendors-node_modules_react-d3-tree_lib_index_js.js",
+  "assets/resources_js_src_Layouts_UsersLayout_UserLayout_jsx.js": "http://localhost:8080/assets/resources_js_src_Layouts_UsersLayout_UserLayout_jsx.js",
+  "assets/resources_js_src_Layouts_AdminLayout_AdminLayout_jsx.js": "http://localhost:8080/assets/resources_js_src_Layouts_AdminLayout_AdminLayout_jsx.js"
 }

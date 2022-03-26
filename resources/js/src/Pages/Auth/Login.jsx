@@ -1,6 +1,6 @@
 import { Box, Container, GridItem, SimpleGrid, chakra, Center, Text, Flex, VisuallyHidden, Input, Button } from '@chakra-ui/react'
 import { Inertia } from '@inertiajs/inertia'
-import { usePage } from '@inertiajs/inertia-react'
+import { useForm, usePage } from '@inertiajs/inertia-react'
 import React, { useState } from 'react'
 import GuestLayout from '../../Layouts/GuestLayout/GuestLayout'
 
@@ -11,16 +11,17 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const { data, setData, post, processing } = useForm({
+    email: '',
+    password: '',
+    remember: false,
+  })
   
   const handleSubmit = (e) => {
     //  alert(e)
     e.preventDefault()
 
-    const loginData = {
-      email, password
-    }
-
-    Inertia.post('/login', loginData)
+    Inertia.post('/login', data)
 
   }
 
@@ -92,8 +93,8 @@ export default function Login() {
                       type="email"
                       placeholder="Email Address"
                       // required={true}
-                      onChange={e => setEmail(e.target.value)}
-                      value={email}
+                      onChange={e => setData({...data, email: e.target.value})}
+                      value={data.email}
                     />
                     {errors?.email && <Text color='red.400'>{errors?.email}</Text>}
 
@@ -107,8 +108,8 @@ export default function Login() {
                       type="password"
                       placeholder="Password"
                       // required={true}
-                      onChange={e => setPassword(e.target.value)}
-                      value={password}
+                      onChange={e => setData({...data, password: e.target.value})}
+                      value={data.password}
                     />
                     {errors?.password && <Text color='red.400'>{errors?.password}</Text>}
                     {errors?.login && <Text color='red.400'>{errors?.login}</Text>}

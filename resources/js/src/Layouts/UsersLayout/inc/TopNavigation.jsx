@@ -1,5 +1,5 @@
 import { Avatar, Box, Container, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Flex, HStack, Icon, Input, Menu, MenuButton, MenuItem, MenuList, Spacer, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react'
-import { Link } from '@inertiajs/inertia-react'
+import { Link, usePage } from '@inertiajs/inertia-react'
 import React from 'react'
 import { BiCog, BiLockOpen, BiPowerOff } from 'react-icons/bi'
 import MainLogo from '../../../Components/MainLogo'
@@ -8,6 +8,8 @@ import SideMenu from './SideMenu'
 import {HiOutlineMenuAlt1} from 'react-icons/hi'
 
 export default function TopNavigation() {
+  const { authUser } = usePage().props
+
   const [isMobile] = useMediaQuery('(max-width:1000px)')
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -39,7 +41,9 @@ export default function TopNavigation() {
 
                   <DrawerBody>
                     <Input mb='20px' placeholder='Type here...' />
+
                     <SideMenu />
+
                   </DrawerBody>
                   ]
                 </DrawerContent>
@@ -68,8 +72,8 @@ export default function TopNavigation() {
                   {/* Actions */}
 
                   {/* <Flex align='center' gap={2}> */}
-                  <Avatar size='xs' mr={2} name='Test User' src='https://bit.ly/sage-adebayo' />
-                  Test Admin
+                  <Avatar size='xs' mr={2} name={`${authUser.first_name} ${authUser.last_name}`} src='https://bit.ly/sage-adebayo' />
+                  {authUser.first_name} {authUser.last_name}
                   {/* </Flex> */}
                 </MenuButton>
                 <MenuList>
@@ -90,7 +94,7 @@ export default function TopNavigation() {
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link href='/'>
+                    <Link href="/logout" method="post"  as="button">
                       <Flex align='center' gap={2}>
                         <Icon as={BiPowerOff} color='green.500' p={0} m={0} />
                         <Text color='gray.500'>Sign Out</Text>

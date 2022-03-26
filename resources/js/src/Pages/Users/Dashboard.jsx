@@ -1,18 +1,37 @@
+// @ts-ignore
 import { Box, Heading, Text } from '@chakra-ui/react'
-import React from 'react'
+import { usePage } from '@inertiajs/inertia-react'
+import React, { useEffect, useState } from 'react'
 import AccountInfoCards from '../../Components/UserPanel/Dashboard/AccountInfoCards'
 import ReferralClipboard from '../../Components/UserPanel/Dashboard/ReferralClipboard'
 import UsersList from '../../Components/UserPanel/Dashboard/UsersList'
+// import getUser from '../../Helpers/getUser'
+// import authUser from '../../Helpers/getUser'
+// import authUser from '../../Helpers/authUser'
 import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 
+// interface Au{
+//     first_name: string
+// }
+
 export default function Dashboard() {
+    // @ts-ignore
+    const { authUser } = usePage().props
+
+    // const [user, setUser] = useState(Object)
+    
+    // useEffect(() => {
+    //     setUser(authUser)
+    // }, [authUser])
+
+    console.log('Authssssssssss: ', authUser)
     return (
         <UserLayout>
 
 
             <Box w='full'>
                 <Heading as='h4' fontWeight='semibold' fontSize='28px'>Dashboard</Heading>
-                <Text>Hello Test User! welcome to your dashboard</Text>
+                <Text>Hello {authUser?.first_name}! welcome to your dashboard</Text>
             </Box>
 
             <Box w='full' mt='50px'>

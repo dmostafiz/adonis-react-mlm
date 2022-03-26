@@ -70,15 +70,20 @@ export default class AuthController {
             },
         });
 
-        await auth.use('web').attempt(email, password);
+        const user = await auth.use('web').attempt(email, password);
 
-        response.redirect('/user/dashboard');
+        console.log('Auth User: ', user.isadmin)
+
+        response.redirect(`/${user.isadmin ? 'admin' : 'user'}/dashboard`);
     }
 
     //   logout function
-    public async logout({ auth, response }: HttpContextContract) {
+    public async logout({ auth, response, session }: HttpContextContract) {
+
         await auth.logout()
-        return response.status(200)
+        // session.forget('adonis-session')
+        session.flash('info', 'You have logged out from your account')
+        response.redirect('/auth/login');
     }
 
 

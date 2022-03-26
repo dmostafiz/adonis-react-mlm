@@ -10,25 +10,33 @@
 
 import Inertia from '@ioc:EidelLev/Inertia';
 
+
+
 Inertia.share({
+  
+
+  authUser: (ctx) => {
+    // console.log('Share Auth', ctx.auth)
+    return ctx.auth?.user;
+  },
 
   errors: (ctx) => {
-    console.log(ctx.session.flashMessages.get('errors'))
+    // console.log(ctx.session.flashMessages.get('errors'))
     return ctx.session.flashMessages.get('errors');
   },
 
   successMsg: (ctx) => {
-    console.log(ctx.session.flashMessages.get('success'))
+    // console.log(ctx.session.flashMessages.get('success'))
     return ctx.session.flashMessages.get('success');
   },
 
   errorMsg: (ctx) => {
-    console.log(ctx.session.flashMessages.get('error'))
+    // console.log(ctx.session.flashMessages.get('error'))
     return ctx.session.flashMessages.get('error');
   },
 
   infoMsg: (ctx) => {
-    console.log(ctx.session.flashMessages.get('info'))
+    // console.log(ctx.session.flashMessages.get('info'))
     return ctx.session.flashMessages.get('info');
   },
 

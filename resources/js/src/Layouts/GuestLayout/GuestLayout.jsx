@@ -6,7 +6,7 @@ import TopNavigation from './inc/TopNavigation'
 
 export default function GuestLayout({ children, PDt = 5 }) {
 
-    const { successMsg, errorMsg } = usePage().props
+    const { successMsg, errorMsg, infoMsg } = usePage().props
 
     return (
         <Flex direction='column' justify='space-between'>
@@ -30,6 +30,17 @@ export default function GuestLayout({ children, PDt = 5 }) {
                             <AlertIcon />
                             <AlertTitle mr={2}>Error!</AlertTitle>
                             <AlertDescription>{errorMsg}.</AlertDescription>
+                            {/* <CloseButton position='absolute' right='8px' top='8px' /> */}
+                        </Alert>
+                    </Container>
+                )}
+
+                {infoMsg && (
+                    <Container maxW='container.xl'>
+                        <Alert status='info'>
+                            <AlertIcon />
+                            {/* <AlertTitle mr={2}>Th!</AlertTitle> */}
+                            <AlertDescription>{infoMsg}</AlertDescription>
                             {/* <CloseButton position='absolute' right='8px' top='8px' /> */}
                         </Alert>
                     </Container>

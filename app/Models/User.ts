@@ -21,6 +21,9 @@ export default class User extends BaseModel {
   @column()
   public ref_id: string
 
+  @column()
+  public isadmin: boolean
+
   @column({ serializeAs: null })
   public password: string
 
