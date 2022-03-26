@@ -1,5 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { rules, schema } from '@ioc:Adonis/Core/Validator'
+import Registration from 'App/Models/Registration'
 import User from 'App/Models/User'
 
 export default class AuthController {
@@ -9,7 +10,7 @@ export default class AuthController {
 
         const reqBody = request.body()
 
-        // return console.log(reqBody.fName)
+        // return console.log('reqBody.ref_id: ', reqBody.ref_id)
 
         // try {
         const validations = schema.create({
@@ -37,8 +38,20 @@ export default class AuthController {
         await user.save()
 
         if (reqBody.ref_id) {
-            user.parent_id = reqBody.ref_id
-            await user.save()
+
+            const parent = await User.findBy('ref_id', reqBody.ref_id)
+          
+            if(parent){
+                user.parent_id = parent.id
+                await user.save()
+
+                const reg = new Registration()
+                reg.user_id = parent.id
+                reg.child_id = user.id 
+                await reg.save() 
+            }
+
+
         }
 
         console.log('Registration success')

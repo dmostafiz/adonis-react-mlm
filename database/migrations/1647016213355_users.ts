@@ -6,7 +6,12 @@ export default class UsersSchema extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
-      table.string('parent_id', 180).nullable()
+
+      table.integer('parent_id')
+      .nullable()
+      .unsigned()
+      .references('users.id')
+
       table.string('first_name', 255).nullable()
       table.string('last_name', 255).nullable()
       table.string('email', 255).notNullable()

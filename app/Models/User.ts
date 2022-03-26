@@ -1,13 +1,15 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
+import { column, beforeSave, BaseModel, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import Click from './Click'
+import Registration from './Registration'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
   @column()
-  public parent_id: string
+  public parent_id: number
 
   @column()
   public first_name: string
@@ -35,6 +37,23 @@ export default class User extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @hasMany(() => Click, {
+    foreignKey: 'user_id', // defaults to userId
+  })
+  public clicks: HasMany<typeof Click>
+
+  @hasMany(() => Registration, {
+    foreignKey: 'user_id', // defaults to userId
+  })
+  public registrations: HasMany<typeof Registration>
+
+
+  @hasMany(() => User, {
+    foreignKey: 'parent_id', // defaults to userId
+  })
+  public children: HasMany<typeof User>
+
 
   @beforeSave()
   public static async hashPassword (user: User) {
