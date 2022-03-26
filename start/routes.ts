@@ -10,6 +10,17 @@ Route.get('/', async ({ response }: HttpContextContract) => {
 })
 
 
+Route.get('/invite', async ({ request, session, response, auth }: HttpContextContract) => {
+  console.log('Session Invite link: ', request.qs().ref)
+  if(request.qs().ref){
+    session.put('ref_id', request.qs().ref)
+  }
+  await auth.logout()
+  response.redirect().toPath('/auth/join_now')
+  
+})
+
+
 Route.get('/about_us', async ({ inertia }: HttpContextContract) => {
   return inertia.render('AboutUs')
 })

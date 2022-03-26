@@ -1,20 +1,29 @@
 import { Box, Container, GridItem, SimpleGrid, chakra, Text, Center, Flex, VisuallyHidden, Input, Button } from '@chakra-ui/react'
 import { Inertia } from '@inertiajs/inertia'
-import { usePage } from '@inertiajs/inertia-react'
+import { useForm, usePage } from '@inertiajs/inertia-react'
 import React, { useState } from 'react'
 import GuestLayout from '../../Layouts/GuestLayout/GuestLayout'
 
 export default function Register() {
 
-  const { errors } = usePage().props
+  const { errors, ref_inv } = usePage().props
 
 
-  const [first_name, setFname] = useState('')
-  const [last_name, setLname] = useState('')
-  const [email, setEmail] = useState('')
-  const [ref_id, setRefID] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, SetConfirmPassword] = useState('')
+  // const [first_name, setFname] = useState('')
+  // const [last_name, setLname] = useState('')
+  // const [email, setEmail] = useState('')
+  // const [ref_id, setRefID] = useState('')
+  // const [password, setPassword] = useState('')
+  // const [confirmPassword, SetConfirmPassword] = useState('')
+
+  const { data, setData, post, processing } = useForm({
+    first_name: '',
+    last_name: '',
+    email: '',
+    ref_id: ref_inv && ref_inv,
+    password: '',
+    confirmPassword: ''
+  })
 
   console.log('usePage().props: ', usePage().props?.errors)
 
@@ -23,11 +32,8 @@ export default function Register() {
     //  alert(e)
     e.preventDefault()
 
-    const regData = {
-      first_name, last_name, email, ref_id, password, confirmPassword
-    }
 
-    Inertia.post('/register', regData)
+    post('/register', data)
 
   }
 
@@ -96,8 +102,8 @@ export default function Register() {
                         type="text"
                         placeholder="First Name"
                         // required={true}
-                        onChange={e => setFname(e.target.value)}
-                        value={first_name}
+                        onChange={e => setData({...data, first_name: e.target.value})}
+                        value={data.first_name}
                       />
 
                       {errors?.first_name && <Text color='red.400'>{errors?.first_name}</Text>}
@@ -110,8 +116,8 @@ export default function Register() {
                         type="text"
                         placeholder="Last Name"
                         // required={true}
-                        onChange={e => setLname(e.target.value)}
-                        value={last_name}
+                        onChange={e => setData({...data, last_name: e.target.value})}
+                        value={data.last_name}
                       />
                       {errors?.last_name && <Text color='red.400'>{errors?.last_name}</Text>}
 
@@ -126,8 +132,8 @@ export default function Register() {
                       type="email"
                       placeholder="Email Address"
                       // required={true}
-                      onChange={e => setEmail(e.target.value)}
-                      value={email}
+                      onChange={e => setData({...data, email: e.target.value})}
+                      value={data.email}
                     />
                     {errors?.email && <Text color='red.400'>{errors?.email}</Text>}
 
@@ -139,8 +145,9 @@ export default function Register() {
                       mt={0}
                       type="text"
                       placeholder="Reference ID"
-                      onChange={e => setRefID(e.target.value)}
-                      value={ref_id}
+     
+                      onChange={e => setData({...data, ref_id: e.target.value})}
+                      value={data.ref_id}
                     // required={true}
                     />
                     {errors?.ref_id && <Text color='red.400'>{errors?.ref_id}</Text>}
@@ -155,8 +162,8 @@ export default function Register() {
                       type="password"
                       placeholder="Password"
                       // required={true}
-                      onChange={e => setPassword(e.target.value)}
-                      value={password}
+                      onChange={e => setData({...data, password: e.target.value})}
+                      value={data.password}
                     />
                     {errors?.password && <Text color='red.400'>{errors?.password}</Text>}
 
@@ -169,15 +176,21 @@ export default function Register() {
                       type="password"
                       placeholder="Confirm Password"
                       // required={true}
-                      onChange={e => SetConfirmPassword(e.target.value)}
-                      value={confirmPassword}
+                      onChange={e => setData({...data, confirmPassword: e.target.value})}
+                      value={data.confirmPassword}
                     />
-
                   </Flex>
 
                   {/* </HStack> */}
 
-                  <Button onClick={e => handleSubmit(e)} colorScheme="purple" w="full" py={2} type="submit">
+                  <Button
+                    onClick={e => handleSubmit(e)}
+                    isLoading={processing}
+                    loadingText='Creating account'
+                    colorScheme='purple'
+                    variant='solid'
+                    spinnerPlacement='end'
+                  >
                     Sign up for free
                   </Button>
                 </SimpleGrid>

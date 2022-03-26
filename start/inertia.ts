@@ -20,6 +20,11 @@ Inertia.share({
     return ctx.auth?.user;
   },
 
+  ref_inv: (ctx) => {
+    // console.log("ctx.session.get('ref_id'): ", ctx.session.get('ref_id'))
+    return ctx.session.get('ref_id');
+  },
+
   errors: (ctx) => {
     // console.log(ctx.session.flashMessages.get('errors'))
     return ctx.session.flashMessages.get('errors');

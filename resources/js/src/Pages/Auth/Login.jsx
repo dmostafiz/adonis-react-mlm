@@ -3,25 +3,27 @@ import { Inertia } from '@inertiajs/inertia'
 import { useForm, usePage } from '@inertiajs/inertia-react'
 import React, { useState } from 'react'
 import GuestLayout from '../../Layouts/GuestLayout/GuestLayout'
+import { Spinner } from '@chakra-ui/react'
 
 export default function Login() {
 
   const { errors } = usePage().props
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
 
   const { data, setData, post, processing } = useForm({
     email: '',
     password: '',
     remember: false,
   })
-  
+
   const handleSubmit = (e) => {
     //  alert(e)
     e.preventDefault()
 
-    Inertia.post('/login', data)
+    // setTimeout(() => {
+    post('/login', data)
+
+    // }, 10000)
+
 
   }
 
@@ -93,7 +95,7 @@ export default function Login() {
                       type="email"
                       placeholder="Email Address"
                       // required={true}
-                      onChange={e => setData({...data, email: e.target.value})}
+                      onChange={e => setData({ ...data, email: e.target.value })}
                       value={data.email}
                     />
                     {errors?.email && <Text color='red.400'>{errors?.email}</Text>}
@@ -108,7 +110,7 @@ export default function Login() {
                       type="password"
                       placeholder="Password"
                       // required={true}
-                      onChange={e => setData({...data, password: e.target.value})}
+                      onChange={e => setData({ ...data, password: e.target.value })}
                       value={data.password}
                     />
                     {errors?.password && <Text color='red.400'>{errors?.password}</Text>}
@@ -118,7 +120,18 @@ export default function Login() {
 
                   {/* </HStack> */}
 
-                  <Button onClick={e => handleSubmit(e)} colorScheme="purple" w="full" py={2} type="submit">
+                  {/* <Button disabled={processing} colorScheme="purple" w="full" py={2} type="submit">
+                    Sign in {processing && <Spinner />}
+                  </Button> */}
+
+                  <Button
+                    onClick={e => handleSubmit(e)}
+                    isLoading={processing}
+                    loadingText='Just a moment'
+                    colorScheme='purple'
+                    variant='solid'
+                    spinnerPlacement='end'
+                  >
                     Sign in
                   </Button>
                 </SimpleGrid>
