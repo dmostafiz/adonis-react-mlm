@@ -24,7 +24,7 @@ Route.get('/invite', async ({ request, session, response, auth }: HttpContextCon
 
     if (parent) {
       const click = new Click()
-      click.user_id = parent.id.toString()
+      click.user_id = parent.id
       await click.save()
 
       session.put('ref_id', request.qs().ref)
