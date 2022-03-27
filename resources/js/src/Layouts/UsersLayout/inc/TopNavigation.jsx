@@ -94,7 +94,7 @@ export default function TopNavigation() {
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link href="/logout" method="post"  as="button">
+                    <Link href="/logout" method="post"  as="form">
                       <Flex align='center' gap={2}>
                         <Icon as={BiPowerOff} color='green.500' p={0} m={0} />
                         <Text color='gray.500'>Sign Out</Text>

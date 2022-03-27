@@ -4,6 +4,7 @@ import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 // import ReactFamilyTree from 'react-family-tree';
 // import FamilyNode from '../../Components/UserPanel/FamilyNode';
 import Tree from 'react-d3-tree';
+import Geneology from '../../Components/UserPanel/Geneology/Geneology';
 
 
 const orgChart = {
@@ -119,10 +120,10 @@ export default function MyGeneology() {
                 <Heading as='h4' fontWeight='semibold' fontSize='28px'>My Geneology</Heading>
             </Box>
 
-            <Box mt='200px' w='full' minH='300px' bg='white' rounded='base' shadow='base'>
-                <div id="treeWrapper" style={{ width: '100%', height:'400px'}}>
-                    <Tree data={orgChart} orientation='vertical' />
-                </div>
+            <Box mt='30px' w='full' minH='300px' bg='white' rounded='base' shadow='base'>
+                
+                    <Geneology />
+            
             </Box>
 
         </UserLayout>

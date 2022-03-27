@@ -4,6 +4,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import {ChakraProvider} from '@chakra-ui/react'
 import { extendTheme } from "@chakra-ui/react";
+import 'regenerator-runtime/runtime'
 // import { InertiaProgress } from '@inertiajs/progress'
 
 import NProgress from 'nprogress'

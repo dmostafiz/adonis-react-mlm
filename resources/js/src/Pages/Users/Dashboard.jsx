@@ -24,7 +24,7 @@ export default function Dashboard() {
     //     setUser(authUser)
     // }, [authUser])
 
-    console.log('Authssssssssss: ', authUser)
+    // console.log('Authssssssssss: ', authUser)
     return (
         <UserLayout>
 

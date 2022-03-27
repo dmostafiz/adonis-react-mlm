@@ -1,10 +1,13 @@
-import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Route from '@ioc:Adonis/Core/Route'
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
 import Click from 'App/Models/Click'
 
 // import Inertia from '@ioc:EidelLev/Inertia'
+require( './api')
 
+
+  
 
 
 Route.get('/', async ({ response }: HttpContextContract) => {
