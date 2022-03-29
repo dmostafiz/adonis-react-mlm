@@ -16,6 +16,6 @@ export const inertia: InertiaConfig = {
   ssr: {
     enabled: false,
     mode: 'react', // can also be 'vue2', 'vue3', 'svelte'
-    pageRootDir: 'js/src/Pages', // Where inertia should look for page components
+    pageRootDir: 'js/src/Pages/', // Where inertia should look for page components
   }
 };
