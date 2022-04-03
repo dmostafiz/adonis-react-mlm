@@ -34,18 +34,24 @@ export default function InvitationClicks() {
 
     const [option, setOption] = useState('7days')
 
-    useEffect(async () => {
+    useEffect(() => {
 
-        const res = await axios.get(`/api/invitation_clicks/?option=${option}`)
-        // console.log('Response: ', res.data)
-        if (res.data) {
-            setTimeout(() => {
-                setCategories(res.data.categories)
-                setChartData(res.data.chartData)
-                setClickCount(res.data.clickCount)
-                setLoading(false)
-            }, 100)
+
+        async function getStatistics(){
+            const res = await axios.get(`/api/invitation_clicks/?option=${option}`)
+            // console.log('Response: ', res.data)
+            if (res.data) {
+               
+                    setCategories(res.data.categories)
+                    setChartData(res.data.chartData)
+                    setClickCount(res.data.clickCount)
+                    setLoading(false)
+              
+            }
+
         }
+
+        getStatistics()
 
 
     }, [option])

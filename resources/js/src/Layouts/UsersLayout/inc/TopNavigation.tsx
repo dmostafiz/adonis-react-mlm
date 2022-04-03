@@ -8,7 +8,7 @@ import SideMenu from './SideMenu'
 import {HiOutlineMenuAlt1} from 'react-icons/hi'
 
 export default function TopNavigation() {
-  const { authUser } = usePage().props
+  const { authUser } : any = usePage().props
 
   const [isMobile] = useMediaQuery('(max-width:1000px)')
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -72,8 +72,8 @@ export default function TopNavigation() {
                   {/* Actions */}
 
                   {/* <Flex align='center' gap={2}> */}
-                  <Avatar size='xs' mr={2} name={`${authUser.first_name} ${authUser.last_name}`} src='https://bit.ly/sage-adebayo' />
-                  {authUser.first_name} {authUser.last_name}
+                  <Avatar size='xs' mr={2} name={`${authUser?.first_name} ${authUser?.last_name}`} src='https://bit.ly/sage-adebayo' />
+                  {authUser?.first_name} {authUser?.last_name}
                   {/* </Flex> */}
                 </MenuButton>
                 <MenuList>

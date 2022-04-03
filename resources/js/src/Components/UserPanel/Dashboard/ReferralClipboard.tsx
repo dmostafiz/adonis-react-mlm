@@ -1,14 +1,21 @@
 import { Button, Flex, Icon, Input, useClipboard } from '@chakra-ui/react'
 import { usePage } from '@inertiajs/inertia-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { HiClipboardCheck, HiClipboardCopy } from 'react-icons/hi'
 
-
 export default function ReferralClipboard() {
-  const { authUser } = usePage().props
+  const { authUser }: any = usePage().props
 
-  const [value] = useState(`${window.location.protocol}//${window.location.hostname}/invite?ref=${authUser.ref_id}`)
+  const [value, setValue] = useState('')
   const { hasCopied, onCopy } = useClipboard(value)
+
+
+
+  useEffect(() => {
+
+    console.log('window?.location.protocol: ', window?.location.port)
+    setValue(`${window?.location.protocol}//${window?.location.hostname}/invite?ref=${authUser.ref_id}`)
+  }, [])
 
   return (
     <Flex mb={2}>

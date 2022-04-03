@@ -16,7 +16,7 @@ import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 
 export default function Dashboard() {
     // @ts-ignore
-    const { authUser } = usePage().props
+    const { authUser } : any = usePage().props
 
     // const [user, setUser] = useState(Object)
     
