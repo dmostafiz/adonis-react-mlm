@@ -11,15 +11,15 @@ import NProgress from 'nprogress'
 import { Inertia } from '@inertiajs/inertia'
 
 
-let timeout = null
+let timeout: any = null
 
 Inertia.on('start', () => {
   timeout = setTimeout(() => NProgress.start(), 250)
 })
 
 Inertia.on('progress', (event) => {
-  if (NProgress.isStarted() && event.detail.progress.percentage) {
-    NProgress.set((event.detail.progress.percentage / 100) * 0.9)
+  if (NProgress.isStarted() && event.detail.progress?.percentage) {
+    NProgress.set((event.detail.progress?.percentage / 100) * 0.9)
   }
 })
 

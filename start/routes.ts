@@ -79,7 +79,7 @@ Route.group(() => {
   })
 
   Route.get('/user/my_geneology', async ({ inertia }: HttpContextContract) => {
-    return inertia.render('Users/MyGeneology')
+    return inertia.render('Users/MyGeneology', {}, {ssr: false})
   })
 
   Route.get('/user/my_network', async ({ inertia }: HttpContextContract) => {

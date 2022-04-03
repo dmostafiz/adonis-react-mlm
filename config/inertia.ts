@@ -17,7 +17,7 @@ import { InertiaConfig } from '@ioc:EidelLev/Inertia';
 export const inertia: InertiaConfig = {
   view: 'app',
   ssr: {
-    enabled: true,
+    enabled: false,
     mode: 'react', // can also be 'vue2', 'vue3', 'svelte'
     pageRootDir: 'js/src/Pages/', // Where inertia should look for page components
   }
