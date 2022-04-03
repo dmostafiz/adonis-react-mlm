@@ -6,7 +6,7 @@ import TopNavigation from './inc/TopNavigation'
 
 export default function GuestLayout({ children, PDt = 5 }) {
 
-    const { successMsg, errorMsg, infoMsg } = usePage().props
+    const { successMsg, errorMsg, infoMsg }: any = usePage().props
 
     return (
         <Flex direction='column' justify='space-between'>

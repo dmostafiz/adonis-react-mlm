@@ -10,17 +10,11 @@
 
 import Inertia from '@ioc:EidelLev/Inertia';
 
-interface Person {
-  first_name: string;
-  last_name: string;
-  ref_id: string;
-}
-
 Inertia.share({
 
   authUser:  (ctx)  => {
     // console.log('Share Auth', ctx.auth)
-    return ctx.auth?.user || {first_name: '', last_name: '', ref_id: ''};
+    return ctx.auth?.user;
   },
 
   ref_inv: (ctx) => {

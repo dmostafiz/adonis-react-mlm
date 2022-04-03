@@ -1,7 +1,7 @@
 // @ts-ignore
 import { Box, Heading, Text } from '@chakra-ui/react'
 import { usePage } from '@inertiajs/inertia-react'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import AccountInfoCards from '../../Components/UserPanel/Dashboard/AccountInfoCards'
 import ReferralClipboard from '../../Components/UserPanel/Dashboard/ReferralClipboard'
 import UsersList from '../../Components/UserPanel/Dashboard/UsersList'
@@ -16,7 +16,7 @@ import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 
 export default function Dashboard() {
     // @ts-ignore
-    const { authUser } : any = usePage().props
+    const { authUser }: any = usePage().props
 
     // const [user, setUser] = useState(Object)
     

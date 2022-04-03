@@ -2,11 +2,11 @@
   "entrypoints": {
     "app": {
       "js": [
-        "http://localhost:52360/assets/vendors-node_modules_chakra-ui_react_dist_chakra-ui-react_esm_js-node_modules_dabeng_react-or-f8055f.js",
-        "http://localhost:52360/assets/app.js"
+        "http://localhost:8080/assets/vendors-node_modules_chakra-ui_react_dist_chakra-ui-react_esm_js-node_modules_dabeng_react-or-f9ec23.js",
+        "http://localhost:8080/assets/app.js"
       ],
       "css": [
-        "http://localhost:52360/assets/app.css"
+        "http://localhost:8080/assets/app.css"
       ]
     }
   }

@@ -1,5 +1,4 @@
 import { Box, Center, chakra, Flex, Select, Spinner, Text, useColorModeValue } from '@chakra-ui/react'
-import { Inertia } from '@inertiajs/inertia';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Chart from "react-apexcharts";

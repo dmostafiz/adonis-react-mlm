@@ -1,12 +1,12 @@
 import { Box, Container, GridItem, SimpleGrid, chakra, Text, Center, Flex, VisuallyHidden, Input, Button } from '@chakra-ui/react'
-import { Inertia } from '@inertiajs/inertia'
+// import { Inertia } from '@inertiajs/inertia'
 import { useForm, usePage } from '@inertiajs/inertia-react'
-import React, { useState } from 'react'
+import React from 'react'
 import GuestLayout from '../../Layouts/GuestLayout/GuestLayout'
 
 export default function Register() {
 
-  const { errors, ref_inv } = usePage().props
+  const { errors, ref_inv }: any = usePage().props
 
 
   // const [first_name, setFname] = useState('')

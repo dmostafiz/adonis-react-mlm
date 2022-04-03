@@ -1,13 +1,13 @@
 import { Box, Container, GridItem, SimpleGrid, chakra, Center, Text, Flex, VisuallyHidden, Input, Button } from '@chakra-ui/react'
-import { Inertia } from '@inertiajs/inertia'
+// import { Inertia } from '@inertiajs/inertia'
 import { useForm, usePage } from '@inertiajs/inertia-react'
-import React, { useState } from 'react'
+import React from 'react'
 import GuestLayout from '../../Layouts/GuestLayout/GuestLayout'
-import { Spinner } from '@chakra-ui/react'
+// import { Spinner } from '@chakra-ui/react'
 
 export default function Login() {
 
-  const { errors } = usePage().props
+  const { errors }: any = usePage().props
 
   const { data, setData, post, processing } : any = useForm({
     email: '',
