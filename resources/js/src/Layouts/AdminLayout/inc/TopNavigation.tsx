@@ -9,7 +9,7 @@ import {HiOutlineMenuAlt1} from 'react-icons/hi'
 
 export default function TopNavigation() {
 
-  const {authUser} = usePage().props
+  const {authUser}: any = usePage().props
 
   const [isMobile] = useMediaQuery('(max-width:1000px)')
   const { isOpen, onOpen, onClose } = useDisclosure()

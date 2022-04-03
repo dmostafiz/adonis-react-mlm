@@ -8,7 +8,7 @@ import AdminLayout from '../../Layouts/AdminLayout/AdminLayout'
 // import UserLayout from '../../Layouts/AdminLayout/AdminLayout'
 
 export default function Dashboard() {
-    const { authUser } = usePage().props
+    const { authUser } : any = usePage().props
 
     return (
         <AdminLayout>

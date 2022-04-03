@@ -1,39 +1,29 @@
-import { Box, Container, GridItem, SimpleGrid, chakra, Text, Center, Flex, VisuallyHidden, Input, Button } from '@chakra-ui/react'
+import { Box, Container, GridItem, SimpleGrid, chakra, Center, Text, Flex, VisuallyHidden, Input, Button } from '@chakra-ui/react'
 import { Inertia } from '@inertiajs/inertia'
 import { useForm, usePage } from '@inertiajs/inertia-react'
 import React, { useState } from 'react'
 import GuestLayout from '../../Layouts/GuestLayout/GuestLayout'
+import { Spinner } from '@chakra-ui/react'
 
-export default function Register() {
+export default function Login() {
 
-  const { errors, ref_inv } = usePage().props
+  const { errors } = usePage().props
 
-
-  // const [first_name, setFname] = useState('')
-  // const [last_name, setLname] = useState('')
-  // const [email, setEmail] = useState('')
-  // const [ref_id, setRefID] = useState('')
-  // const [password, setPassword] = useState('')
-  // const [confirmPassword, SetConfirmPassword] = useState('')
-
-  const { data, setData, post, processing } = useForm({
-    first_name: '',
-    last_name: '',
+  const { data, setData, post, processing } : any = useForm({
     email: '',
-    ref_id: ref_inv && ref_inv,
     password: '',
-    confirmPassword: ''
+    remember: false,
   })
-
-  console.log('usePage().props: ', usePage().props?.errors)
-
 
   const handleSubmit = (e) => {
     //  alert(e)
     e.preventDefault()
 
+    // setTimeout(() => {
+    post('/login', data)
 
-    post('/register', data)
+    // }, 10000)
+
 
   }
 
@@ -63,7 +53,7 @@ export default function Register() {
                 color='gray.900'
                 letterSpacing={{ base: "normal", md: "tight" }}
               >
-                Ready to start your journey?
+                Welcome back!
               </chakra.h1>
               <chakra.p
                 mb={{ base: 10, md: 4 }}
@@ -82,9 +72,13 @@ export default function Register() {
 
             <GridItem colSpan={{ base: "auto", md: 5 }}>
 
+              {/* <Box>
+                
+              </Box> */}
+
               <Box as="form" py={3} mb={6} rounded="lg" shadow="xl">
                 <Center pb={0} color='gray.700'>
-                  <Text pt={2} fontWeight='bold' fontSize='20px'>Create your account now</Text>
+                  <Text pt={2} fontWeight='bold' fontSize='20px'>Login to your account</Text>
                 </Center>
                 <SimpleGrid
                   columns={1}
@@ -94,37 +88,6 @@ export default function Register() {
                   borderColor='gray.200'
                 >
 
-                  <Flex direction={{ base: 'column', sm: 'column', md: 'row', lg: 'row' }} gap={3}>
-                    <Flex direction='column'>
-                      <VisuallyHidden>First Name</VisuallyHidden>
-                      <Input
-                        mt={0}
-                        type="text"
-                        placeholder="First Name"
-                        // required={true}
-                        onChange={e => setData({...data, first_name: e.target.value})}
-                        value={data.first_name}
-                      />
-
-                      {errors?.first_name && <Text color='red.400'>{errors?.first_name}</Text>}
-                    </Flex>
-
-                    <Flex direction='column'>
-                      <VisuallyHidden>Last Name</VisuallyHidden>
-                      <Input
-                        mt={0}
-                        type="text"
-                        placeholder="Last Name"
-                        // required={true}
-                        onChange={e => setData({...data, last_name: e.target.value})}
-                        value={data.last_name}
-                      />
-                      {errors?.last_name && <Text color='red.400'>{errors?.last_name}</Text>}
-
-                    </Flex>
-                  </Flex>
-
-
                   <Flex direction='column'>
                     <VisuallyHidden>Email Address</VisuallyHidden>
                     <Input
@@ -132,25 +95,10 @@ export default function Register() {
                       type="email"
                       placeholder="Email Address"
                       // required={true}
-                      onChange={e => setData({...data, email: e.target.value})}
+                      onChange={e => setData({ ...data, email: e.target.value })}
                       value={data.email}
                     />
                     {errors?.email && <Text color='red.400'>{errors?.email}</Text>}
-
-                  </Flex>
-
-                  <Flex direction='column'>
-                    <VisuallyHidden>Reference ID</VisuallyHidden>
-                    <Input
-                      mt={0}
-                      type="text"
-                      placeholder="Reference ID"
-     
-                      onChange={e => setData({...data, ref_id: e.target.value})}
-                      value={data.ref_id}
-                    // required={true}
-                    />
-                    {errors?.ref_id && <Text color='red.400'>{errors?.ref_id}</Text>}
 
                   </Flex>
 
@@ -162,36 +110,29 @@ export default function Register() {
                       type="password"
                       placeholder="Password"
                       // required={true}
-                      onChange={e => setData({...data, password: e.target.value})}
+                      onChange={e => setData({ ...data, password: e.target.value })}
                       value={data.password}
                     />
                     {errors?.password && <Text color='red.400'>{errors?.password}</Text>}
+                    {errors?.login && <Text color='red.400'>{errors?.login}</Text>}
 
-                  </Flex>
-
-                  <Flex direction='column'>
-                    <VisuallyHidden>Confirm Password</VisuallyHidden>
-                    <Input
-                      mt={0}
-                      type="password"
-                      placeholder="Confirm Password"
-                      // required={true}
-                      onChange={e => setData({...data, confirmPassword: e.target.value})}
-                      value={data.confirmPassword}
-                    />
                   </Flex>
 
                   {/* </HStack> */}
 
+                  {/* <Button disabled={processing} colorScheme="purple" w="full" py={2} type="submit">
+                    Sign in {processing && <Spinner />}
+                  </Button> */}
+
                   <Button
                     onClick={e => handleSubmit(e)}
                     isLoading={processing}
-                    loadingText='Creating account'
+                    loadingText='Just a moment'
                     colorScheme='purple'
                     variant='solid'
                     spinnerPlacement='end'
                   >
-                    Sign up for free
+                    Sign in
                   </Button>
                 </SimpleGrid>
 
