@@ -1,10 +1,11 @@
 import { Box, IconButton, Table, Tbody, Td, Th, Thead, Tr, Tooltip, Avatar, Flex } from '@chakra-ui/react'
-import moment from 'moment'
 import React, { useEffect } from 'react'
 import { CgDetailsMore } from 'react-icons/cg'
 import NoDataFound from '../../NoDataFound'
+import moment from 'moment'
 
 const UsersList: any = ({ userList }) => {
+
     useEffect(() => {
         console.log('User lists: ', userList)
     }, [])
@@ -20,6 +21,8 @@ const UsersList: any = ({ userList }) => {
                                 <Th>User</Th>
                                 <Th>Join date</Th>
                                 <Th>Ref ID</Th>
+                                <Th>Invited by</Th>
+                                <Th>Referral</Th>
                                 <Th isNumeric></Th>
                             </Tr>
                         </Thead>
@@ -38,6 +41,8 @@ const UsersList: any = ({ userList }) => {
                                 </Td>
                                 <Td>{moment(user.created_at).format('l')}</Td>
                                 <Td>{user.ref_id}</Td>
+                                <Td>{user.parent ? `${user.parent?.first_name} ${user.parent?.last_name}` : '######' }</Td>
+                                <Td>{user.children?.length} users</Td>
                                 <Td isNumeric>
                                     <Tooltip label='View Details' hasArrow>
                                         <IconButton

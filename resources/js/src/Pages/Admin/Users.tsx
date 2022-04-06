@@ -1,10 +1,12 @@
 import { Box, Heading } from '@chakra-ui/react'
 import React from 'react'
-import UsersList from '../../Components/UserPanel/Dashboard/UsersList'
+import UsersList from '../../Components/AdminPanel/Dashboard/UsersList'
 import AdminLayout from '../../Layouts/AdminLayout/AdminLayout'
 // import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 
 export default function Users({users}) {
+
+    console.log('All users: ', users)
     return (
         <AdminLayout>
             

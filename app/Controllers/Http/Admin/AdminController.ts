@@ -4,9 +4,10 @@ import User from 'App/Models/User'
 export default class AdminController {
 
     async dashboard({ inertia }: HttpContextContract) {
-
         const users = await User.query()
             .where('isadmin', false)
+            .preload('parent')
+            .preload('children')
             .orderBy('id', 'desc')
             .limit(10)
 
@@ -16,10 +17,12 @@ export default class AdminController {
     async my_statistics({ inertia }: HttpContextContract) {
         const users = await User.query()
             .where('isadmin', false)
+            .preload('parent')
+            .preload('children')
             .orderBy('id', 'desc')
             .limit(10)
-
-        return inertia.render('Admin/MyStatistics', {users})
+            
+        return inertia.render('Admin/MyStatistics', { users })
     }
 
     async my_geneology({ inertia }: HttpContextContract) {
@@ -33,7 +36,11 @@ export default class AdminController {
     async users({ inertia }: HttpContextContract) {
         const users = await User.query()
             .where('isadmin', false)
+            .preload('parent')
+            .preload('children')
             .orderBy('id', 'desc')
+
+
         return inertia.render('Admin/Users', { users })
     }
 }

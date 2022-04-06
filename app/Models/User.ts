@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
+import { column, beforeSave, BaseModel, hasMany, HasMany, BelongsTo, belongsTo } from '@ioc:Adonis/Lucid/Orm'
 import Click from './Click'
 import Registration from './Registration'
 
@@ -50,9 +50,16 @@ export default class User extends BaseModel {
 
 
   @hasMany(() => User, {
+    localKey: 'id', 
     foreignKey: 'parent_id', // defaults to userId
   })
   public children: HasMany<typeof User>
+
+  @belongsTo(() => User, {
+    localKey: 'id', 
+    foreignKey: 'parent_id'
+  })
+  public parent: BelongsTo<typeof User>
 
 
   @beforeSave()

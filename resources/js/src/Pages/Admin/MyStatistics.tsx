@@ -1,7 +1,7 @@
 import { Box, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
 import AccountInfoChart from '../../Components/AdminPanel/Dashboard/AccountInfoChart'
-import UsersList from '../../Components/UserPanel/Dashboard/UsersList'
+import UsersList from '../../Components/AdminPanel/Dashboard/UsersList'
 import AdminLayout from '../../Layouts/AdminLayout/AdminLayout'
 // import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 
