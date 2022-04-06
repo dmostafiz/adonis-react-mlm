@@ -1,11 +1,11 @@
 import { Box, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
-import AccountInfoChart from '../../Components/UserPanel/Dashboard/AccountInfoChart'
+import AccountInfoChart from '../../Components/AdminPanel/Dashboard/AccountInfoChart'
 import UsersList from '../../Components/UserPanel/Dashboard/UsersList'
 import AdminLayout from '../../Layouts/AdminLayout/AdminLayout'
 // import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 
-export default function MyStatistics() {
+export default function MyStatistics({users}) {
     return (
         <AdminLayout>
 
@@ -22,7 +22,7 @@ export default function MyStatistics() {
             <Box w='full' mt='20px' bg='white' rounded='md' shadow='base' pt='25px' pb='20px' px='15px' >
                 <Heading mb={2} fontSize='2xl' fontWeight='semibold'>Recent registrations</Heading>
                 <Text mb={5} color='gray.500'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, suscipit nobis! Perferendis.</Text>
-                <UsersList />   
+                <UsersList userList={users} />   
             </Box>
 
         </AdminLayout>

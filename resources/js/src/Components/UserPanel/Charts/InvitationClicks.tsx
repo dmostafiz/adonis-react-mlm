@@ -38,7 +38,7 @@ export default function InvitationClicks() {
 
         async function getStatistics(){
             const res = await axios.get(`/api/invitation_clicks/?option=${option}`)
-            // console.log('Response: ', res.data)
+            console.log('Response: ', res.data.chartData)
             if (res.data) {
                
                     setCategories(res.data.categories)
@@ -107,8 +107,8 @@ export default function InvitationClicks() {
 
                 series={series}
 
-                type="area"
-            /> : <Center h='100px'>No data initialised</Center>}
+                type="bar"
+            /> : <Center h='100px'>No data found</Center>}
 
 
 

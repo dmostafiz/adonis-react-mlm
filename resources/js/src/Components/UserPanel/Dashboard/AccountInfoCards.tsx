@@ -1,7 +1,10 @@
 import { Flex, useColorModeValue, chakra, Text, Stack, Link, Grid, GridItem } from '@chakra-ui/react'
 import React from 'react'
 
-export default function AccountInfoCards() {
+export default function AccountInfoCards({ childUsers, clicks }) {
+
+    console.log('clicks: ', clicks)
+    
     return (
         <Flex
             w="full"
@@ -15,6 +18,8 @@ export default function AccountInfoCards() {
                 gap={4}
                 textAlign={["left", "center"]}
             >
+
+
                 <GridItem
                     bg={useColorModeValue("white", "gray.800")}
                     px={4}
@@ -30,7 +35,7 @@ export default function AccountInfoCards() {
                         textTransform="uppercase"
                         color={useColorModeValue("gray.500", "gray.400")}
                     >
-                        Registrations
+                        Referral Clicks
                     </chakra.p>
                     <Text
                         mb={2}
@@ -39,14 +44,14 @@ export default function AccountInfoCards() {
                         color={useColorModeValue("gray.900", "gray.50")}
                         lineHeight="tight"
                     >
-                        3
+                        {clicks.length}
                         <chakra.span
                             fontSize="2xl"
                             fontWeight="medium"
                             color={useColorModeValue("gray.600", "gray.400")}
                         >
                             {" "}
-                            Users
+                            Clicks
                         </chakra.span>
                     </Text>
                     <chakra.p
@@ -55,7 +60,7 @@ export default function AccountInfoCards() {
                         // color={useColorModeValue("gray.600", "gray.500")}
                         color='gray.500'
                     >
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </chakra.p>
                     <Stack
                         display={["block", "flex"]}
@@ -86,6 +91,8 @@ export default function AccountInfoCards() {
                     </Stack>
                 </GridItem>
 
+
+
                 <GridItem
                     bg={useColorModeValue("white", "gray.800")}
                     px={4}
@@ -101,7 +108,7 @@ export default function AccountInfoCards() {
                         textTransform="uppercase"
                         color={useColorModeValue("gray.500", "gray.400")}
                     >
-                        Referral Clicks
+                        Registrations
                     </chakra.p>
                     <Text
                         mb={2}
@@ -110,14 +117,14 @@ export default function AccountInfoCards() {
                         color={useColorModeValue("gray.900", "gray.50")}
                         lineHeight="tight"
                     >
-                        19
+                        {childUsers.length}
                         <chakra.span
                             fontSize="2xl"
                             fontWeight="medium"
                             color={useColorModeValue("gray.600", "gray.400")}
                         >
                             {" "}
-                            Clicks
+                            Users
                         </chakra.span>
                     </Text>
                     <chakra.p
@@ -126,7 +133,7 @@ export default function AccountInfoCards() {
                         // color={useColorModeValue("gray.600", "gray.500")}
                         color='gray.500'
                     >
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     </chakra.p>
                     <Stack
                         display={["block", "flex"]}

@@ -1,43 +1,351 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Database from '@ioc:Adonis/Lucid/Database'
+import { DateTime } from 'luxon'
 
 export default class ChartDataController {
 
-    async  getInvitationClicks({request, response }: HttpContextContract) {
-        // inertia.location('/auth/login')
-        // console.log('Api route Called from controller: ', request.qs())
-      
-        const option = request.qs().option
+  async getInvitationClicks({ request, response, auth }: HttpContextContract) {
+    // inertia.location('/auth/login')
+    // console.log('Api route Called from controller: ', request.qs())
 
-   
-      
-        let data = {}
-      
-        if(option == '7days'){
-          data = {
-            categories: ['Saturday', 'Sunday', 'Monday', 'Tweesday', 'wednessday', 'Thurseday', 'Friday'],
-            chartData: [13, 37, 44, 55, 49, 60, 5],
-            clickCount: 7
-          }
-        }
-        else if(option == '30days'){
-          data = {
-            categories: ['18 Apr', '19 March', '20 March', '21 March', '22 March', '23 March', '24 March', '25 March'],
-            chartData: [30, 40, 45, 50, 49, 60, 40, 5],
-            clickCount: 19
-          }
-        }
-        else if(option == '12months'){
-          data = {
-            categories: ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'July', 'Aug'],
-            chartData: [23, 56, 23, 87, 35, 14, 60, 5],
-            clickCount: 384
-          }
-        }
+    const option = request.qs().option
 
-        // prms.then(() => {
-            return await response.json(data)
-        // })
+    const myId: any = auth.user?.id
 
-      
-      }
+    // const today = DateTime.now().toString()
+
+
+    // let data = {}
+
+    let sql: string = `
+    SELECT count(*) as count, 
+    DATE_FORMAT(created_at, '%a') as date_time 
+    FROM clicks 
+    WHERE user_id = ? 
+    AND created_at > ? 
+    GROUP BY date_time
+    ORDER BY date_time ASC
+    `
+
+    let lastSevenDay: any = DateTime.now().minus({ days: 7 }).toString()
+
+
+    if (option == '30days') {
+
+      lastSevenDay = DateTime.now().minus({ days: 30 }).toString()
+
+      sql = `
+        SELECT count(*) as count, 
+        DATE_FORMAT(created_at, '%d') as date_time 
+        FROM clicks 
+        WHERE user_id = ? 
+        AND created_at > ? 
+        GROUP BY date_time
+        ORDER BY date_time ASC
+        `
+    }
+    else if (option == '12months') {
+      lastSevenDay = DateTime.now().minus({ months: 12 }).toString()
+      sql = `
+        SELECT count(*) as count, 
+        DATE_FORMAT(created_at, '%M') as date_time 
+        FROM clicks 
+        WHERE user_id = ? 
+        AND created_at > ? 
+        GROUP BY date_time
+        ORDER BY date_time DESC
+
+        `
+    }
+
+
+    const clicks = await Database.rawQuery(sql, [myId, lastSevenDay])
+
+    // console.log('Clicks:', clicks)
+
+    const key: any = []
+    const value: any = []
+    let count: number = 0
+
+    clicks[0].forEach((click: any) => {
+      key.push(click.date_time)
+      value.push(click.count)
+      count += click.count
+    })
+
+    const chartData = {
+      categories: key,
+      chartData: value,
+      clickCount: count
+    }
+
+    // console.log('ChartData: ', chartData)
+
+
+    // prms.then(() => {
+    return response.json(chartData)
+    // })
+
+
+  }
+
+
+  async getInvitationRegistrations({ request, response, auth }: HttpContextContract) {
+    // inertia.location('/auth/login')
+    // console.log('Api route Called from controller: ', request.qs())
+
+    console.log('My Auth Data: ', auth.user)
+
+    const option = request.qs().option
+
+    const myId: any = auth.user?.id 
+
+    // console.log('MyID: ', auth)
+
+    // const today = DateTime.now().toString()
+
+
+    // let data = {}
+
+    let sql: string = `
+    SELECT count(*) as count, 
+    DATE_FORMAT(created_at, '%a') as date_time 
+    FROM users 
+    WHERE parent_id = ? 
+    AND created_at > ? 
+    GROUP BY date_time
+    ORDER BY date_time ASC
+    `
+
+    let lastSevenDay: any = DateTime.now().minus({ days: 7 }).toString()
+
+
+    if (option == '30days') {
+
+      lastSevenDay = DateTime.now().minus({ days: 30 }).toString()
+
+      sql = `
+        SELECT count(*) as count, 
+        DATE_FORMAT(created_at, '%d') as date_time 
+        FROM users 
+        WHERE parent_id = ? 
+        AND created_at > ? 
+        GROUP BY date_time
+        ORDER BY date_time ASC
+        `
+    }
+    else if (option == '12months') {
+      lastSevenDay = DateTime.now().minus({ months: 12 }).toString()
+      sql = `
+        SELECT count(*) as count, 
+        DATE_FORMAT(created_at, '%M') as date_time 
+        FROM users 
+        WHERE parent_id = ? 
+        AND created_at > ? 
+        GROUP BY date_time
+        ORDER BY date_time DESC
+
+        `
+    }
+
+
+    const users = await Database.rawQuery(sql, [myId, lastSevenDay])
+
+    // console.log('users:', users)
+
+    const key: any = []
+    const value: any = []
+    let count: number = 0
+
+    users[0].forEach((user: any) => {
+      key.push(user.date_time)
+      value.push(user.count)
+      count += user.count
+    })
+
+    const chartData = {
+      categories: key,
+      chartData: value,
+      registerCount: count
+    }
+
+    // console.log('ChartData: ', chartData)
+
+
+    // prms.then(() => {
+    return response.json(chartData)
+    // })
+
+
+  }
+
+
+  async getAllInvitationClicks({ request, response }: HttpContextContract) {
+    // inertia.location('/auth/login')
+    // console.log('Api route Called from controller: ', request.qs())
+
+    const option = request.qs().option
+
+    // const myId: any = auth.user?.id
+
+    // const today = DateTime.now().toString()
+
+
+    // let data = {}
+
+    let sql: string = `
+    SELECT count(*) as count, 
+    DATE_FORMAT(created_at, '%a') as date_time 
+    FROM clicks 
+    WHERE created_at > ? 
+    GROUP BY date_time
+    ORDER BY date_time ASC
+    `
+
+    let lastSevenDay: any = DateTime.now().minus({ days: 7 }).toString()
+
+
+    if (option == '30days') {
+
+      lastSevenDay = DateTime.now().minus({ days: 30 }).toString()
+
+      sql = `
+        SELECT count(*) as count, 
+        DATE_FORMAT(created_at, '%d') as date_time 
+        FROM clicks 
+        WHERE created_at > ? 
+        GROUP BY date_time
+        ORDER BY date_time ASC
+        `
+    }
+    else if (option == '12months') {
+      lastSevenDay = DateTime.now().minus({ months: 12 }).toString()
+      sql = `
+        SELECT count(*) as count, 
+        DATE_FORMAT(created_at, '%M') as date_time 
+        FROM clicks 
+        WHERE created_at > ? 
+        GROUP BY date_time
+        ORDER BY date_time DESC
+
+        `
+    }
+
+
+    const clicks = await Database.rawQuery(sql, [lastSevenDay])
+
+    // console.log('Clicks:', clicks)
+
+    const key: any = []
+    const value: any = []
+    let count: number = 0
+
+    clicks[0].forEach((click: any) => {
+      key.push(click.date_time)
+      value.push(click.count)
+      count += click.count
+    })
+
+    const chartData = {
+      categories: key,
+      chartData: value,
+      clickCount: count
+    }
+
+    console.log('ChartData: ', chartData)
+
+
+    // prms.then(() => {
+    return response.json(chartData)
+    // })
+
+
+  }
+
+
+  async getAllInvitationRegistrations({ request, response }: HttpContextContract) {
+    // inertia.location('/auth/login')
+    // console.log('Api route Called from controller: ', request.qs())
+
+    // console.log('My Auth Data: ', auth.user)
+
+    const option = request.qs().option
+
+    // const myId: any = auth.user?.id 
+
+    // console.log('MyID: ', auth)
+
+    // const today = DateTime.now().toString()
+
+
+    // let data = {}
+
+    let sql: string = `
+    SELECT count(*) as count, 
+    DATE_FORMAT(created_at, '%a') as date_time 
+    FROM users 
+    WHERE created_at > ? 
+    GROUP BY date_time
+    ORDER BY date_time ASC
+    `
+
+    let lastSevenDay: any = DateTime.now().minus({ days: 7 }).toString()
+
+
+    if (option == '30days') {
+
+      lastSevenDay = DateTime.now().minus({ days: 30 }).toString()
+
+      sql = `
+        SELECT count(*) as count, 
+        DATE_FORMAT(created_at, '%d') as date_time 
+        FROM users 
+        WHERE created_at > ? 
+        GROUP BY date_time
+        ORDER BY date_time ASC
+        `
+    }
+    else if (option == '12months') {
+      lastSevenDay = DateTime.now().minus({ months: 12 }).toString()
+      sql = `
+        SELECT count(*) as count, 
+        DATE_FORMAT(created_at, '%M') as date_time 
+        FROM users 
+        WHERE created_at > ? 
+        GROUP BY date_time
+        ORDER BY date_time DESC
+
+        `
+    }
+
+
+    const users = await Database.rawQuery(sql, [lastSevenDay])
+
+    // console.log('users:', users)
+
+    const key: any = []
+    const value: any = []
+    let count: number = 0
+
+    users[0].forEach((user: any) => {
+      key.push(user.date_time)
+      value.push(user.count)
+      count += user.count
+    })
+
+    const chartData = {
+      categories: key,
+      chartData: value,
+      registerCount: count
+    }
+
+    // console.log('ChartData: ', chartData)
+
+
+    // prms.then(() => {
+    return response.json(chartData)
+    // })
+
+
+  }
 }

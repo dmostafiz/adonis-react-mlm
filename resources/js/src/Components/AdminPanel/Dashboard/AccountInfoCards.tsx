@@ -15,6 +15,9 @@ export default function AccountInfoCards() {
                 gap={4}
                 textAlign={["left", "center"]}
             >
+
+
+
                 <GridItem
                     bg={useColorModeValue("white", "gray.800")}
                     px={4}
@@ -84,15 +87,20 @@ export default function AccountInfoCards() {
                             View Details
                         </Link>
                     </Stack>
+              
+              
+              
                 </GridItem>
 
+               
+               
                 <GridItem
                     bg={useColorModeValue("white", "gray.800")}
                     px={4}
                     py={6}
                     shadow="base"
                     rounded="md"
-                    colSpan={[2, 2, 1]}
+                    // colSpan={[2, 2, 1]}
 
                 >
                     <chakra.p

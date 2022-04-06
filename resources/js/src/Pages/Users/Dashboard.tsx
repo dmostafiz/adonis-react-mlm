@@ -14,7 +14,7 @@ import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 //     first_name: string
 // }
 
-export default function Dashboard() {
+export default function Dashboard({childUsers, clicks}: any) {
     // @ts-ignore
     const { authUser }: any = usePage().props
 
@@ -35,7 +35,7 @@ export default function Dashboard() {
             </Box>
 
             <Box w='full' mt='50px'>
-                <AccountInfoCards />
+                <AccountInfoCards childUsers={childUsers} clicks={clicks}/>
             </Box>
 
             <Box w='full' mt='20px' bg='white' rounded='md' shadow='base' pt='25px' pb='20px' px='15px'>
@@ -47,7 +47,7 @@ export default function Dashboard() {
             <Box w='full' mt='20px' bg='white' rounded='md' shadow='base' pt='25px' pb='20px' px='15px' >
                 <Heading mb={2} fontSize='2xl' fontWeight='semibold'>Recent registrations</Heading>
                 {/* <Text mb={5} color='gray.500'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur, suscipit nobis! Perferendis.</Text> */}
-                <UsersList />
+                <UsersList userList={childUsers}/>
             </Box>
 
 

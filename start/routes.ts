@@ -58,7 +58,6 @@ Route.group(() => {
   Route.get('/auth/join_now', async ({ inertia }: HttpContextContract) => {
     return inertia.render('Auth/Register')
   })
-
   // registration logic
   Route.post('register', 'AuthController.register').as('register')
   Route.post('login', 'AuthController.login').as('login')
@@ -67,46 +66,19 @@ Route.group(() => {
 
 Route.post('logout', 'AuthController.logout').as('logout')
 
+Route.group(() => {
+  Route.get('/user/dashboard', 'AffiliatesController.dashboard')
+  Route.get('/user/my_statistics', 'AffiliatesController.myStatistics')
+  Route.get('/user/my_geneology', 'AffiliatesController.myGeneology')
+  Route.get('/user/my_network', 'AffiliatesController.myNetwork')
+
+}).namespace('App/Controllers/Http/User').middleware(['auth', 'isUser'])
 
 Route.group(() => {
-  Route.get('/user/dashboard', async ({ inertia, auth }: HttpContextContract) => {
-    console.log('Auth User: ', auth.user?.first_name)
-    return inertia.render('Users/Dashboard')
-  })
+  Route.get('/admin/dashboard', 'AdminController.dashboard')
+  Route.get('/admin/my_statistics', 'AdminController.my_statistics')
+  Route.get('/admin/my_geneology', 'AdminController.my_geneology')
+  Route.get('/admin/my_network', 'AdminController.my_network')
+  Route.get('/admin/users', 'AdminController.users')
 
-  Route.get('/user/my_statistics', async ({ inertia }: HttpContextContract) => {
-    return inertia.render('Users/MyStatistics')
-  })
-
-  Route.get('/user/my_geneology', async ({ inertia }: HttpContextContract) => {
-    return inertia.render('Users/MyGeneology', {}, {ssr: false})
-  })
-
-  Route.get('/user/my_network', async ({ inertia }: HttpContextContract) => {
-    return inertia.render('Users/MyNetwork')
-  })
-
-}).middleware(['auth', 'isUser'])
-
-Route.group(() => {
-  Route.get('/admin/dashboard', async ({ inertia }: HttpContextContract) => {
-    return inertia.render('Admin/Dashboard')
-  })
-
-  Route.get('/admin/my_statistics', async ({ inertia }: HttpContextContract) => {
-    return inertia.render('Admin/MyStatistics')
-  })
-
-  Route.get('/admin/my_geneology', async ({ inertia }: HttpContextContract) => {
-    return inertia.render('Admin/MyGeneology')
-  })
-
-  Route.get('/admin/my_network', async ({ inertia }: HttpContextContract) => {
-    return inertia.render('Admin/MyNetwork')
-  })
-
-  Route.get('/admin/users', async ({ inertia }: HttpContextContract) => {
-    return inertia.render('Admin/Users')
-  })
-
-}).middleware(['auth', 'isAdmin'])
+}).namespace('App/Controllers/Http/Admin').middleware(['auth', 'isAdmin'])
