@@ -9,7 +9,7 @@ const propTypes = {
 
 const MyNode = ({ nodeData }) => {
   const selectNode = () => {
-    alert('Ref ID: '+nodeData.ref_id);
+    alert('Ref ID: '+nodeData.title);
   };
 
   return (

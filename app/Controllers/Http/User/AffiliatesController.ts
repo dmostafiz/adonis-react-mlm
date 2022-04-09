@@ -164,24 +164,38 @@ export default class AffiliatesController {
         getDataSourceMatrix(authUser, allUsers)
 
 
-        function makeTree(childArray: any, parentId: any) {
+        //Make the geneology tree
 
-            const nodeTree = childArray.filter((node: any) => node.parent_id === parentId)
-                .reduce((tree: any, node: any) => [
-                    ...tree,
-                    {
-                        ...node,
-                        children: makeTree(childArray, node.id),
-                    },
-                ], [])
+        function makeTree(usersArray: any, parentId: any, maxDepth: number, currentDepth: number = 0) {
 
-            return nodeTree
+            const childFilter = usersArray.filter((childData: any) => childData.parent_id === parentId)
+            
+            var nextDepth =  ++currentDepth;
+            // console.log('ChildFilter: ', childFilter)
+            const childTree = childFilter.reduce((tree: any, userData: any) => {
+
+                if (maxDepth > currentDepth) {
+                    return [
+                        ...tree,
+                        {
+                            ...userData,
+                            children: makeTree(usersArray, userData.id, maxDepth, nextDepth),
+                        },
+
+                    ]
+
+                }
+
+
+            }, [])
+
+            return childTree
         }
-        // console.log('End of loop')
 
-        const root = makeTree(childArray, myId)
+        const maxDepth: number = 8
 
-        // console.log('Rooooooooooooooooooooot: ', childArray)
+        const root = makeTree(childArray, myId, maxDepth )
+
 
         const dataSource = {
             id: authUser.id,
