@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Center } from "@chakra-ui/react";
+import { Box, Center, Flex, Text } from "@chakra-ui/react";
 // import "./my-node.css";
 
 const propTypes = {
@@ -9,13 +9,16 @@ const propTypes = {
 
 const MyNode = ({ nodeData }) => {
   const selectNode = () => {
-    alert("Hi All. I'm " + nodeData.name);
+    alert('Ref ID: '+nodeData.ref_id);
   };
 
   return (
     <div onClick={selectNode}>
       {/* <div className="position">{nodeData.title}</div> */}
-      <Center className="position">{nodeData.name}</Center>
+      <Flex direction='column' justify="center" className="position">
+        <Text fontSize="sm" fontWeight="bold">{nodeData.name}</Text>
+        <Text fontSize="xs">Ref: {nodeData.ref_id}</Text>
+      </Flex>
     </div>
   );
 };
