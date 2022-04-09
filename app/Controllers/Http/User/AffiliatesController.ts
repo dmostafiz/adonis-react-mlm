@@ -72,57 +72,56 @@ export default class AffiliatesController {
 
         const myId: any = auth.user?.id
 
-        const fakeDataSource = {
-            id: "n1",
-            name: "Test User",
-            title: "general manager",
-            children: [
-                {
-                    id: "n2",
-                    name: "Bo Miao",
-                    title: "department manager",
-                    children: [
-                        { id: "n4", name: "Tie Hua", title: "senior engineer" },
-                        {
-                            id: "n5",
-                            name: "Hei Hei",
-                            title: "senior engineer",
-                            children: [
-                                { id: "n6", name: "Dan Dan", title: "engineer" },
-                                { id: "n7", name: "Xiang Xiang", title: "engineer" }
-                            ]
-                        },
-                        { id: "n8", name: "Pang Pang", title: "senior engineer" }
-                    ]
-                },
-                {
-                    id: "n3",
-                    name: "Su Miao",
-                    title: "department manager",
-                    children: [
-                        { id: "n4", name: "Tie Hua", title: "senior engineer" },
-                        {
-                            id: "n5",
-                            name: "Hei Hei",
-                            title: "senior engineer",
-                            children: [
-                                { id: "n6", name: "Dan Dan", title: "engineer" },
-                                { id: "n7", name: "Xiang Xiang", title: "engineer" }
-                            ]
-                        },
-                        { id: "n8", name: "Pang Pang", title: "senior engineer" }
-                    ]
-                },
-                { id: "n9", name: "Hong Miao", title: "department manager" },
-                {
-                    id: "n10",
-                    name: "Chun Miao",
-                    title: "department manager",
-                    children: [{ id: "n11", name: "Yue Yue", title: "senior engineer" }]
-                }
-            ]
-        };
-
+        // const fakeDataSource = {
+        //     id: "n1",
+        //     name: "Test User",
+        //     title: "general manager",
+        //     children: [
+        //         {
+        //             id: "n2",
+        //             name: "Bo Miao",
+        //             title: "department manager",
+        //             children: [
+        //                 { id: "n4", name: "Tie Hua", title: "senior engineer" },
+        //                 {
+        //                     id: "n5",
+        //                     name: "Hei Hei",
+        //                     title: "senior engineer",
+        //                     children: [
+        //                         { id: "n6", name: "Dan Dan", title: "engineer" },
+        //                         { id: "n7", name: "Xiang Xiang", title: "engineer" }
+        //                     ]
+        //                 },
+        //                 { id: "n8", name: "Pang Pang", title: "senior engineer" }
+        //             ]
+        //         },
+        //         {
+        //             id: "n3",
+        //             name: "Su Miao",
+        //             title: "department manager",
+        //             children: [
+        //                 { id: "n4", name: "Tie Hua", title: "senior engineer" },
+        //                 {
+        //                     id: "n5",
+        //                     name: "Hei Hei",
+        //                     title: "senior engineer",
+        //                     children: [
+        //                         { id: "n6", name: "Dan Dan", title: "engineer" },
+        //                         { id: "n7", name: "Xiang Xiang", title: "engineer" }
+        //                     ]
+        //                 },
+        //                 { id: "n8", name: "Pang Pang", title: "senior engineer" }
+        //             ]
+        //         },
+        //         { id: "n9", name: "Hong Miao", title: "department manager" },
+        //         {
+        //             id: "n10",
+        //             name: "Chun Miao",
+        //             title: "department manager",
+        //             children: [{ id: "n11", name: "Yue Yue", title: "senior engineer" }]
+        //         }
+        //     ]
+        // };
 
 
         // const authUser = await User.q({})myId)
@@ -133,52 +132,31 @@ export default class AffiliatesController {
         console.log('start of loop')
 
 
-
-
-
         const childArray: any = []
 
         function getDataSourceMatrix(user: any, allUsers: any) {
 
-            // console.log('####### all: ', allUsers)
+            const userChildren = allUsers?.filter((usr: any) => usr.parent_id == user.id)
 
-            // if (allUsers.length) {
+            userChildren.map((child: any) => {
 
-                const userChildren = allUsers?.filter((usr: any) => usr.parent_id == user.id)
-
-                // console.log('########userChildren:', userChildren?.length)
-
-                userChildren.map((child: any) => {
-
-                    childArray.push({
-                        id: child.id,
-                        name: child.first_name+ ' '+ child.last_name,
-                        title: child.email,
-                        parent_id: child.parent_id,
-                        ref_id: child.ref_id
-                    })
-
-                    // console.log('******Child:', child.children?.length)
-
-                    // if (child.children?.length) {
-
-                        // console.log('//////////////', child.children)
-                        // const childsss: [] = child?.children
-                        getDataSourceMatrix(child, allUsers)
-                    // }else{
-                    //     // console.log('Last Child: ', child.children)
-                    // }
-
+                childArray.push({
+                    id: child.id,
+                    name: child.first_name + ' ' + child.last_name,
+                    title: child.email,
+                    parent_id: child.parent_id,
+                    ref_id: child.ref_id
                 })
-            // }
 
+                getDataSourceMatrix(child, allUsers)
 
+            })
         }
 
 
         const authUser: any = await User.query().where('id', myId).preload('children').first()
 
-        const allUsers: any = await User.query().where('isadmin', '!=', true).preload('children')
+        const allUsers: any = await User.query().where('id', '>', myId).where('isadmin', '!=', true).preload('children')
 
         allUsers.map((user: any) => console.log('sdfgfg: ', user.email))
 
@@ -186,29 +164,28 @@ export default class AffiliatesController {
         getDataSourceMatrix(authUser, allUsers)
 
 
-        function makeTree(nodes: any, parentId: any) {
-            return nodes
-              .filter((node: any) => node.parent_id === parentId)
-              .reduce(
-                (tree: any, node: any) => [
-                  ...tree,
-                  {
-                    ...node,
-                    children: makeTree(nodes, node.id),
-                  },
-                ],
-                [],
-              )
-          }
+        function makeTree(childArray: any, parentId: any) {
+
+            const nodeTree = childArray.filter((node: any) => node.parent_id === parentId)
+                .reduce((tree: any, node: any) => [
+                    ...tree,
+                    {
+                        ...node,
+                        children: makeTree(childArray, node.id),
+                    },
+                ], [])
+
+            return nodeTree
+        }
         // console.log('End of loop')
 
         const root = makeTree(childArray, myId)
 
         // console.log('Rooooooooooooooooooooot: ', childArray)
 
-        const dataSource = { 
+        const dataSource = {
             id: authUser.id,
-            name: authUser.first_name+ ' '+ authUser.last_name,
+            name: authUser.first_name + ' ' + authUser.last_name,
             title: authUser.email,
             ref_id: authUser.ref_id,
             children: root
