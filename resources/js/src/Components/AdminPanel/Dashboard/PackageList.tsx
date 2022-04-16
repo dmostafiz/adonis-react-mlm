@@ -1,8 +1,7 @@
-import { Box, IconButton, Table, Tbody, Td, Th, Thead, Tr, Tooltip, Avatar, Flex } from '@chakra-ui/react'
+import { Box, IconButton, Table, Tbody, Td, Th, Thead, Tr, Tooltip } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { CgDetailsMore } from 'react-icons/cg'
 import NoDataFound from '../../NoDataFound'
-import moment from 'moment'
 
 const PackageList: any = ({ packages }) => {
 

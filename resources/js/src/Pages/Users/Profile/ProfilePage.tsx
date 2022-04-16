@@ -1,4 +1,4 @@
-import { Avatar, Badge, Box, Center, Flex, Heading, Square, Text } from '@chakra-ui/react'
+import { Avatar, Badge, Box, Flex, Heading, Text } from '@chakra-ui/react'
 import moment from 'moment'
 import React from 'react'
 import UserLayout from '../../../Layouts/UsersLayout/UserLayout'

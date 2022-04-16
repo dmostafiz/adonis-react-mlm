@@ -3,7 +3,7 @@ import Package from 'App/Models/Package'
 
 export default class PackagesController {
 
-    async getPackages({ request, response, inertia }: HttpContextContract) {
+    async getPackages({ inertia }: HttpContextContract) {
 
         const packages = Package.query()
 

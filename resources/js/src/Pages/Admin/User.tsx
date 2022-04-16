@@ -1,5 +1,4 @@
 import { Avatar, Badge, Box, Button, Center, Flex, Heading, Text } from '@chakra-ui/react'
-import { usePage } from '@inertiajs/inertia-react'
 import moment from 'moment'
 import React from 'react'
 import Geneology from '../../Components/UserPanel/Geneology/Geneology'
