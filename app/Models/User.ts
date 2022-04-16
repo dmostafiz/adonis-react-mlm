@@ -3,6 +3,7 @@ import Hash from '@ioc:Adonis/Core/Hash'
 import { column, beforeSave, BaseModel, hasMany, HasMany, BelongsTo, belongsTo } from '@ioc:Adonis/Lucid/Orm'
 import Click from './Click'
 import Registration from './Registration'
+import Package from './Package'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -11,6 +12,9 @@ export default class User extends BaseModel {
   @column()
   public parent_id: number
 
+  @column()
+  public package_id: number
+  
   @column()
   public first_name: string
 
@@ -60,6 +64,13 @@ export default class User extends BaseModel {
     foreignKey: 'parent_id'
   })
   public parent: BelongsTo<typeof User>
+
+
+  @belongsTo(() => Package, {
+    localKey: 'id', 
+    foreignKey: 'package_id'
+  })
+  public package: BelongsTo<typeof Package>
 
 
   @beforeSave()

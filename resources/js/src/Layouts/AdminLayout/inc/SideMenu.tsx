@@ -2,7 +2,7 @@ import { List, ListIcon, ListItem } from '@chakra-ui/react'
 import { Link } from '@inertiajs/inertia-react'
 import React from 'react'
 
-import { BiStats } from 'react-icons/bi'
+import { BiCategoryAlt, BiStats } from 'react-icons/bi'
 // import { ImTree } from 'react-icons/im'
 import { AiOutlineDashboard } from 'react-icons/ai'
 import { FiUsers } from 'react-icons/fi'
@@ -32,10 +32,17 @@ export default function SideMenu() {
                 </ListItem>
             </Link>
 
+            <Link href='/admin/packages'>
+                <ListItem gap='2' my='10px' py='5px' pr='20px' color='gray.700' _hover={{ color: 'purple.600' }} fontWeight='semibold'>
+                    <ListIcon as={BiCategoryAlt} w={5} h={5} />
+                    Packages
+                </ListItem>
+            </Link>
+
             <Link href='/admin/users'>
                 <ListItem gap='2' my='10px' py='5px' pr='20px' color='gray.700' _hover={{ color: 'purple.600' }} fontWeight='semibold'>
                     <ListIcon as={FiUsers} w={5} h={5} />
-                    Users
+                    Registered Users
                 </ListItem>
             </Link>
 

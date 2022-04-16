@@ -1,4 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import GetGeneology from 'App/Helpers/GetGeneology'
 import Click from 'App/Models/Click'
 import User from 'App/Models/User'
 import { DateTime } from 'luxon'
@@ -6,7 +7,9 @@ import { DateTime } from 'luxon'
 
 export default class AffiliatesController {
 
-    async dashboard({ inertia, auth }: HttpContextContract) {
+    async dashboard({request, inertia, auth }: HttpContextContract) {
+
+        // console.log('User Request: ', request)
 
         const myId: any = auth.user?.id
         const myChilds = await User.query()
@@ -48,7 +51,8 @@ export default class AffiliatesController {
 
         return inertia.render('Users/Dashboard', {
             childUsers: myChilds,
-            clicks: clicks
+            clicks: clicks,
+            info: request
         })
     }
 
@@ -71,139 +75,8 @@ export default class AffiliatesController {
     async myGeneology({ inertia, auth }: HttpContextContract) {
 
         const myId: any = auth.user?.id
-
-        // const fakeDataSource = {
-        //     id: "n1",
-        //     name: "Test User",
-        //     title: "general manager",
-        //     children: [
-        //         {
-        //             id: "n2",
-        //             name: "Bo Miao",
-        //             title: "department manager",
-        //             children: [
-        //                 { id: "n4", name: "Tie Hua", title: "senior engineer" },
-        //                 {
-        //                     id: "n5",
-        //                     name: "Hei Hei",
-        //                     title: "senior engineer",
-        //                     children: [
-        //                         { id: "n6", name: "Dan Dan", title: "engineer" },
-        //                         { id: "n7", name: "Xiang Xiang", title: "engineer" }
-        //                     ]
-        //                 },
-        //                 { id: "n8", name: "Pang Pang", title: "senior engineer" }
-        //             ]
-        //         },
-        //         {
-        //             id: "n3",
-        //             name: "Su Miao",
-        //             title: "department manager",
-        //             children: [
-        //                 { id: "n4", name: "Tie Hua", title: "senior engineer" },
-        //                 {
-        //                     id: "n5",
-        //                     name: "Hei Hei",
-        //                     title: "senior engineer",
-        //                     children: [
-        //                         { id: "n6", name: "Dan Dan", title: "engineer" },
-        //                         { id: "n7", name: "Xiang Xiang", title: "engineer" }
-        //                     ]
-        //                 },
-        //                 { id: "n8", name: "Pang Pang", title: "senior engineer" }
-        //             ]
-        //         },
-        //         { id: "n9", name: "Hong Miao", title: "department manager" },
-        //         {
-        //             id: "n10",
-        //             name: "Chun Miao",
-        //             title: "department manager",
-        //             children: [{ id: "n11", name: "Yue Yue", title: "senior engineer" }]
-        //         }
-        //     ]
-        // };
-
-
-        // const authUser = await User.q({})myId)
-
-        // let dataSourceMatrix: any = {}
-
-
-        console.log('start of loop')
-
-
-        const childArray: any = []
-
-        function getDataSourceMatrix(user: any, allUsers: any) {
-
-            const userChildren = allUsers?.filter((usr: any) => usr.parent_id == user.id)
-
-            userChildren.map((child: any) => {
-
-                childArray.push({
-                    id: child.id,
-                    name: child.first_name + ' ' + child.last_name,
-                    title: child.email,
-                    parent_id: child.parent_id,
-                    ref_id: child.ref_id
-                })
-
-                getDataSourceMatrix(child, allUsers)
-
-            })
-        }
-
-
-        const authUser: any = await User.query().where('id', myId).preload('children').first()
-
-        const allUsers: any = await User.query().where('id', '>', myId).where('isadmin', '!=', true).preload('children')
-
-        allUsers.map((user: any) => console.log('sdfgfg: ', user.email))
-
-        // console.log('All users: ', allUsers.length)
-        getDataSourceMatrix(authUser, allUsers)
-
-
-        //Make the geneology tree
-
-        function makeTree(usersArray: any, parentId: any, maxDepth: number, currentDepth: number = 0) {
-
-            const childFilter = usersArray.filter((childData: any) => childData.parent_id === parentId)
-            
-            var nextDepth =  ++currentDepth;
-            // console.log('ChildFilter: ', childFilter)
-            const childTree = childFilter.reduce((tree: any, userData: any) => {
-
-                if (maxDepth > currentDepth) {
-                    return [
-                        ...tree,
-                        {
-                            ...userData,
-                            children: makeTree(usersArray, userData.id, maxDepth, nextDepth),
-                        },
-
-                    ]
-
-                }
-
-
-            }, [])
-
-            return childTree
-        }
-
-        const maxDepth: number = 8
-
-        const root = makeTree(childArray, myId, maxDepth )
-
-
-        const dataSource = {
-            id: authUser.id,
-            name: authUser.first_name + ' ' + authUser.last_name,
-            title: authUser.email,
-            ref_id: authUser.ref_id,
-            children: root
-        }
+        
+        const dataSource = await GetGeneology(myId)
 
         return inertia.render('Users/MyGeneology', { dataSource })
 

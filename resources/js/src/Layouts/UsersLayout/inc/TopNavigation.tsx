@@ -78,10 +78,10 @@ export default function TopNavigation() {
                 </MenuButton>
                 <MenuList>
                   <MenuItem>
-                    <Link href='/'>
+                    <Link href='/user/profile'>
                       <Flex align='center' gap={2}>
                         <Icon as={BiCog} color='green.500' p={0} m={0} />
-                        <Text color='gray.500'>Profile settings</Text>
+                        <Text color='gray.500'>Profile</Text>
                       </Flex>
                     </Link>
                   </MenuItem>

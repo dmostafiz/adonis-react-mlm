@@ -1,5 +1,7 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { rules, schema } from '@ioc:Adonis/Core/Validator'
+import Level from 'App/Models/Level'
+import Package from 'App/Models/Package'
 import Registration from 'App/Models/Registration'
 import User from 'App/Models/User'
 
@@ -37,22 +39,59 @@ export default class AuthController {
         user.ref_id = refId
         await user.save()
 
+        user.package_id = await getStarterPackageOrCreate()
+        await user.save()
+
+        async function getStarterPackageOrCreate() {
+            const pkg: any = await Package.query().first() || await Package.create({
+                package: 'Starter package',
+            })
+            return pkg.id
+        }
+
         if (reqBody.ref_id) {
 
             const parent = await User.findBy('ref_id', reqBody.ref_id)
-          
-            if(parent){
+
+            if (parent) {
                 user.parent_id = parent.id
                 await user.save()
 
                 const reg = new Registration()
                 reg.user_id = parent.id
-                reg.child_id = user.id 
-                await reg.save() 
+                reg.child_id = user.id
+                await reg.save()
+
+
             }
 
-
         }
+
+
+        async function getParentAndUpdateLevel(parentUser: any, maxDepth: number, currentDepth: number = 0) {
+            
+            var nextDepth = ++currentDepth;
+
+            if (maxDepth >= currentDepth) {
+
+                if (parentUser.parent_id !== null) {
+                    const prnt: any = await User.findBy('id', parentUser.parent_id)
+
+                    const level = new Level()
+                    level.user_id = prnt.id
+                    level.level = currentDepth
+                    level.child_id = parentUser.id
+                    await level.save()
+
+                    await getParentAndUpdateLevel(prnt, maxDepth, nextDepth)
+                }
+
+            }
+        }
+
+        const maxDepth = 7
+        await getParentAndUpdateLevel(user, maxDepth)
+
 
         console.log('Registration success')
 

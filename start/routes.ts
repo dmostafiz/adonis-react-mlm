@@ -67,18 +67,25 @@ Route.group(() => {
 Route.post('logout', 'AuthController.logout').as('logout')
 
 Route.group(() => {
-  Route.get('/user/dashboard', 'AffiliatesController.dashboard')
-  Route.get('/user/my_statistics', 'AffiliatesController.myStatistics')
-  Route.get('/user/my_geneology', 'AffiliatesController.myGeneology')
-  Route.get('/user/my_network', 'AffiliatesController.myNetwork')
+  Route.get('/dashboard', 'AffiliatesController.dashboard')
+  Route.get('/my_statistics', 'AffiliatesController.myStatistics')
+  Route.get('/my_geneology', 'AffiliatesController.myGeneology')
+  Route.get('/my_network', 'AffiliatesController.myNetwork')
 
-}).namespace('App/Controllers/Http/User').middleware(['auth', 'isUser'])
+  Route.get('/profile', 'ProfilesController.getProfileOrCreate')
+
+
+}).prefix('user').namespace('App/Controllers/Http/User').middleware(['auth', 'isUser'])
 
 Route.group(() => {
-  Route.get('/admin/dashboard', 'AdminController.dashboard')
-  Route.get('/admin/my_statistics', 'AdminController.my_statistics')
-  Route.get('/admin/my_geneology', 'AdminController.my_geneology')
-  Route.get('/admin/my_network', 'AdminController.my_network')
-  Route.get('/admin/users', 'AdminController.users')
+  Route.get('/dashboard', 'AdminController.dashboard')
+  Route.get('/my_statistics', 'AdminController.my_statistics')
+  Route.get('/my_geneology', 'AdminController.my_geneology')
+  Route.get('/my_network', 'AdminController.my_network')
+  Route.get('/packages', 'PackagesController.getPackages')
+  Route.get('/users', 'AdminController.users')
 
-}).namespace('App/Controllers/Http/Admin').middleware(['auth', 'isAdmin'])
+  Route.get('/user/:userId', 'UsersController.getUserProfile')
+
+
+}).prefix('admin').namespace('App/Controllers/Http/Admin').middleware(['auth', 'isAdmin'])

@@ -8,6 +8,7 @@ export default class AdminController {
             .where('isadmin', false)
             .preload('parent')
             .preload('children')
+            .preload('package')
             .orderBy('id', 'desc')
             .limit(10)
 
@@ -19,6 +20,7 @@ export default class AdminController {
             .where('isadmin', false)
             .preload('parent')
             .preload('children')
+            .preload('package')
             .orderBy('id', 'desc')
             .limit(10)
             
@@ -38,6 +40,7 @@ export default class AdminController {
             .where('isadmin', false)
             .preload('parent')
             .preload('children')
+            .preload('package')
             .orderBy('id', 'desc')
 
 
