@@ -1,28 +1,29 @@
-import { Avatar, Box, Container, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Flex, HStack, Icon, Input, Menu, MenuButton, MenuItem, MenuList, Spacer, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react'
+import { Avatar, Box, Container, Flex, HStack, Icon, Menu, MenuButton, MenuItem, MenuList, Text} from '@chakra-ui/react'
 import { Link, usePage } from '@inertiajs/inertia-react'
 import React from 'react'
 import { BiCog, BiLockOpen, BiPowerOff } from 'react-icons/bi'
 import MainLogo from '../../../Components/MainLogo'
-import SideMenu from './SideMenu'
+import { BsTextCenter, BsTextLeft } from 'react-icons/bs'
 
-import {HiOutlineMenuAlt1} from 'react-icons/hi'
 
-export default function TopNavigation() {
-  const { authUser } : any = usePage().props
-
-  const [isMobile] = useMediaQuery('(max-width:1000px)')
-  const { isOpen, onOpen, onClose } = useDisclosure()
+export default function TopNavigation({toggleCollapsed, collapsed}) {
+  const { authUser }: any = usePage().props
 
   return (
-    <Box py={3} w='full' bg='purple.700' position='fixed' zIndex={999}>
+    <Box py={3} w='full' bg='purple.700' position='fixed' zIndex={999999}>
       <Container maxW='container.xl'>
         <Flex justify='space-between'>
 
           <HStack>
 
-            {isMobile && <>
+            {/* <Button onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
+              {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
+            </Button> */}
+
+        
+            {/* {isMobile && <>
               <Box as='span' cursor='pointer' color='white' onClick={onOpen}>
-                 <Icon as={HiOutlineMenuAlt1} w={8} h={8}/>
+                <Icon as={HiOutlineMenuAlt1} w={8} h={8} />
               </Box>
               <Drawer
                 size='xs'
@@ -42,7 +43,7 @@ export default function TopNavigation() {
                   <DrawerBody>
                     <Input mb='20px' placeholder='Type here...' />
 
-                    <SideMenu />
+                    <SideMenu collapsed={collapsed} />
 
                   </DrawerBody>
                   ]
@@ -51,7 +52,7 @@ export default function TopNavigation() {
               <Spacer />
               <Spacer />
               <Spacer />
-            </>}
+            </>} */}
 
 
 
@@ -59,6 +60,9 @@ export default function TopNavigation() {
             <Link href='/'>
               <MainLogo />
             </Link>
+
+            <Icon color='white' cursor='pointer' ml={5} onClick={toggleCollapsed } as={collapsed ? BsTextLeft : BsTextCenter} w={8} h={8} />
+
           </HStack>
 
 
@@ -94,7 +98,7 @@ export default function TopNavigation() {
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link href="/logout" method="post"  as="form">
+                    <Link href="/logout" method="post" as="form">
                       <Flex align='center' gap={2}>
                         <Icon as={BiPowerOff} color='green.500' p={0} m={0} />
                         <Text color='gray.500'>Sign Out</Text>

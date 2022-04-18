@@ -1,5 +1,16 @@
 {
   "assets/app.css": "http://localhost:8080/assets/app.css",
   "assets/app.js": "http://localhost:8080/assets/app.js",
-  "assets/vendors-node_modules_chakra-ui_react_dist_chakra-ui-react_esm_js-node_modules_dabeng_react-or-e9c872.js": "http://localhost:8080/assets/vendors-node_modules_chakra-ui_react_dist_chakra-ui-react_esm_js-node_modules_dabeng_react-or-e9c872.js"
+  "assets/vendors-node_modules_chakra-ui_react_dist_chakra-ui-react_esm_js-node_modules_dabeng_react-or-8d8e29.css": "http://localhost:8080/assets/vendors-node_modules_chakra-ui_react_dist_chakra-ui-react_esm_js-node_modules_dabeng_react-or-8d8e29.css",
+  "assets/vendors-node_modules_chakra-ui_react_dist_chakra-ui-react_esm_js-node_modules_dabeng_react-or-8d8e29.js": "http://localhost:8080/assets/vendors-node_modules_chakra-ui_react_dist_chakra-ui-react_esm_js-node_modules_dabeng_react-or-8d8e29.js",
+  "assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-0b51a9.css": "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-0b51a9.css",
+  "assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-0b51a9.js": "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-0b51a9.js",
+  "assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-9e4962.css": "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-9e4962.css",
+  "assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-9e4962.js": "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-9e4962.js",
+  "assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-fff312.css": "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-fff312.css",
+  "assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-fff312.js": "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-fff312.js",
+  "assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-3dc4a3.css": "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-3dc4a3.css",
+  "assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-3dc4a3.js": "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-3dc4a3.js",
+  "assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-5fc4ff.css": "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-5fc4ff.css",
+  "assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-5fc4ff.js": "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-5fc4ff.js"
 }

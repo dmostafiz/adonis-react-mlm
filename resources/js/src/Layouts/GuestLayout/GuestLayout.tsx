@@ -4,11 +4,16 @@ import React from 'react'
 import Footer from './inc/Footer'
 import TopNavigation from './inc/TopNavigation'
 
+
 export default function GuestLayout({ children, PDt = 5 }) {
+
+
 
     const { successMsg, errorMsg, infoMsg }: any = usePage().props
 
     return (
+
+
         <Flex direction='column' justify='space-between'>
             <TopNavigation />
 
@@ -45,11 +50,12 @@ export default function GuestLayout({ children, PDt = 5 }) {
                         </Alert>
                     </Container>
                 )}
-
+                
                 {children}
             </Box>
 
             <Footer />
         </Flex>
+
     )
 }

@@ -9,7 +9,8 @@ const propTypes = {
 
 const MyNode = ({ nodeData }) => {
   const selectNode = () => {
-    alert('Ref ID: '+nodeData.title);
+    // alert('Ref ID: '+nodeData.ref_id);
+    window.location.href = `/admin/user/${nodeData.id}`
   };
 
   return (

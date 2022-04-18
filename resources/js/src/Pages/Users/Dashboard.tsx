@@ -5,26 +5,13 @@ import React from 'react'
 import AccountInfoCards from '../../Components/UserPanel/Dashboard/AccountInfoCards'
 import ReferralClipboard from '../../Components/UserPanel/Dashboard/ReferralClipboard'
 import UsersList from '../../Components/UserPanel/Dashboard/UsersList'
-// import getUser from '../../Helpers/getUser'
-// import authUser from '../../Helpers/getUser'
-// import authUser from '../../Helpers/authUser'
-import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 
-// interface Au{
-//     first_name: string
-// }
+import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 
 export default function Dashboard({childUsers, clicks}: any) {
     // @ts-ignore
     const { authUser }: any = usePage().props
 
-    // const [user, setUser] = useState(Object)
-    
-    // useEffect(() => {
-    //     setUser(authUser)
-    // }, [authUser])
-
-    // console.log('Authssssssssss: ', authUser)
     return (
         <UserLayout>
 

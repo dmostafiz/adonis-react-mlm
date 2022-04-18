@@ -3,6 +3,8 @@ import { Box, Container, GridItem, SimpleGrid, chakra, Center, Text, Flex, Visua
 import { useForm, usePage } from '@inertiajs/inertia-react'
 import React from 'react'
 import GuestLayout from '../../Layouts/GuestLayout/GuestLayout'
+
+
 // import { Spinner } from '@chakra-ui/react'
 
 export default function Login() {

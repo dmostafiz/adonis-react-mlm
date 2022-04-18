@@ -13,6 +13,7 @@ require( './api')
 Route.get('/', async ({ response }: HttpContextContract) => {
   // inertia.location('/auth/login')
   response.redirect().toPath('/auth/login')
+  // return inertia.render('TestPage')
 })
 
 
