@@ -16,47 +16,7 @@ export default function TopNavigation({toggleCollapsed, collapsed}) {
 
           <HStack>
 
-            {/* <Button onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
-              {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-            </Button> */}
-
-        
-            {/* {isMobile && <>
-              <Box as='span' cursor='pointer' color='white' onClick={onOpen}>
-                <Icon as={HiOutlineMenuAlt1} w={8} h={8} />
-              </Box>
-              <Drawer
-                size='xs'
-                isOpen={isOpen}
-                placement='left'
-                onClose={onClose}
-              >
-                <DrawerOverlay />
-                <DrawerContent>
-                  <DrawerCloseButton />
-                  <DrawerHeader>
-
-                    <MainLogo />
-
-                  </DrawerHeader>
-
-                  <DrawerBody>
-                    <Input mb='20px' placeholder='Type here...' />
-
-                    <SideMenu collapsed={collapsed} />
-
-                  </DrawerBody>
-                  ]
-                </DrawerContent>
-              </Drawer>
-              <Spacer />
-              <Spacer />
-              <Spacer />
-            </>} */}
-
-
             <Icon color='white' cursor='pointer' mr={5} onClick={toggleCollapsed } as={collapsed ? BsTextLeft : BsTextCenter} w={8} h={8} />
-
 
             <Link href='/'>
               <MainLogo />

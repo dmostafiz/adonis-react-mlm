@@ -53,7 +53,7 @@ export default function SideMenu({ collapsed }) {
                     </Link>
                 </Menu.Item>
 
-                <Menu.Item key="3" icon={<BiNetworkChart />}>
+                <Menu.Item key="4" icon={<BiNetworkChart />}>
                     <Link href='/user/my_network'>
                         My Network
                     </Link>
