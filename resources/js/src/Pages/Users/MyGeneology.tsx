@@ -14,7 +14,7 @@ export default function MyGeneology({ dataSource }) {
     const screen = useFullScreenHandle();
 
     const ref = createRef();
-    const [image, takeScreenShot] = useScreenshot({
+    const [, takeScreenShot] = useScreenshot({
         type: "image/jpeg",
         quality: 1.0
     });

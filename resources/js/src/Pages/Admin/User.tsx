@@ -14,7 +14,7 @@ export default function User({ dataSource, levels, user, totalReferences }) {
     const screen = useFullScreenHandle();
 
     const ref = createRef();
-    const [image, takeScreenShot] = useScreenshot({
+    const [, takeScreenShot] = useScreenshot({
         type: "image/jpeg",
         quality: 1.0
     });
