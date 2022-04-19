@@ -35,7 +35,7 @@ export default function UserLayout({ children }) {
 
 
           <Box color='gray.800' w={isMobile ? '80%' : '100%'} minH='100vh' bg={isMobile ? 'white' : 'purple.50'} dropShadow='md'>
-            <Box px={isMobile ? 0 : 10} py='90px' minH='100vh'>
+            <Box px={isMobile ? 5 : 10} py='90px' minH='100vh'>
               {children}
             </Box>
             <Footer />
