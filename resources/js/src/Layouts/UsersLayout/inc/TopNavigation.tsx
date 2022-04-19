@@ -11,7 +11,7 @@ export default function TopNavigation({toggleCollapsed, collapsed}) {
 
   return (
     <Box py={3} w='full' bg='purple.700' position='fixed' zIndex={999999}>
-      <Container maxW='container.xl'>
+      <Container maxW='container.2xl'>
         <Flex justify='space-between'>
 
           <HStack>
@@ -55,13 +55,13 @@ export default function TopNavigation({toggleCollapsed, collapsed}) {
             </>} */}
 
 
+            <Icon color='white' cursor='pointer' mr={5} onClick={toggleCollapsed } as={collapsed ? BsTextLeft : BsTextCenter} w={8} h={8} />
 
 
             <Link href='/'>
               <MainLogo />
             </Link>
 
-            <Icon color='white' cursor='pointer' ml={5} onClick={toggleCollapsed } as={collapsed ? BsTextLeft : BsTextCenter} w={8} h={8} />
 
           </HStack>
 

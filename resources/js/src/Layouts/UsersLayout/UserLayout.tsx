@@ -19,7 +19,7 @@ export default function UserLayout({ children }) {
     <Flex direction='column' justify='space-between'>
       <TopNavigation toggleCollapsed={toggleCollapsed} collapsed={collapsed} />
 
-      <Container maxW='container.xl' style={{ clear: 'both', overflowX: 'hidden' }}>
+      {/* <Container maxW={isMobile ? 'container.3xl' : 'container.3xl'} style={{ clear: 'both', overflowX: 'hidden' }}> */}
 
 
         <Flex color='white'>
@@ -45,7 +45,7 @@ export default function UserLayout({ children }) {
         </Flex>
 
 
-      </Container>
+      {/* </Container> */}
 
     </Flex>
   )
