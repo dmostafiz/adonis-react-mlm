@@ -60,11 +60,13 @@
     "react-d3-tree": "^3.3.2",
     "react-dom": "^17.0.2",
     "react-family-tree": "^3.1.0",
+    "react-full-screen": "^1.1.0",
     "react-icons": "^4.3.1",
     "reflect-metadata": "^0.1.13",
     "regenerator-runtime": "^0.13.9",
     "source-map-support": "^0.5.21",
     "styled-components": "^5.3.5",
-    "tsc-silent": "^1.2.2"
+    "tsc-silent": "^1.2.2",
+    "use-react-screenshot": "^3.0.0"
   }
 }

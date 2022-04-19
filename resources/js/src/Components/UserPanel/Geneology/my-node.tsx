@@ -18,7 +18,7 @@ const MyNode = ({ nodeData }) => {
       {/* <div className="position">{nodeData.title}</div> */}
       <Flex direction='column' justify="center" className="position">
         <Text fontSize="sm" fontWeight="bold">{nodeData.name}</Text>
-        <Text fontSize="xs">Ref: {nodeData.ref_id}</Text>
+        <Text fontSize="xs">$0</Text>
       </Flex>
     </div>
   );

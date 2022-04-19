@@ -2,11 +2,11 @@
   "entrypoints": {
     "app": {
       "css": [
-        "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-5fc4ff.css",
+        "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-a3e474.css",
         "http://localhost:8080/assets/app.css"
       ],
       "js": [
-        "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-5fc4ff.js",
+        "http://localhost:8080/assets/vendors-node_modules_ant-design_icons_es_index_js-node_modules_chakra-ui_react_dist_chakra-ui-a3e474.js",
         "http://localhost:8080/assets/app.js"
       ]
     }
