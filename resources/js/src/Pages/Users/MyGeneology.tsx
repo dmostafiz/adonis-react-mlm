@@ -15,25 +15,28 @@ export default function MyGeneology({ dataSource }) {
 
     return (
         <UserLayout>
-            
+
             <Box>
                 <Heading as='h4' fontWeight='semibold' fontSize='28px'>My Geneology</Heading>
             </Box>
 
 
-            <Box mt='30px' maxWidth='1000px' minH='300px' bg='white' rounded='base' shadow='base' >
+            <Box position='relative' width='100%' mt='30px' minHeight='550px' bg='white' rounded='base' shadow='base' overflow='auto'>
 
-                {dataSource?.children?.length
-                    ? <Geneology dataSource={dataSource} />
-                    : <Flex direction='column' gap={2} p={5}>
-                        <Text fontSize='xl' fontWeight='bold' color='gray.600'>Your geneology is empty</Text>
-                        <Text fontSize='md' fontWeight='semibold' color='gray.400'>
-                            Start sharing your invitation link to make your geneology
-                        </Text>
+                <Box position='absolute'>
 
-                        <ReferralClipboard />
+                    {dataSource?.children?.length
+                        ? <Geneology dataSource={dataSource} />
+                        : <Flex direction='column' gap={2} p={5}>
+                            <Text fontSize='xl' fontWeight='bold' color='gray.600'>Your geneology is empty</Text>
+                            <Text fontSize='md' fontWeight='semibold' color='gray.400'>
+                                Start sharing your invitation link to make your geneology
+                            </Text>
 
-                    </Flex>}
+                            <ReferralClipboard />
+
+                        </Flex>}
+                </Box>
 
 
             </Box>

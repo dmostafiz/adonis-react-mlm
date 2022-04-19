@@ -7,8 +7,6 @@ export default function Geneology({ dataSource }): any {
     return (
 
         <OrganizationChart
-            style={{ width: '50px !important' }}
-            width='500px'
             datasource={dataSource}
             chartClass="myChart"
             NodeTemplate={MyNode}

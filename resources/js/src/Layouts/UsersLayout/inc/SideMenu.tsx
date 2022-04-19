@@ -1,12 +1,10 @@
 import React from 'react'
 import { Menu } from 'antd';
-import {
-    AppstoreOutlined,
-} from '@ant-design/icons';
+import { AppstoreOutlined } from '@ant-design/icons';
 import { Link } from '@inertiajs/inertia-react';
 import { AiOutlineDashboard } from 'react-icons/ai';
 import { ImTree } from 'react-icons/im';
-import { BiStats } from 'react-icons/bi';
+import { BiNetworkChart, BiStats } from 'react-icons/bi';
 import { Box } from '@chakra-ui/react';
 
 const { SubMenu } = Menu;
@@ -34,7 +32,7 @@ export default function SideMenu({ collapsed }) {
                 inlineCollapsed={collapsed}
                 style={{ height: '100vh' }}
 
-            
+
 
             // overflowY='scroll'
             >
@@ -52,6 +50,12 @@ export default function SideMenu({ collapsed }) {
                 <Menu.Item key="3" icon={<BiStats />}>
                     <Link href='/user/my_statistics'>
                         Statistics Overview
+                    </Link>
+                </Menu.Item>
+
+                <Menu.Item key="3" icon={<BiNetworkChart />}>
+                    <Link href='/user/my_network'>
+                        My Network
                     </Link>
                 </Menu.Item>
 

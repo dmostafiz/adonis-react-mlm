@@ -1,4 +1,4 @@
-import { Box, Container, Flex, useMediaQuery } from '@chakra-ui/react'
+import { Box, Flex, useMediaQuery } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import Footer from './inc/Footer'
 import SideMenu from './inc/SideMenu'
@@ -25,7 +25,7 @@ export default function UserLayout({ children }) {
         <Flex color='white'>
 
           {/* {!isMobile &&  */}
-          <Box as='aside'  zIndex={9999} px={0} width={collapsed ? '87px' : '210px'} pt='72px' h='100vh' overflow='hidden'>
+          <Box as='aside'  zIndex={9999} px={0} width={collapsed ? '80px' : '210px'} pt='72px' h='100vh' overflow='hidden'>
             <Box style={{ position: 'fixed', height: '100vh', zIndex: 999, overflowY: 'auto' }}>
               <SideMenu collapsed={collapsed} />
             </Box>

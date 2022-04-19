@@ -84,7 +84,7 @@
   background-color: #fff;
   border: none !important;
   border-radius: 5px;
-  overflow: auto;
+  overflow: hidden;
   text-align: center;
 }
 .orgchart.myChart{
