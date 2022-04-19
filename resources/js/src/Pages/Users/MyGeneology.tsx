@@ -13,7 +13,7 @@ export default function MyGeneology({ dataSource }) {
     // const HEIGHT = 80;
     const screen = useFullScreenHandle();
 
-    const ref = createRef();
+    const ref = createRef()
     const [, takeScreenShot] = useScreenshot({
         type: "image/jpeg",
         quality: 1.0
