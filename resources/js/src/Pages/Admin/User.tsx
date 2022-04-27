@@ -15,7 +15,7 @@ export default function User({ dataSource, levels, user, totalReferences, packag
     // const {userId} = usePage().props
     const screen = useFullScreenHandle();
 
-    const [selectedRank, setSelectedRank] = useState(null)
+    const [selectedRank, setSelectedRank] = useState('')
 
     const ref = createRef();
     const [, takeScreenShot] = useScreenshot({
