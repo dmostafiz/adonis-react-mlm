@@ -53,12 +53,12 @@ Route.get('/invite', async ({ request, session, response, auth }: HttpContextCon
 
 Route.get('/about_us', async ({ inertia }: HttpContextContract) => {
   return inertia.render('AboutUs')
-})
+}).middleware(['auth'])
 
 
 Route.get('/react-test', async ({ inertia }) => {
   return inertia.render('Test/TestReact')
-})
+}).middleware(['auth'])
 
 
 Route.group(() => {

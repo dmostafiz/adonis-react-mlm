@@ -1,7 +1,7 @@
 import React from 'react'
 import { Menu } from 'antd';
 import { AppstoreOutlined } from '@ant-design/icons';
-import { Link } from '@inertiajs/inertia-react';
+import { Link, usePage } from '@inertiajs/inertia-react';
 import { AiOutlineDashboard } from 'react-icons/ai';
 import { ImTree } from 'react-icons/im';
 import { BiNetworkChart, BiStats } from 'react-icons/bi';
@@ -13,6 +13,7 @@ const { SubMenu } = Menu;
 
 export default function SideMenu({ collapsed }) {
 
+    const { authUser }: any = usePage().props
 
     // const [collapsed, setCollapsed] = useState(false)
 
@@ -32,35 +33,39 @@ export default function SideMenu({ collapsed }) {
                 mode="inline"
                 theme="dark"
                 inlineCollapsed={collapsed}
-                style={{ 
-                    height: '100vh', 
-                    background: 'linear-gradient(180.48deg,rgba(115,70,215,1) -26.15%,rgba(57,35,81,1) 189.84%)', 
+                style={{
+                    height: '100vh',
+                    background: 'linear-gradient(180.48deg,rgba(115,70,215,1) -26.15%,rgba(57,35,81,1) 189.84%)',
                 }}
 
             // overflowY='scroll'
             >
-                <Menu.Item key="1" icon={<AiOutlineDashboard />}>
-                    <Link href='/user/dashboard'>
-                        Dashboard
-                    </Link>
-                </Menu.Item>
-                <Menu.Item key="2" icon={<ImTree />}>
-                    <Link href='/user/my_geneology'>
-                        My Geneology
-                    </Link>
-                </Menu.Item>
 
-                <Menu.Item key="3" icon={<BiStats />}>
-                    <Link href='/user/my_statistics'>
-                        Statistics Overview
-                    </Link>
-                </Menu.Item>
+                {authUser && <>
+                    <Menu.Item key="1" icon={<AiOutlineDashboard />}>
+                        <Link href='/user/dashboard'>
+                            Dashboard
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item key="2" icon={<ImTree />}>
+                        <Link href='/user/my_geneology'>
+                            My Geneology
+                        </Link>
+                    </Menu.Item>
 
-                <Menu.Item key="4" icon={<BiNetworkChart />}>
-                    <Link href='/user/my_network'>
-                        My Network
-                    </Link>
-                </Menu.Item>
+                    <Menu.Item key="3" icon={<BiStats />}>
+                        <Link href='/user/my_statistics'>
+                            Statistics Overview
+                        </Link>
+                    </Menu.Item>
+
+                    <Menu.Item key="4" icon={<BiNetworkChart />}>
+                        <Link href='/user/my_network'>
+                            My Network
+                        </Link>
+                    </Menu.Item>
+
+                </>}
 
                 <Menu.Item key="5" icon={<BsCartCheck />} style={{ width: '100% !important' }}>
                     <Link href='/products' style={{ width: '100% !important' }}>
@@ -69,18 +74,20 @@ export default function SideMenu({ collapsed }) {
                 </Menu.Item>
                 <Menu.Item key="6" icon={<FaBlog />}>
                     <Link href='/blog'>
+                        {!collapsed && <Box width={'120px'}>
+                        </Box>}
                         Blog
                     </Link>
                 </Menu.Item>
 
-                <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Dropdown menu">
+                {/* <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Dropdown menu">
                     <Menu.Item key="9">Option 9</Menu.Item>
                     <Menu.Item key="10">Option 10</Menu.Item>
                     <SubMenu key="sub3" title="Submenu">
                         <Menu.Item key="11">Option 11</Menu.Item>
                         <Menu.Item key="12">Option 12</Menu.Item>
                     </SubMenu>
-                </SubMenu>
+                </SubMenu> */}
             </Menu>
 
             {/* <List >

@@ -2,8 +2,7 @@ import { Box, Container, GridItem, SimpleGrid, chakra, Center, Text, Flex, Visua
 // import { Inertia } from '@inertiajs/inertia'
 import { useForm, usePage } from '@inertiajs/inertia-react'
 import React from 'react'
-import GuestLayout from '../Layouts/GuestLayout/GuestLayout'
-
+import UserLayout from '../Layouts/UsersLayout/UserLayout'
 
 // import { Spinner } from '@chakra-ui/react'
 
@@ -32,7 +31,7 @@ export default function Login() {
 
   return (
     
-    <GuestLayout>
+    <UserLayout>
       <Container maxW='container.xl'>
 
         <Box py={10} mx="auto">
@@ -157,6 +156,6 @@ export default function Login() {
 
 
       </Container>
-    </GuestLayout>
+    </UserLayout>
   )
 }

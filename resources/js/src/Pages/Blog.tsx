@@ -1,6 +1,6 @@
 import { Box, Container, GridItem, SimpleGrid, chakra } from '@chakra-ui/react'
 import React from 'react'
-import GuestLayout from '../Layouts/GuestLayout/GuestLayout'
+import UserLayout from '../Layouts/UsersLayout/UserLayout'
 
 
 // import { Spinner } from '@chakra-ui/react'
@@ -9,7 +9,7 @@ export default function Blog() {
 
   return (
     
-    <GuestLayout>
+    <UserLayout>
       <Container maxW='container.xl'>
 
         <Box py={10} mx="auto">
@@ -64,6 +64,6 @@ export default function Blog() {
 
 
       </Container>
-    </GuestLayout>
+    </UserLayout>
   )
 }

@@ -2,7 +2,7 @@ import { Box, Container, GridItem, SimpleGrid, chakra, Text, Center, Flex, Visua
 // import { Inertia } from '@inertiajs/inertia'
 import { useForm, usePage } from '@inertiajs/inertia-react'
 import React from 'react'
-import GuestLayout from '../../Layouts/GuestLayout/GuestLayout'
+import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 
 export default function Register() {
 
@@ -39,7 +39,7 @@ export default function Register() {
 
 
   return (
-    <GuestLayout>
+    <UserLayout>
       <Container maxW='container.xl'>
 
         <Box py={10} mx="auto">
@@ -213,6 +213,6 @@ export default function Register() {
 
 
       </Container>
-    </GuestLayout>
+    </UserLayout>
   )
 }
