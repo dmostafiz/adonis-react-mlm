@@ -6,7 +6,7 @@ import { Box } from '@chakra-ui/react';
 import { BsCartCheck } from 'react-icons/bs';
 import {FaBlog} from 'react-icons/fa'
 
-const { SubMenu } = Menu;
+// const { SubMenu } = Menu;
 
 export default function SideMenu({ collapsed }) {
 

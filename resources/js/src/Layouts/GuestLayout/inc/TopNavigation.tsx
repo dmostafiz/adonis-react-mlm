@@ -1,14 +1,14 @@
-import { Avatar, Box, Container, Flex, HStack, Icon, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
-import { Link, usePage } from '@inertiajs/inertia-react'
+import { Box, Container, Flex, HStack, Icon, Menu} from '@chakra-ui/react'
+import { Link } from '@inertiajs/inertia-react'
 import React from 'react'
-import { BiCog, BiLockOpen, BiPowerOff } from 'react-icons/bi'
+// import { BiCog, BiLockOpen, BiPowerOff } from 'react-icons/bi'
 import MainLogo from '../../../Components/MainLogo'
 
 import { BsTextCenter, BsTextLeft } from 'react-icons/bs'
 
 export default function TopNavigation({ toggleCollapsed, collapsed }) {
 
-  const { authUser }: any = usePage().props
+  // const { authUser }: any = usePage().props
 
   return (
     <Box py={3} w='full' bg='#353535' position='fixed' zIndex={999999}>

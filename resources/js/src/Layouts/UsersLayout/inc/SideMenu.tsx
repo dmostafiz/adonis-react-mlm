@@ -1,6 +1,6 @@
 import React from 'react'
 import { Menu } from 'antd';
-import { AppstoreOutlined } from '@ant-design/icons';
+// import { AppstoreOutlined } from '@ant-design/icons';
 import { Link, usePage } from '@inertiajs/inertia-react';
 import { AiOutlineDashboard } from 'react-icons/ai';
 import { ImTree } from 'react-icons/im';
@@ -9,7 +9,7 @@ import { Box } from '@chakra-ui/react';
 import { BsCartCheck } from 'react-icons/bs';
 import { FaBlog } from 'react-icons/fa';
 
-const { SubMenu } = Menu;
+// const { SubMenu } = Menu;
 
 export default function SideMenu({ collapsed }) {
 
