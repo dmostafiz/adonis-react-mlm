@@ -62,12 +62,12 @@ export default function SideMenu({ collapsed }) {
                     </Link>
                 </Menu.Item>
 
-                <Menu.Item key="2" icon={<BsCartCheck />} style={{ width: '100% !important' }}>
+                <Menu.Item key="5" icon={<BsCartCheck />} style={{ width: '100% !important' }}>
                     <Link href='/products' style={{ width: '100% !important' }}>
                         Products
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="3" icon={<FaBlog />}>
+                <Menu.Item key="6" icon={<FaBlog />}>
                     <Link href='/blog'>
                         Blog
                     </Link>
