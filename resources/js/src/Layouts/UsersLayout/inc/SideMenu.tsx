@@ -6,6 +6,8 @@ import { AiOutlineDashboard } from 'react-icons/ai';
 import { ImTree } from 'react-icons/im';
 import { BiNetworkChart, BiStats } from 'react-icons/bi';
 import { Box } from '@chakra-ui/react';
+import { BsCartCheck } from 'react-icons/bs';
+import { FaBlog } from 'react-icons/fa';
 
 const { SubMenu } = Menu;
 
@@ -28,11 +30,12 @@ export default function SideMenu({ collapsed }) {
                 // defaultSelectedKeys={['1']}
                 // defaultOpenKeys={['sub1']}
                 mode="inline"
-                theme="light"
+                theme="dark"
                 inlineCollapsed={collapsed}
-                style={{ height: '100vh' }}
-
-
+                style={{ 
+                    height: '100vh', 
+                    background: 'linear-gradient(180.48deg,rgba(115,70,215,1) -26.15%,rgba(57,35,81,1) 189.84%)', 
+                }}
 
             // overflowY='scroll'
             >
@@ -56,6 +59,17 @@ export default function SideMenu({ collapsed }) {
                 <Menu.Item key="4" icon={<BiNetworkChart />}>
                     <Link href='/user/my_network'>
                         My Network
+                    </Link>
+                </Menu.Item>
+
+                <Menu.Item key="2" icon={<BsCartCheck />} style={{ width: '100% !important' }}>
+                    <Link href='/products' style={{ width: '100% !important' }}>
+                        Products
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key="3" icon={<FaBlog />}>
+                    <Link href='/blog'>
+                        Blog
                     </Link>
                 </Menu.Item>
 

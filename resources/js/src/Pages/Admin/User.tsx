@@ -1,4 +1,4 @@
-import { Avatar, Badge, Box, Button, Center, Flex, FormControl, FormLabel, Heading, Icon, Switch, Text } from '@chakra-ui/react'
+import { Avatar, Badge, Box, Button, Center, Flex, FormControl, FormLabel, Heading, Icon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Switch, Text, useDisclosure } from '@chakra-ui/react'
 import moment from 'moment'
 import React, { createRef, useEffect, useState } from 'react'
 import { FullScreen, useFullScreenHandle } from 'react-full-screen'
@@ -7,11 +7,15 @@ import AdminLayout from '../../Layouts/AdminLayout/AdminLayout'
 import { useScreenshot } from 'use-react-screenshot';
 import { createFileName } from 'use-react-screenshot';
 import { AiOutlineDownload, AiOutlineFullscreen, AiOutlineFullscreenExit } from 'react-icons/ai'
+import { Inertia } from '@inertiajs/inertia'
 
-export default function User({ dataSource, levels, user, totalReferences }) {
+export default function User({ dataSource, levels, user, totalReferences, packages }) {
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     // const {userId} = usePage().props
     const screen = useFullScreenHandle();
+
+    const [selectedRank, setSelectedRank] = useState(null)
 
     const ref = createRef();
     const [, takeScreenShot] = useScreenshot({
@@ -34,6 +38,14 @@ export default function User({ dataSource, levels, user, totalReferences }) {
     }, [screen])
 
     const [enableZoom, setEnableZoom] = useState(false)
+
+    const handleChnageRank = () => {
+        if (selectedRank == null) return alert('Please select a rank to make the change!')
+        
+        Inertia.post('/admin/user/change-rank', { selectedRank, userId: user.id })
+        
+        onClose()
+    }
 
     return (
         <AdminLayout>
@@ -82,7 +94,7 @@ export default function User({ dataSource, levels, user, totalReferences }) {
                         </Flex>
 
                         <Flex w='100%' justifyContent='space-between' align='center' p={2} borderBottom='0px solid #2d374814'>
-                            <Text fontWeight='semibold'>Package</Text>
+                            <Text fontWeight='semibold'>Rank</Text>
                             <Badge colorScheme='purple' variant='solid'>{user.package.package}</Badge>
                         </Flex>
 
@@ -91,8 +103,33 @@ export default function User({ dataSource, levels, user, totalReferences }) {
                     <Box w='100%' mt={4}>
 
                         <Flex w='100%' justifyContent='space-between'>
-                            <Button colorScheme='teal' variant='solid'>Change Package</Button>
-                            {/* <Button colorScheme='red' variant='solid'>Block User</Button> */}
+                            <Button onClick={onOpen} colorScheme='teal' variant='solid'>Change Rank</Button>
+
+                            <Modal isOpen={isOpen} onClose={onClose}>
+                                <ModalOverlay />
+                                <ModalContent mt={100}>
+                                    <ModalHeader>Change Rank</ModalHeader>
+                                    <ModalCloseButton />
+                                    <ModalBody>
+                                        When the modal opens, focus is sent into the modal and set to the first tabbable element. If there are no tabbled elements
+
+                                        <Box py={5} px={5}>
+                                            <Select onChange={e => setSelectedRank(e.target.value)} placeholder='Select rank'>
+                                                {packages.map((pkg, index) =>
+                                                    <option selected={user.package.id == pkg.id ? true : false} key={index} value={pkg.id}>{pkg.package}</option>)}
+                                            </Select>
+                                        </Box>
+
+                                    </ModalBody>
+
+                                    <ModalFooter>
+                                        <Button variant='solid' mr={3} onClick={onClose}>
+                                            Close
+                                        </Button>
+                                        <Button onClick={handleChnageRank} variant='solid' colorScheme='teal'>Confirm change</Button>
+                                    </ModalFooter>
+                                </ModalContent>
+                            </Modal>
                         </Flex>
                     </Box>
                 </Box>

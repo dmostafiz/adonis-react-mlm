@@ -11,7 +11,7 @@ export default function TopNavigation({ toggleCollapsed, collapsed }) {
   const { authUser }: any = usePage().props
 
   return (
-    <Box py={3} w='full' bg='purple.700' position='fixed' zIndex={999999}>
+    <Box py={3} w='full' bg='#353535' position='fixed' zIndex={999999}>
       <Container maxW='container.2xl'>
         <Flex justify='space-between'>
 

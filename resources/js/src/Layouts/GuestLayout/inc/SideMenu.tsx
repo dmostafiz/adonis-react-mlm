@@ -1,11 +1,10 @@
 import React from 'react'
 import { Menu } from 'antd';
-import { AppstoreOutlined } from '@ant-design/icons';
 import { Link } from '@inertiajs/inertia-react';
-import { AiOutlineDashboard } from 'react-icons/ai';
-import { BiCategoryAlt, BiStats } from 'react-icons/bi';
+import { BiHomeAlt } from 'react-icons/bi';
 import { Box } from '@chakra-ui/react';
-import { FiUsers } from 'react-icons/fi';
+import { BsCartCheck } from 'react-icons/bs';
+import {FaBlog} from 'react-icons/fa'
 
 const { SubMenu } = Menu;
 
@@ -19,56 +18,36 @@ export default function SideMenu({ collapsed }) {
     //   };
 
     return (
-        <Box shadow='xl'>
-            {/* <Button type="primary" onClick={toggleCollapsed} style={{ marginBottom: 16 }}>
-                {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-            </Button> */}
-
+        <Box shadow='xl' background='purple.50' >
             <Menu
-                // defaultSelectedKeys={['1']}
-                // defaultOpenKeys={['sub1']}
                 mode="inline"
                 theme="dark"
                 inlineCollapsed={collapsed}
-                style={{ 
-                    height: '100vh', 
-                    background: 'linear-gradient(180.48deg,rgba(115,70,215,1) -26.15%,rgba(57,35,81,1) 189.84%)', 
+                style={{
+                    width: '100%',
+                    height: '100vh',
+                    background: 'linear-gradient(180.48deg,rgba(115,70,215,1) -26.15%,rgba(57,35,81,1) 189.84%)',
                     color: 'white'
                 }}
-
-            // overflowY='scroll'
             >
-                <Menu.Item key="1" icon={<AiOutlineDashboard />}>
-                    <Link href='/admin/dashboard'>
-                        Dashboard
+                <Menu.Item key="1" icon={<BiHomeAlt />}>
+                    <Link href='/'>
+                        {!collapsed && <Box width={'120px'}>
+                        </Box>}
+                        Home
                     </Link>
                 </Menu.Item>
-                <Menu.Item key="2" icon={<BiStats />}>
-                    <Link href='/admin/my_statistics'>
-                        Statistics Overview
+                <Menu.Item key="2" icon={<BsCartCheck />} style={{ width: '100% !important' }}>
+                    <Link href='/products' style={{ width: '100% !important' }}>
+                        Products
                     </Link>
                 </Menu.Item>
-
-                <Menu.Item key="3" icon={<BiCategoryAlt />}>
-                    <Link href='/admin/packages'>
-                        Member ranks
-                    </Link>
-                </Menu.Item>
-
-                <Menu.Item key="4" icon={<FiUsers />}>
-                    <Link href='/admin/users'>
-                        Registered Users
+                <Menu.Item key="3" icon={<FaBlog />}>
+                    <Link href='/blog'>
+                        Blog
                     </Link>
                 </Menu.Item>
 
-                <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Dropdown menu">
-                    <Menu.Item key="9">Option 9</Menu.Item>
-                    <Menu.Item key="10">Option 10</Menu.Item>
-                    <SubMenu key="sub3" title="Submenu">
-                        <Menu.Item key="11">Option 11</Menu.Item>
-                        <Menu.Item key="12">Option 12</Menu.Item>
-                    </SubMenu>
-                </SubMenu>
             </Menu>
 
             {/* <List >

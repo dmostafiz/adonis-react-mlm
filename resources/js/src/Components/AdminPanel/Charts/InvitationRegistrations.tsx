@@ -30,7 +30,7 @@ export default function InvitationRegistrations() {
         }
     ]
 
-    const [option, setOption] = useState('7days')
+    const [option, setOption] = useState('30days')
 
     useEffect(() => {
 

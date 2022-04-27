@@ -10,10 +10,17 @@ require( './api')
   
 
 
-Route.get('/', async ({ response }: HttpContextContract) => {
-  // inertia.location('/auth/login')
-  response.redirect().toPath('/auth/login')
-  // return inertia.render('TestPage')
+Route.get('/', async ({ inertia }: HttpContextContract) => {
+  return inertia.render('Home')
+  
+})
+
+Route.get('/products', async ({ inertia }: HttpContextContract) => {
+  return inertia.render('Products')
+})
+
+Route.get('/blog', async ({ inertia }: HttpContextContract) => {
+  return inertia.render('Blog')
 })
 
 
@@ -88,5 +95,6 @@ Route.group(() => {
 
   Route.get('/user/:userId', 'UsersController.getUserProfile')
 
+  Route.post('/user/change-rank', 'UsersController.changeUserRank')
 
 }).prefix('admin').namespace('App/Controllers/Http/Admin').middleware(['auth', 'isAdmin'])

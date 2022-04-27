@@ -1,53 +1,52 @@
-import { Box, Container, Flex, HStack, Image } from '@chakra-ui/react'
-import { Link } from '@inertiajs/inertia-react'
+import { Avatar, Box, Container, Flex, HStack, Icon, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
+import { Link, usePage } from '@inertiajs/inertia-react'
 import React from 'react'
+import { BiCog, BiLockOpen, BiPowerOff } from 'react-icons/bi'
+import MainLogo from '../../../Components/MainLogo'
 
-export default function TopNavigation() {
+import { BsTextCenter, BsTextLeft } from 'react-icons/bs'
+
+export default function TopNavigation({ toggleCollapsed, collapsed }) {
+
+  const { authUser }: any = usePage().props
+
   return (
-    <Box py={3} w='full' bg='purple.700'>
-      <Container maxW='container.xl'>
+    <Box py={3} w='full' bg='#353535' position='fixed' zIndex={999999}>
+      <Container maxW='container.2xl'>
         <Flex justify='space-between'>
 
           <HStack>
-            <Link href='/'>
-              <Image width={150} height={50} src='/logo.png' alt='Brand Logo' />
-            </Link>
 
+            <Icon color='white' cursor='pointer' mr={5} onClick={toggleCollapsed} as={collapsed ? BsTextLeft : BsTextCenter} w={8} h={8} />
+
+            <Link href='/'>
+              <MainLogo />
+            </Link>
           </HStack>
 
 
           <HStack>
 
-            {/* <Link href='/admin/dashboard'>
-              <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
-                Admin
-              </Box>
-            </Link> */}
+            {/* <Link href=''> */}
+            <Flex py={2} px={3} gap={3} color='whiteAlpha.800' rounded='5px' cursor='pointer'>
 
-            {/* <Link href='/user/dashboard'>
-              <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
-                Users
-              </Box>
-            </Link> */}
+              <Menu>
+                {/* <MenuItem> */}
+                  <Link href='/auth/login'>
+                    Login
+                  </Link>
+                {/* </MenuItem> */}
 
-            <Link href='/auth/login'>
-              <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
-                Login
-              </Box>
-            </Link>
+                {/* <MenuItem> */}
+                  <Link href='/auth/join_now'>
+                    Sign up
+                  </Link>
+                {/* </MenuItem> */}
 
-            <Link href='/auth/join_now'>
-              <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
-                Join Now
-              </Box>
-            </Link>
+              </Menu>
 
-            {/* <Link href='/react-test'>
-              <Box py={2} px={3} color='whiteAlpha.800' _hover={{ bg: 'blackAlpha.700' }} rounded='5px'>
-                 Test React
-              </Box>
-            </Link> */}
-
+            </Flex>
+            {/* </Link> */}
           </HStack>
         </Flex>
       </Container>

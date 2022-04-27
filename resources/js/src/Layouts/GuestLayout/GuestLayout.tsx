@@ -1,61 +1,52 @@
-import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, Container, Flex } from '@chakra-ui/react'
-import { usePage } from '@inertiajs/inertia-react'
-import React from 'react'
+import { Box, Flex, useMediaQuery } from '@chakra-ui/react'
+import React, { useState } from 'react'
 import Footer from './inc/Footer'
+import SideMenu from './inc/SideMenu'
 import TopNavigation from './inc/TopNavigation'
 
 
-export default function GuestLayout({ children, PDt = 5 }) {
+export default function GuestLayout({ children }) {
+
+  const [isMobile] = useMediaQuery('(max-width:1000px)')
+
+  const [collapsed, setCollapsed]: any = useState(isMobile ? true : false)
+
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed);
+  };
 
 
+  return (
+    <Flex direction='column' justify='space-between'>
+        <TopNavigation toggleCollapsed={toggleCollapsed} collapsed={collapsed} />
 
-    const { successMsg, errorMsg, infoMsg }: any = usePage().props
+      {/* <Container maxW='container.xl' style={{ clear: 'both', overflowX: 'hidden' }}> */}
 
-    return (
+        <Flex color='purple.50'>
 
-
-        <Flex direction='column' justify='space-between'>
-            <TopNavigation />
-
-            <Box pt={PDt}>
-                {successMsg && (
-                    <Container maxW='container.xl'>
-                        <Alert status='success' variant='left-accent'>
-                            <AlertIcon />
-                            <AlertTitle mr={2}>Success!</AlertTitle>
-                            <AlertDescription>{successMsg}.</AlertDescription>
-                            {/* <CloseButton position='absolute' right='8px' top='8px' /> */}
-                        </Alert>
-                    </Container>
-                )}
-
-                {errorMsg && (
-                    <Container maxW='container.xl'>
-                        <Alert status='error' variant='left-accent'>
-                            <AlertIcon />
-                            <AlertTitle mr={2}>Error!</AlertTitle>
-                            <AlertDescription>{errorMsg}.</AlertDescription>
-                            {/* <CloseButton position='absolute' right='8px' top='8px' /> */}
-                        </Alert>
-                    </Container>
-                )}
-
-                {infoMsg && (
-                    <Container maxW='container.xl'>
-                        <Alert status='info'>
-                            <AlertIcon />
-                            {/* <AlertTitle mr={2}>Th!</AlertTitle> */}
-                            <AlertDescription>{infoMsg}</AlertDescription>
-                            {/* <CloseButton position='absolute' right='8px' top='8px' /> */}
-                        </Alert>
-                    </Container>
-                )}
-                
-                {children}
+          {/* {!isMobile &&  */}
+          <Box as='aside' zIndex={9999} px={0} width={collapsed ? '80px' : '210px'} pt='74px' h='100vh' overflow='hidden'>
+            <Box style={{ position: 'fixed', height: '100vh', zIndex: 999, overflowY: 'auto' }} bg='purple.50'>
+              <SideMenu collapsed={collapsed} />
             </Box>
+          </Box>
 
+          {/* } */}
+
+
+          <Box color='gray.800' w={isMobile ? '80%' : '100%'} minH='100vh' bg={isMobile ? 'white' : 'purple.50'} dropShadow='md'>
+            <Box px={isMobile ? 5 : 10} py='90px' minH='100vh'>
+              {children}
+            </Box>
             <Footer />
+          </Box>
+
+
         </Flex>
 
-    )
+
+      {/* </Container> */}
+
+    </Flex>
+  )
 }

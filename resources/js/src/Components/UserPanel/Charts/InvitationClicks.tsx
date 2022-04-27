@@ -31,7 +31,7 @@ export default function InvitationClicks() {
         }
     ]
 
-    const [option, setOption] = useState('7days')
+    const [option, setOption] = useState('30days')
 
     useEffect(() => {
 
