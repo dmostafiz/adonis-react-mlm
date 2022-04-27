@@ -36,6 +36,9 @@ Route.get('/invite', async ({ request, session, response, auth }: HttpContextCon
     if (parent) {
       const click = new Click()
       click.user_id = parent.id
+      if (request.qs().src) {
+        click.source = request.qs().src
+      }
       await click.save()
 
       session.put('ref_id', request.qs().ref)

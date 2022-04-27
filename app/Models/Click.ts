@@ -8,6 +8,9 @@ export default class Click extends BaseModel {
   @column()
   public user_id: number
 
+  @column()
+  public source: string
+  
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

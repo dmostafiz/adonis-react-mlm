@@ -10,6 +10,8 @@ export default class Clicks extends BaseSchema {
                               .references('users.id')
                               .onDelete('CASCADE')
 
+      table.string('source').defaultTo('direct')
+      
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })
