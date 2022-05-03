@@ -19,6 +19,7 @@ const UsersList: any = ({ userList }) => {
                             <Tr>
                                 <Th>User</Th>
                                 <Th>Join date</Th>
+                                <Th>Source</Th>
                                 <Th>Ref ID</Th>
                                 <Th isNumeric></Th>
                             </Tr>
@@ -37,6 +38,7 @@ const UsersList: any = ({ userList }) => {
                                     </Flex>
                                 </Td>
                                 <Td>{moment(user.created_at).format('l')}</Td>
+                                <Td>{user.source}</Td>
                                 <Td>{user.ref_id}</Td>
                                 <Td isNumeric>
                                     <Tooltip label='View Details' hasArrow>

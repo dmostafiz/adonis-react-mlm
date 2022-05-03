@@ -22,6 +22,11 @@ Inertia.share({
     return ctx.session.get('ref_id');
   },
 
+  src_inv: (ctx) => {
+    // console.log("ctx.session.get('ref_id'): ", ctx.session.get('ref_id'))
+    return ctx.session.get('source');
+  },
+
   errors: (ctx) => {
     // console.log(ctx.session.flashMessages.get('errors'))
     return ctx.session.flashMessages.get('errors');

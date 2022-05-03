@@ -1,4 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Database from '@ioc:Adonis/Lucid/Database'
 import GetGeneology from 'App/Helpers/GetGeneology'
 import Click from 'App/Models/Click'
 import User from 'App/Models/User'
@@ -66,9 +67,21 @@ export default class AffiliatesController {
             .where('parent_id', myId)
             .orderBy('id', 'desc')
 
+        // const clicksByShareLinks = await Click.query()
+        //                                       .where('user_id', myId)
+        //                                       .groupBy('source')
+
+        const clicksByShareLinks = await Database.query()
+                                                .from('clicks')
+                                                .select('source')
+                                                .count('* as total')
+                                                .where('user_id', myId)
+                                                .groupBy('source')
+
         console.log('My Childs: ', myChilds)
         return inertia.render('Users/MyStatistics', {
-            childUsers: myChilds
+            childUsers: myChilds,
+            clicksByShareLinks
         })
     }
 
@@ -92,5 +105,16 @@ export default class AffiliatesController {
             childUsers: myChilds
         })
 
+    }
+
+    async update_share_link({request, inertia, auth}: HttpContextContract) {
+        const myId: any = auth.user?.id
+        const user:any = await User.query().where('id', myId).first()
+        user.share_links = request.body().shareLinks
+        await user.save()
+
+        console.log('Share User: ',user)
+
+        return inertia.redirectBack()
     }
 }

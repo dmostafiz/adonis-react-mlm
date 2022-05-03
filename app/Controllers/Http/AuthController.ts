@@ -67,6 +67,11 @@ export default class AuthController {
 
         }
 
+        if(reqBody.source){
+            user.source = reqBody.source
+            await user.save()
+        }
+
 
         async function getParentAndUpdateLevel(parentUser: any, maxDepth: number, currentDepth: number = 0) {
             

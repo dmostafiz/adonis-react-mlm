@@ -42,6 +42,8 @@ Route.get('/invite', async ({ request, session, response, auth }: HttpContextCon
       await click.save()
 
       session.put('ref_id', request.qs().ref)
+      session.put('source', request.qs().src)
+
     }
   }
 
@@ -85,6 +87,9 @@ Route.group(() => {
 
   Route.get('/profile', 'ProfilesController.getProfileOrCreate')
 
+  Route.post('update_share_link', 'AffiliatesController.update_share_link').as('share.link')
+
+  
 
 }).prefix('user').namespace('App/Controllers/Http/User').middleware(['auth', 'isUser'])
 

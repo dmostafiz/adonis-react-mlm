@@ -6,7 +6,7 @@ import UserLayout from '../../Layouts/UsersLayout/UserLayout'
 
 export default function Register() {
 
-  const { errors, ref_inv }: any = usePage().props
+  const { errors, ref_inv, src_inv }: any = usePage().props
 
 
   // const [first_name, setFname] = useState('')
@@ -21,6 +21,7 @@ export default function Register() {
     last_name: '',
     email: '',
     ref_id: ref_inv && ref_inv,
+    source: src_inv && src_inv,
     password: '',
     confirmPassword: ''
   })

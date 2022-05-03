@@ -30,6 +30,12 @@ export default class User extends BaseModel {
   @column()
   public isadmin: boolean
 
+  @column()
+  public share_links: string
+  
+  @column()
+  public source: string
+  
   @column({ serializeAs: null })
   public password: string
 
@@ -41,6 +47,8 @@ export default class User extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+
 
   @hasMany(() => Click, {
     foreignKey: 'user_id', // defaults to userId
