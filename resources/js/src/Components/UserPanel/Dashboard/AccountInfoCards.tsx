@@ -1,4 +1,4 @@
-import { Flex, useColorModeValue, chakra, Text, Stack, Grid, GridItem, Button, Link } from '@chakra-ui/react'
+import { Flex, useColorModeValue, chakra, Text, Stack, Grid, GridItem, Link } from '@chakra-ui/react'
 import React from 'react'
 
 export default function AccountInfoCards({ childUsers, clicks }) {
