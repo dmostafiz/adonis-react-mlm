@@ -2,6 +2,7 @@ import Route from '@ioc:Adonis/Core/Route'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
 import Click from 'App/Models/Click'
+import Package from 'App/Models/Package'
 
 // import Inertia from '@ioc:EidelLev/Inertia'
 require( './api')
@@ -104,5 +105,24 @@ Route.group(() => {
   Route.get('/user/:userId', 'UsersController.getUserProfile')
 
   Route.post('/user/change-rank', 'UsersController.changeUserRank')
+
+  Route.post('/save_edited_rank', async ({request, inertia}:HttpContextContract) => {
+      const req = request.body().pakage
+
+      console.log('req: ', req)
+
+      const pkg: any = await Package.findBy('id', req.id)
+      pkg.level_one = req.level_one
+      pkg.level_two = req.level_two
+      pkg.level_three = req.level_three
+      pkg.level_four = req.level_four
+      pkg.level_five = req.level_five
+      pkg.level_six = req.level_six
+      pkg.level_seven = req.level_seven
+
+      await pkg.save()
+
+      return inertia.redirectBack()
+  })
 
 }).prefix('admin').namespace('App/Controllers/Http/Admin').middleware(['auth', 'isAdmin'])

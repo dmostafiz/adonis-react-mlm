@@ -1,10 +1,10 @@
-import { Flex, useColorModeValue, chakra, Text, Stack, Link, Grid, GridItem } from '@chakra-ui/react'
+import { Flex, useColorModeValue, chakra, Text, Stack, Grid, GridItem, Button, Link } from '@chakra-ui/react'
 import React from 'react'
 
 export default function AccountInfoCards({ childUsers, clicks }) {
 
     console.log('clicks: ', clicks)
-    
+
     return (
         <Flex
             w="full"
@@ -69,7 +69,9 @@ export default function AccountInfoCards({ childUsers, clicks }) {
                         direction={["column", "row"]}
                     >
 
+
                         <Link
+                            href="/user/my_statistics"
                             w={["auto", "auto"]}
                             display="inline-flex"
                             alignItems="center"
@@ -143,6 +145,7 @@ export default function AccountInfoCards({ childUsers, clicks }) {
                     >
 
                         <Link
+                            href="/user/my_statistics"
                             w={["auto", "auto"]}
                             display="inline-flex"
                             alignItems="center"
@@ -191,7 +194,7 @@ export default function AccountInfoCards({ childUsers, clicks }) {
                         color={useColorModeValue("gray.900", "gray.50")}
                         lineHeight="tight"
                     >
-                        $19
+                        $0
                         <chakra.span
                             fontSize="2xl"
                             fontWeight="medium"
@@ -216,7 +219,7 @@ export default function AccountInfoCards({ childUsers, clicks }) {
                         direction={["column", "row"]}
                     >
 
-                        <Link
+                        {/* <Link
                             w={["auto", "auto"]}
                             display="inline-flex"
                             alignItems="center"
@@ -234,7 +237,7 @@ export default function AccountInfoCards({ childUsers, clicks }) {
                             }}
                         >
                             View Wallet
-                        </Link>
+                        </Link> */}
                     </Stack>
                 </GridItem>
 

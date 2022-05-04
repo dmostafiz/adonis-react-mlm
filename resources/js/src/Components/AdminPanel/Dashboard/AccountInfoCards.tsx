@@ -1,4 +1,4 @@
-import { Flex, useColorModeValue, chakra, Text, Stack, Link, Grid, GridItem } from '@chakra-ui/react'
+import { Flex, useColorModeValue, chakra, Text, Stack, Grid, GridItem, Link } from '@chakra-ui/react'
 import React from 'react'
 
 export default function AccountInfoCards() {
@@ -68,6 +68,7 @@ export default function AccountInfoCards() {
                     >
 
                         <Link
+                            href="/admin/my_statistics"
                             w={["auto", "auto"]}
                             display="inline-flex"
                             alignItems="center"
@@ -87,20 +88,16 @@ export default function AccountInfoCards() {
                             View Details
                         </Link>
                     </Stack>
-              
-              
-              
+
                 </GridItem>
 
-               
-               
                 <GridItem
                     bg={useColorModeValue("white", "gray.800")}
                     px={4}
                     py={6}
                     shadow="base"
                     rounded="md"
-                    // colSpan={[2, 2, 1]}
+                // colSpan={[2, 2, 1]}
 
                 >
                     <chakra.p
@@ -120,7 +117,7 @@ export default function AccountInfoCards() {
                         color={useColorModeValue("gray.900", "gray.50")}
                         lineHeight="tight"
                     >
-                        $19
+                        $0
                         <chakra.span
                             fontSize="2xl"
                             fontWeight="medium"
@@ -145,7 +142,7 @@ export default function AccountInfoCards() {
                         direction={["column", "row"]}
                     >
 
-                        <Link
+                        {/* <Link
                             w={["auto", "auto"]}
                             display="inline-flex"
                             alignItems="center"
@@ -163,7 +160,7 @@ export default function AccountInfoCards() {
                             }}
                         >
                             View transactions
-                        </Link>
+                        </Link> */}
                     </Stack>
                 </GridItem>
 
