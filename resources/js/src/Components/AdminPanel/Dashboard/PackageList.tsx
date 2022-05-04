@@ -48,7 +48,7 @@ const PackageList: any = ({ packages }) => {
                                 <Td>{pkg.package}</Td>
                                 <Td>
                                     <Box display='flex' justifySelf='center' gap={2}>
-                                        {editRank && editRank.id == pkg.id
+                                        {editRank && editRank?.id == pkg.id
                                             ? <Input
                                                 width={12}
                                                 px='5px'
@@ -62,7 +62,7 @@ const PackageList: any = ({ packages }) => {
                                 </Td>
                                 <Td>
                                     <Box display='flex' justifySelf='center' gap={2}>
-                                        {editRank && editRank.id == pkg.id
+                                        {editRank && editRank?.id == pkg.id
                                             ? <Input
                                                 width={12}
                                                 px='5px'
@@ -76,7 +76,7 @@ const PackageList: any = ({ packages }) => {
                                 </Td>
                                 <Td>
                                     <Box display='flex' justifySelf='center' gap={2}>
-                                        {editRank && editRank.id == pkg.id
+                                        {editRank && editRank?.id == pkg.id
                                             ? <Input
                                                 width={12}
                                                 px='5px'
@@ -90,7 +90,7 @@ const PackageList: any = ({ packages }) => {
                                 </Td>
                                 <Td>
                                     <Box display='flex' justifySelf='center' gap={2}>
-                                        {editRank && editRank.id == pkg.id
+                                        {editRank && editRank?.id == pkg.id
                                             ? <Input
                                                 width={12}
                                                 px='5px'
@@ -104,7 +104,7 @@ const PackageList: any = ({ packages }) => {
                                 </Td>
                                 <Td>
                                     <Box display='flex' justifySelf='center' gap={2}>
-                                        {editRank && editRank.id == pkg.id
+                                        {editRank && editRank?.id == pkg.id
                                             ? <Input
                                                 width={12}
                                                 px='5px'
@@ -118,7 +118,7 @@ const PackageList: any = ({ packages }) => {
                                 </Td>
                                 <Td>
                                     <Box display='flex' justifySelf='center' gap={2}>
-                                        {editRank && editRank.id == pkg.id
+                                        {editRank && editRank?.id == pkg.id
                                             ? <Input
                                                 width={12}
                                                 px='5px'
@@ -132,7 +132,7 @@ const PackageList: any = ({ packages }) => {
                                 </Td>
                                 <Td>
                                     <Box display='flex' justifySelf='center' gap={2}>
-                                        {editRank && editRank.id == pkg.id
+                                        {editRank && editRank?.id == pkg.id
                                             ? <Input
                                                 width={12}
                                                 px='5px'
@@ -145,7 +145,7 @@ const PackageList: any = ({ packages }) => {
                                     </Box>
                                 </Td>
                                 <Td isNumeric>
-                                    {editRank && editRank.id == pkg.id
+                                    {editRank && editRank?.id == pkg.id
                                         ?
                                         <Tooltip label='Update Rank' hasArrow>
                                             <Button
