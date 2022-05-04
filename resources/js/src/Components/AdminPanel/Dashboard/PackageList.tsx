@@ -10,9 +10,9 @@ const PackageList: any = ({ packages }) => {
         console.log('Package lists: ', packages)
     }, [])
 
-    const [editRank, setEditRank] = useState(null)
+    const [editRank, setEditRank]: any = useState()
 
-    const handleEditRank = (pkg) => {
+    const handleEditRank = (pkg: any) => {
         setEditRank(pkg)
     }
 
