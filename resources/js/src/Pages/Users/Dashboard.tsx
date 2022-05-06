@@ -50,7 +50,8 @@ export default function Dashboard({ childUsers, clicks }: any) {
                         </Box>
                     </Box>
 
-                    {authUser?.share_links?.split(',').map((lnk: any, index: any) => <Box key={index}>
+                    {shareLinks.split(',').map((lnk: any, index: any) =>
+                    lnk && <Box key={index}>
                         <Text>{lnk}</Text>
                         <ReferralClipboard key={index} source={lnk} />
                     </Box>)}

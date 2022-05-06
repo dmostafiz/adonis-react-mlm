@@ -107,7 +107,7 @@ export default class AffiliatesController {
 
     }
 
-    async update_share_link({request, inertia, auth}: HttpContextContract) {
+    async update_share_link({request, response, auth}: HttpContextContract) {
         const myId: any = auth.user?.id
         const user:any = await User.query().where('id', myId).first()
         user.share_links = request.body().shareLinks
@@ -115,6 +115,6 @@ export default class AffiliatesController {
 
         console.log('Share User: ',user)
 
-        return inertia.redirectBack()
+        return response.redirect('/user/dashboard')
     }
 }

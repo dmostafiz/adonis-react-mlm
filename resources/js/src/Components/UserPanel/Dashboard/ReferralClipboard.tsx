@@ -12,7 +12,7 @@ export default function ReferralClipboard({source='direct'}) {
   useEffect(() => {
     // console.log('window?.location.protocol: ', window?.location.port)
     setValue(`${window?.location.protocol}//${window?.location.hostname}/invite?src=${source}&ref=${authUser.ref_id}`)
-  }, [])
+  }, [source])
 
   return (
     <>

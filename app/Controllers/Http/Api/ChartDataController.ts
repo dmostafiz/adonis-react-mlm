@@ -19,7 +19,7 @@ export default class ChartDataController {
 
     let sql: string = `
     SELECT count(*) as count, 
-    DATE_FORMAT(created_at, '%a') as date_time 
+    DATE_FORMAT(created_at, '%M %d') as date_time 
     FROM clicks 
     WHERE user_id = ? 
     AND created_at > ? 
@@ -36,7 +36,7 @@ export default class ChartDataController {
 
       sql = `
         SELECT count(*) as count, 
-        DATE_FORMAT(created_at, '%d') as date_time 
+        DATE_FORMAT(created_at, '%M %d') as date_time 
         FROM clicks 
         WHERE user_id = ? 
         AND created_at > ? 
@@ -48,12 +48,12 @@ export default class ChartDataController {
       lastSevenDay = DateTime.now().minus({ months: 12 }).toString()
       sql = `
         SELECT count(*) as count, 
-        DATE_FORMAT(created_at, '%M') as date_time 
+        DATE_FORMAT(created_at, '%M, %Y') as date_time 
         FROM clicks 
         WHERE user_id = ? 
         AND created_at > ? 
         GROUP BY date_time
-        ORDER BY date_time DESC
+        ORDER BY date_time ASC
 
         `
     }
@@ -108,8 +108,8 @@ export default class ChartDataController {
     // let data = {}
 
     let sql: string = `
-    SELECT count(*) as count, 
-    DATE_FORMAT(created_at, '%a') as date_time 
+    SELECT count(*) as count,
+    DATE_FORMAT(created_at, '%M %d') as date_time 
     FROM users 
     WHERE parent_id = ? 
     AND created_at > ? 
@@ -125,8 +125,8 @@ export default class ChartDataController {
       lastSevenDay = DateTime.now().minus({ days: 30 }).toString()
 
       sql = `
-        SELECT count(*) as count, 
-        DATE_FORMAT(created_at, '%d') as date_time 
+        SELECT count(*) as count,
+        DATE_FORMAT(created_at, '%M %d') as date_time 
         FROM users 
         WHERE parent_id = ? 
         AND created_at > ? 
@@ -137,13 +137,13 @@ export default class ChartDataController {
     else if (option == '12months') {
       lastSevenDay = DateTime.now().minus({ months: 12 }).toString()
       sql = `
-        SELECT count(*) as count, 
-        DATE_FORMAT(created_at, '%M') as date_time 
+        SELECT count(*) as count,
+        DATE_FORMAT(created_at, '%M, %Y') as date_time 
         FROM users 
         WHERE parent_id = ? 
         AND created_at > ? 
         GROUP BY date_time
-        ORDER BY date_time DESC
+        ORDER BY date_time ASC
 
         `
     }
@@ -195,7 +195,7 @@ export default class ChartDataController {
 
     let sql: string = `
     SELECT count(*) as count, 
-    DATE_FORMAT(created_at, '%a') as date_time 
+    DATE_FORMAT(created_at, '%M %d') as date_time 
     FROM clicks 
     WHERE created_at > ? 
     GROUP BY date_time
@@ -211,7 +211,7 @@ export default class ChartDataController {
 
       sql = `
         SELECT count(*) as count, 
-        DATE_FORMAT(created_at, '%d') as date_time 
+        DATE_FORMAT(created_at, '%M %d') as date_time 
         FROM clicks 
         WHERE created_at > ? 
         GROUP BY date_time
@@ -222,11 +222,11 @@ export default class ChartDataController {
       lastSevenDay = DateTime.now().minus({ months: 12 }).toString()
       sql = `
         SELECT count(*) as count, 
-        DATE_FORMAT(created_at, '%M') as date_time 
+        DATE_FORMAT(created_at, '%M, %Y') as date_time 
         FROM clicks 
         WHERE created_at > ? 
         GROUP BY date_time
-        ORDER BY date_time DESC
+        ORDER BY date_time ASC
 
         `
     }
@@ -281,8 +281,8 @@ export default class ChartDataController {
     // let data = {}
 
     let sql: string = `
-    SELECT count(*) as count, 
-    DATE_FORMAT(created_at, '%a') as date_time 
+    SELECT count(*) as count,
+    DATE_FORMAT(created_at, '%M %d') as date_time 
     FROM users 
     WHERE created_at > ? 
     GROUP BY date_time
@@ -298,7 +298,7 @@ export default class ChartDataController {
 
       sql = `
         SELECT count(*) as count, 
-        DATE_FORMAT(created_at, '%d') as date_time 
+        DATE_FORMAT(created_at, '%M %d') as date_time 
         FROM users 
         WHERE created_at > ? 
         GROUP BY date_time
@@ -309,7 +309,7 @@ export default class ChartDataController {
       lastSevenDay = DateTime.now().minus({ months: 12 }).toString()
       sql = `
         SELECT count(*) as count, 
-        DATE_FORMAT(created_at, '%M') as date_time 
+        DATE_FORMAT(created_at, '%M, %Y') as date_time 
         FROM users 
         WHERE created_at > ? 
         GROUP BY date_time
