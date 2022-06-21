@@ -10,6 +10,8 @@ import NProgress from 'nprogress'
 import { Inertia } from '@inertiajs/inertia'
 import 'antd/dist/antd.css'
 
+import { MoralisProvider } from "react-moralis"
+
 let timeout: any = null
 
 Inertia.on('start', () => {
@@ -120,6 +122,10 @@ export const theme = extendTheme({
 const el = document.getElementById('app')
 
 render(
+  <MoralisProvider
+   serverUrl="https://cyda95aqcddb.usemoralis.com:2053/server" 
+   appId="DowdJImLoEmlmcACailftRRJMktb3HXtLoq5zPBF">
+    
     <ChakraProvider theme={theme}>
       <InertiaApp
         // Pass props from the server down to the client app
@@ -130,6 +136,7 @@ render(
         initialComponent={''}
       />
     </ChakraProvider>
+  </MoralisProvider>
   ,
   el
 

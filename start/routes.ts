@@ -8,9 +8,6 @@ import Package from 'App/Models/Package'
 require( './api')
 
 
-  
-
-
 Route.get('/', async ({ inertia }: HttpContextContract) => {
   return inertia.render('Home')
   

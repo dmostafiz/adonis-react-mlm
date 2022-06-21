@@ -16,7 +16,7 @@
     ],
     "outDir": "build",
     "rootDir": "./",
-    "sourceMap": true,
+    "sourceMap": false,
     "paths": {
       "App/*": [
         "./app/*"
@@ -29,7 +29,7 @@
       ],
       "Database/*": [
         "./database/*"
-      ]
+      ],
     },
     "types": [
       "@adonisjs/core",

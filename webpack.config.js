@@ -1,6 +1,7 @@
 const { join } = require('path')
 const Encore = require('@symfony/webpack-encore')
 
+
 /*
 |--------------------------------------------------------------------------
 | Encore runtime environment
@@ -204,6 +205,15 @@ config.infrastructureLogging = {
   level: 'warn',
 }
 config.stats = 'errors-warnings'
+
+config.resolve.fallback = {
+  crypto: false,
+  http: false,
+  https: false,
+  url: false,
+  os: false,
+}
+
 
 /*
 |--------------------------------------------------------------------------

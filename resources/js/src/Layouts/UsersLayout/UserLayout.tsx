@@ -1,10 +1,14 @@
 import { Box, Flex, useMediaQuery } from '@chakra-ui/react'
+import { usePage } from '@inertiajs/inertia-react'
 import React, { useState } from 'react'
+import FlashMessages from '../../Components/FlashMessage'
 import Footer from './inc/Footer'
 import SideMenu from './inc/SideMenu'
 import TopNavigation from './inc/TopNavigation'
 
 export default function UserLayout({ children }) {
+  
+  const { successMsg }: any = usePage().props
 
   const [isMobile] = useMediaQuery('(max-width:1000px)')
 
@@ -41,6 +45,8 @@ export default function UserLayout({ children }) {
             <Footer />
           </Box>
 
+          {/* <FlashMessages /> */}
+          {successMsg && <FlashMessages flash={successMsg} type='success'/>}
 
         </Flex>
 

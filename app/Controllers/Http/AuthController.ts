@@ -61,10 +61,7 @@ export default class AuthController {
                 reg.user_id = parent.id
                 reg.child_id = user.id
                 await reg.save()
-
-
             }
-
         }
 
         if(reqBody.source){
@@ -79,7 +76,7 @@ export default class AuthController {
 
             if (maxDepth >= currentDepth) {
 
-                if (parentUser.parent_id !== null) {
+                if (parentUser.parent_id) {
                     const prnt: any = await User.findBy('id', parentUser.parent_id)
 
                     const level = new Level()
@@ -103,12 +100,6 @@ export default class AuthController {
         session.flash('success', 'Registration success. You may now login to your account with your credential.')
 
         return response.redirect('/auth/login')
-
-        // } catch (error) {
-        //     console.log('Error Ocured: ', error.message)
-        //     return response.redirect('/auth/join_now')
-
-        // }
 
     }
 
