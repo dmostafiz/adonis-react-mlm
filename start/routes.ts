@@ -3,18 +3,22 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
 import Click from 'App/Models/Click'
 import Package from 'App/Models/Package'
+import Product from 'App/Models/Product'
 
 // import Inertia from '@ioc:EidelLev/Inertia'
-require( './api')
+require('./api')
 
 
 Route.get('/', async ({ inertia }: HttpContextContract) => {
   return inertia.render('Home')
-  
+
 })
 
 Route.get('/products', async ({ inertia }: HttpContextContract) => {
-  return inertia.render('Products')
+  const products = Product.all()
+  return inertia.render('Products', {
+    products: products
+  })
 })
 
 Route.get('/blog', async ({ inertia }: HttpContextContract) => {
@@ -87,7 +91,7 @@ Route.group(() => {
 
   Route.post('update_share_link', 'AffiliatesController.update_share_link').as('share.link')
 
-  
+  Route.post('/buy_product', 'CheckoutsController.buy').as('buy.product')
 
 }).prefix('user').namespace('App/Controllers/Http/User').middleware(['auth', 'isUser'])
 
@@ -103,23 +107,30 @@ Route.group(() => {
 
   Route.post('/user/change-rank', 'UsersController.changeUserRank')
 
-  Route.post('/save_edited_rank', async ({request, inertia}:HttpContextContract) => {
-      const req = request.body().pakage
+  Route.post('/save_edited_rank', async ({ request, inertia }: HttpContextContract) => {
+    const req = request.body().pakage
 
-      console.log('req: ', req)
+    console.log('req: ', req)
 
-      const pkg: any = await Package.findBy('id', req.id)
-      pkg.level_one = req.level_one
-      pkg.level_two = req.level_two
-      pkg.level_three = req.level_three
-      pkg.level_four = req.level_four
-      pkg.level_five = req.level_five
-      pkg.level_six = req.level_six
-      pkg.level_seven = req.level_seven
+    const pkg: any = await Package.findBy('id', req.id)
+    pkg.level_one = req.level_one
+    pkg.level_two = req.level_two
+    pkg.level_three = req.level_three
+    pkg.level_four = req.level_four
+    pkg.level_five = req.level_five
+    pkg.level_six = req.level_six
+    pkg.level_seven = req.level_seven
 
-      await pkg.save()
+    await pkg.save()
 
-      return inertia.redirectBack()
+    return inertia.redirectBack()
   })
+
+  Route.get('/product/create', 'ProductsController.create')
+  Route.get('/product/list', 'ProductsController.list')
+  Route.post('/product/store', 'ProductsController.store')
+  Route.get('/product/delete/:productId', 'ProductsController.delete')
+
+
 
 }).prefix('admin').namespace('App/Controllers/Http/Admin').middleware(['auth', 'isAdmin'])

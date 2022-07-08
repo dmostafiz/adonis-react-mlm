@@ -3,18 +3,13 @@ import { Box, Container, GridItem, SimpleGrid, chakra, Text, Center, Flex, Visua
 import { useForm, usePage } from '@inertiajs/inertia-react'
 import React from 'react'
 import UserLayout from '../../Layouts/UsersLayout/UserLayout'
+import { useMoralis } from 'react-moralis';
 
 export default function Register() {
 
   const { errors, ref_inv, src_inv }: any = usePage().props
 
-
-  // const [first_name, setFname] = useState('')
-  // const [last_name, setLname] = useState('')
-  // const [email, setEmail] = useState('')
-  // const [ref_id, setRefID] = useState('')
-  // const [password, setPassword] = useState('')
-  // const [confirmPassword, SetConfirmPassword] = useState('')
+  const { signup, isAuthenticated } = useMoralis()
 
   const { data, setData, post, processing } : any = useForm({
     first_name: '',
@@ -29,12 +24,14 @@ export default function Register() {
   console.log('usePage().props: ', usePage().props?.errors)
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     //  alert(e)
     e.preventDefault()
 
 
     post('/register', data)
+
+    //  signup( data.email, data.password )
 
   }
 
@@ -64,7 +61,7 @@ export default function Register() {
                 color='gray.900'
                 letterSpacing={{ base: "normal", md: "tight" }}
               >
-                Ready to start your journey?
+                {isAuthenticated ? 'You are authenticated with Moralis' : 'Ready to start your journey?'} 
               </chakra.h1>
               <chakra.p
                 mb={{ base: 10, md: 4 }}

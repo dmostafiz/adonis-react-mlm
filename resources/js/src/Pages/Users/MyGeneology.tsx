@@ -13,6 +13,8 @@ export default function MyGeneology({ dataSource }) {
     // const HEIGHT = 80;
     const screen = useFullScreenHandle();
 
+    console.log('Updated Data source: ', dataSource)
+
     const ref = createRef()
     const [, takeScreenShot] = useScreenshot({
         type: "image/jpeg",

@@ -1,6 +1,12 @@
 import User from "App/Models/User"
 
-export default async function GetGeneology(myId: number){
+export default async function GetGeneology(myId: number) {
+
+    const authUser: any = await User.query()
+        .preload('children')
+        .preload('package')
+        .where('id', myId)
+        .first()
 
     const childArray: any = []
 
@@ -20,15 +26,15 @@ export default async function GetGeneology(myId: number){
                 name: child.first_name + ' ' + child.last_name,
                 title: child.email,
                 parent_id: child.parent_id,
-                ref_id: child.ref_id
+                ref_id: child.ref_id,
+                purchased: child.total_purchased,
             })
 
-           return getDataSourceMatrix(child, allUsers)
+            return getDataSourceMatrix(child, allUsers)
 
         })
     }
 
-    const authUser: any = await User.query().where('id', myId).preload('children').first()
 
     const allUsers: any = await User.query().where('id', '>', myId).where('isadmin', '!=', true).preload('children')
 
@@ -57,6 +63,8 @@ export default async function GetGeneology(myId: number){
                     ...tree,
                     {
                         ...userData,
+                        package: authUser.package,
+                        level: currentDepth,
                         children: makeTree(usersArray, userData.id, maxDepth, nextDepth),
                     },
 
@@ -82,6 +90,8 @@ export default async function GetGeneology(myId: number){
         name: authUser.first_name + ' ' + authUser.last_name,
         title: authUser.email,
         ref_id: authUser.ref_id,
+        purchased: authUser.total_purchased,
+        package: authUser.package,
         children: root
     }
 }

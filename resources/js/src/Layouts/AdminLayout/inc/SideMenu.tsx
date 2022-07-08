@@ -30,9 +30,9 @@ export default function SideMenu({ collapsed }) {
                 mode="inline"
                 theme="dark"
                 inlineCollapsed={collapsed}
-                style={{ 
-                    height: '100vh', 
-                    background: 'linear-gradient(180.48deg,rgba(115,70,215,1) -26.15%,rgba(57,35,81,1) 189.84%)', 
+                style={{
+                    height: '100vh',
+                    background: 'linear-gradient(180.48deg,rgba(115,70,215,1) -26.15%,rgba(57,35,81,1) 189.84%)',
                     color: 'white'
                 }}
 
@@ -61,13 +61,21 @@ export default function SideMenu({ collapsed }) {
                     </Link>
                 </Menu.Item>
 
-                <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Dropdown menu">
-                    <Menu.Item key="9">Option 9</Menu.Item>
-                    <Menu.Item key="10">Option 10</Menu.Item>
-                    <SubMenu key="sub3" title="Submenu">
+                <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Manage Products">
+                    <Menu.Item key="9">
+                        <Link href='/admin/product/create'>
+                            Create Product
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item key="10">
+                        <Link href='/admin/product/list'>
+                            Product List
+                        </Link>
+                    </Menu.Item>
+                    {/* <SubMenu key="sub3" title="Submenu">
                         <Menu.Item key="11">Option 11</Menu.Item>
                         <Menu.Item key="12">Option 12</Menu.Item>
-                    </SubMenu>
+                    </SubMenu> */}
                 </SubMenu>
             </Menu>
 

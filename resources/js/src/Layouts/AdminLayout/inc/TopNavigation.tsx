@@ -35,29 +35,29 @@ export default function TopNavigation({ toggleCollapsed, collapsed }) {
                   {/* Actions */}
 
                   {/* <Flex align='center' gap={2}> */}
-                  <Avatar size='xs' mr={2} name={`${authUser.first_name} ${authUser.last_name}`} src='https://bit.ly/sage-adebayo' />
+                  <Avatar size='xs' mr={2} name={`${authUser.first_name} ${authUser.last_name}`} src='' />
 
                   {authUser.first_name} {authUser.last_name}
 
                   {/* </Flex> */}
                 </MenuButton>
                 <MenuList>
-                  <MenuItem>
+                  {/* <MenuItem>
                     <Link href='/'>
                       <Flex align='center' gap={2}>
                         <Icon as={BiCog} color='green.500' p={0} m={0} />
                         <Text color='gray.500'>Profile settings</Text>
                       </Flex>
                     </Link>
-                  </MenuItem>
-                  <MenuItem>
+                  </MenuItem> */}
+                  {/* <MenuItem>
                     <Link href='/'>
                       <Flex align='center' gap={2}>
                         <Icon as={BiLockOpen} color='green.500' p={0} m={0} />
                         <Text color='gray.500'>Change Password</Text>
                       </Flex>
                     </Link>
-                  </MenuItem>
+                  </MenuItem> */}
                   <MenuItem>
                     <Link href="/logout" method="post" as="button">
                       <Flex align='center' gap={2}>

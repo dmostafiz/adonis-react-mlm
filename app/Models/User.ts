@@ -35,6 +35,12 @@ export default class User extends BaseModel {
   
   @column()
   public source: string
+
+  @column()
+  public total_purchased: Float32Array
+  
+  @column()
+  public wallet: Float32Array
   
   @column({ serializeAs: null })
   public password: string
